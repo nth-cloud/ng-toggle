@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "lib": ["es2015", "dom"],
+    "module": "es2015",
+    "moduleResolution": "node",
+    "declaration": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noEmitOnError": true,
+    "outDir": "temp",
+    "sourceMap": true,
+    "baseUrl": "./node_modules",
+    "paths": {
+      "ng-toggle-switch": ["../src/index"]
+    }
+  },
+  "include": [
+    "./demo/src/*.ts"
+  ],
+  "angularCompilerOptions": {
+    "strictMetadataEmit": true
+  }
+}

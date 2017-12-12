@@ -1,0 +1,35 @@
+language: node_js
+node_js:
+  - "6"
+
+env:
+  global:
+    - SAUCE_USERNAME=trickeyone
+    - SAUCE_ACCESS_KEY=298cfe3e-8e2d-45a6-a6fb-da53ad523963
+    - BROWSER_PROVIDER_READY_FILE=/tmp/sauce-connect-ready
+    - LOGS_DIR=/tmp/logs
+
+addons:
+  firefox: "latest"
+
+before_install:
+  - export DISPLAY=:99.0
+  - sh -e /etc/init.d/xvfb start
+  - npm install --quiet -g gulp
+
+install:
+  - npm install
+
+before_script:
+  - mkdir -p $LOGS_DIR
+  - ./scripts/sauce_connect_setup.sh
+
+script:
+  - gulp ci && npm run api-doc-test
+  - ./scripts/sauce_connect_block.sh
+  - gulp saucelabs
+
+after_script:
+  - ./scripts/sauce_connect_teardown.sh
+
+sudo: false
