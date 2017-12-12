@@ -10,7 +10,7 @@ import {DEMO_SNIPPETS} from './demos';
         <ngtsd-toggle-switch-basic></ngtsd-toggle-switch-basic>
       </ngbd-example-box>
       <ngbd-example-box demoTitle="Checkbox Toggle Switch" [snippets]="snippets" component="toggle-switch" demo="checkbox">
-        <ngtsd-toggle-switch-checkbox></ngtsd-toggle-switch-checkbox>
+        <ngtsd-toggle-switch-input></ngtsd-toggle-switch-input>
       </ngbd-example-box>
     </ngbd-component-wrapper>
   `

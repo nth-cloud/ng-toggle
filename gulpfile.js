@@ -77,13 +77,14 @@ gulp.task('umd', function(cb) {
   webpack(
       {
         entry: './temp/index.js',
-        output: {filename: 'dist/bundles/ng-toggle-switch.js', library: 'ngb', libraryTarget: 'umd'},
+        output: {filename: 'dist/bundles/ngx-toggle.js', library: 'ngb', libraryTarget: 'umd'},
         devtool: 'source-map',
         externals: [
           {
             '@angular/core': ngExternal('core'),
             '@angular/common': ngExternal('common'),
-            '@angular/forms': ngExternal('forms')
+            '@angular/forms': ngExternal('forms'),
+            '@ng-bootstrap/ng-bootstrap': {root: ['@ng-bootstrap', 'ng-bootstrap'], commonjs: '@ng-bootstrap/ng-bootstrap', commonjs2: '@ng-bootstrap/ng-bootstrap', amd: '@ng-bootstrap/ng-bootstrap'}
           },
           rxjsExternal
         ]
@@ -96,11 +97,11 @@ gulp.task('npm', function() {
   var targetPkgJson = {};
   var fieldsToCopy = ['version', 'description', 'keywords', 'author', 'repository', 'license', 'bugs', 'homepage'];
 
-  targetPkgJson['name'] = 'ng-toggle-switch';
+  targetPkgJson['name'] = 'ngx-toggle';
 
   fieldsToCopy.forEach(function(field) { targetPkgJson[field] = pkgJson[field]; });
 
-  targetPkgJson['main'] = 'bundles/ng-toggle-switch.js';
+  targetPkgJson['main'] = 'bundles/ngx-toggle.js';
   targetPkgJson['module'] = 'index.js';
   targetPkgJson['typings'] = 'index.d.ts';
 
@@ -217,7 +218,7 @@ gulp.task('check-format', function() {
 gulp.task('enforce-format', function() {
   return doCheckFormat().on('warning', function(e) {
     console.log("ERROR: You forgot to run clang-format on your change.");
-    console.log("See https://github.com/trickeyone/ng-toggle-switch/blob/master/DEVELOPER.md#clang-format");
+    console.log("See https://github.com/trickeyone/ngx-toggle/blob/master/DEVELOPER.md#clang-format");
     process.exit(1);
   });
 });
@@ -274,7 +275,7 @@ gulp.task(
 
 gulp.task('demo-push', function() {
   return gulp.src(PATHS.demoDist)
-      .pipe(ghPages({remoteUrl: "https://github.com/trickeyone/ng-toggle-switch.github.io.git", branch: "master"}));
+      .pipe(ghPages({remoteUrl: "https://github.com/trickeyone/ngx-toggle.github.io.git", branch: "master"}));
 });
 
 // Public Tasks

@@ -22,7 +22,7 @@ function triggerKeyDown(element: DebugElement, keyCode: number, shiftKey = false
   return event;
 }
 
-describe('ng-toggle-switch', () => {
+describe('ngx-toggle', () => {
   beforeEach(() => {
     TestBed.configureTestingModule(
         {declarations: [TestComponent], imports: [NgToggleSwitchModule, FormsModule, ReactiveFormsModule]});

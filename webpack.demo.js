@@ -70,7 +70,7 @@ module.exports = function makeWebpackConfig() {
     extensions: ['.ts', '.js', '.css', '.scss', '.html'],
 
     alias: {
-      'ng-toggle-switch': root('src/index.ts')
+      'ngx-toggle': root('src/index.ts')
     }
   };
 

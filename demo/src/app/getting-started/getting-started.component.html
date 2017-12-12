@@ -3,7 +3,7 @@
     Dependencies
   </h3>
   <p>
-    This repository contains a set of native Angular directives based on Bootstrap's markup and CSS.
+    This repository contains a Angular v2+ Bootstrap-styled Toggle that can be used as a standalone toggle or can convert checkboxes into UI toggles.
     As a result no dependency on jQuery or Bootstrap's JavaScript is required. The only required dependencies are:
   </p>
   <ul>
@@ -14,12 +14,6 @@
       <a href="https://www.getbootstrap.com" target="_blank">Bootstrap CSS</a> (tested with 4.0.0-beta.2)
     </li>
   </ul>
-
-  <ngb-alert type="warning" [dismissible]="false">
-    <p>Should I add <b>bootstrap.js</b> or <b>bootstrap.min.js</b> to my project?</p>
-
-    No, the goal of ng-toggle-switch is to <i>completely replace</i> JavaScript implementation for components. Nor should you include other dependencies like jQuery or popper.js. It is not necessary and might interfere with ng-toggle-switch code.
-  </ngb-alert>
 
   <h3>
     Supported browsers
@@ -33,33 +27,21 @@
   <h3>
     Installation
   </h3>
-  <p>After installing the above dependencies, install <code>ng-toggle-switch</code> via: <br><code>npm install --save ng-toggle-switch</code></p>
+  <p>After installing the above dependencies, install <code>ngx-toggle</code> via: <br><code>npm install --save ngx-toggle</code></p>
 
   <p>Once installed you need to import our main module.</p>
-  <pre>import &#123;NgToggleSwitchModule} from 'ng-toggle-switch';</pre>
+  <pre>import &#123;NgToggleSwitchModule} from 'ngx-toggle';</pre>
   <p>
-    The only remaining part is to list the imported module in your root module and any additional application modules that make use
-    of the components in this library. The exact method will be slightly different for the root (top-level) module for which you
-    should end up with the code similar to (notice <code>NgbModule.forRoot()</code>):
+    The only remaining part is to list the imported module in your application modules that make use of the components in this library:
   </p>
-  <pre>import &#123;NgToggleSwitchModule} from 'ng-toggle-switch';
+  <pre>import &#123;NgToggleSwitchModule} from 'ngx-toggle';
 
 @NgModule(&#123;
   declarations: [AppComponent, ...],
-  imports: [NgbModule.forRoot(), ...],
+  imports: [NgToggleSwitchModule, ...],
   bootstrap: [AppComponent]
 })
 export class AppModule &#123;
-}</pre>
-
-  <p>Other modules in your application can simply import <code>NgbModule</code>:</p>
-  <pre>import &#123;NgToggleSwitchModule} from 'ng-toggle-switch';
-
-@NgModule(&#123;
-  declarations: [OtherComponent, ...],
-  imports: [NgbModule, ...]
-})
-export class OtherModule &#123;
 }</pre>
 
   <h4>
@@ -69,10 +51,10 @@ export class OtherModule &#123;
     If you are using SystemJS, you should also adjust your configuration to point to the UMD bundle.
   </p>
   <p>
-    In your systemjs config file, <code>map</code> needs to tell the System loader where to look for <code>ng-toggle-switch</code>:
+    In your systemjs config file, <code>map</code> needs to tell the System loader where to look for <code>ngx-toggle</code>:
   </p>
   <pre><code>map: &#123;
-  'ng-toggle-switch': 'node_modules/trickeyone/ng-toggle-switch/bundles/ng-toggle-switch.js',
+  'ngx-toggle': 'node_modules/trickeyone/ngx-toggle/bundles/ngx-toggle.js',
 }</code></pre>
   <h3>
     Getting Help
@@ -80,8 +62,8 @@ export class OtherModule &#123;
   <p>
     Please, do not open issues for the general support questions as we want to keep GitHub issues for bug reports
     and feature requests. You've got much better chances of getting your question answered on
-    <a href="https://stackoverflow.com/questions/tagged/ng-toggle-switch" target="_blank">StackOverflow</a> where the community at large are looking
-    at questions tagged with <code>ng-toggle-switch</code>.
+    <a href="https://stackoverflow.com/questions/tagged/ngx-toggle" target="_blank">StackOverflow</a> where the community at large are looking
+    at questions tagged with <code>ngx-toggle</code>.
   </p>
   <p>
     StackOverflow is a much better place to ask questions since:
@@ -94,7 +76,4 @@ export class OtherModule &#123;
   <p>
     To save your and our time we will be systematically closing all the issues that are requests for general support and redirecting people to StackOverflow.
   </p>
-  <h3>
-    Contributing
-  </h3>
 </ngtsd-page-wrapper>

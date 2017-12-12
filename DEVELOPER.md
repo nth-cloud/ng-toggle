@@ -1,6 +1,6 @@
-# Building and Testing ng-toggle-switch
+# Building and Testing ngx-toggle
 
-This document describes how to set up your development environment to build and test ng-toggle-switch.
+This document describes how to set up your development environment to build and test ngx-toggle.
 It also explains the basic mechanics of using `git`, `node`, and `npm`.
 
 * [Prerequisite Software](#prerequisite-software)
@@ -10,12 +10,12 @@ It also explains the basic mechanics of using `git`, `node`, and `npm`.
 * [Running Tests Locally](#running-tests-locally)
 * [Formatting](#clang-format)
 
-See the [contribution guidelines](https://github.com/trickeyone/ng-toggle-switch/blob/master/CONTRIBUTING.md)
-if you'd like to contribute to ng-toggle-switch.
+See the [contribution guidelines](https://github.com/trickeyone/ngx-toggle/blob/master/CONTRIBUTING.md)
+if you'd like to contribute to ngx-toggle.
 
 ## Prerequisite Software
 
-Before you can build and test ng-toggle-switch, you must install and configure the
+Before you can build and test ngx-toggle, you must install and configure the
 following products on your development machine:
 
 * [Git](http://git-scm.com) and/or the **GitHub app** (for [Mac](http://mac.github.com) or
@@ -30,32 +30,32 @@ following products on your development machine:
 
 ## Getting the Sources
 
-Fork and clone the ng-toggle-switch repository:
+Fork and clone the ngx-toggle repository:
 
 1. Login to your GitHub account or create one by following the instructions given
    [here](https://github.com/signup/free).
-2. [Fork](http://help.github.com/forking) the [main ng-toggle-switch
-   repository](https://github.com/trickeyone/ng-toggle-switch).
-3. Clone your fork of the ng-toggle-switch's ng-toggle-switch repository and define an `upstream` remote pointing back to
-   the ng-toggle-switch's ng-toggle-switch repository that you forked in the first place.
+2. [Fork](http://help.github.com/forking) the [main ngx-toggle
+   repository](https://github.com/trickeyone/ngx-toggle).
+3. Clone your fork of the ngx-toggle's ngx-toggle repository and define an `upstream` remote pointing back to
+   the ngx-toggle's ngx-toggle repository that you forked in the first place.
 
 ```shell
 # Clone your GitHub repository:
-git clone git@github.com:<github username>/ng-toggle-switch.git ng-toggle-switch
+git clone git@github.com:<github username>/ngx-toggle.git ngx-toggle
 
-# Go to the ng-toggle-switch directory:
-cd ng-toggle-switch
+# Go to the ngx-toggle directory:
+cd ngx-toggle
 
-# Add the main ng-toggle-switch repository as an upstream remote to your repository:
-git remote add upstream https://github.com/trickeyone/ng-toggle-switch.git
+# Add the main ngx-toggle repository as an upstream remote to your repository:
+git remote add upstream https://github.com/trickeyone/ngx-toggle.git
 ```
 
 ## Installing NPM Modules
 
-Next, install the JavaScript modules needed to build and test ng-toggle-switch:
+Next, install the JavaScript modules needed to build and test ngx-toggle:
 
 ```shell
-# Install ng-toggle-switch project dependencies (package.json)
+# Install ngx-toggle project dependencies (package.json)
 npm install
 ```
 
@@ -65,7 +65,7 @@ Globally install gulp as follows:
 
 ## Build commands
 
-To build ng-toggle-switch, run:
+To build ngx-toggle, run:
 
 ```shell
 $(npm bin)/gulp build
@@ -131,7 +131,7 @@ to some whitespace difference.
 * `clang-format` also includes a git hook, run `git clang-format` to format all files you
   touched.
 * You can run this as a **git pre-commit hook** to automatically format your delta regions when you
-  commit a change. In the ng-toggle-switch repo, run
+  commit a change. In the ngx-toggle repo, run
 
 ```shell
     $ echo -e '#!/bin/sh\nexec git clang-format' > .git/hooks/pre-commit

@@ -1,5 +1,5 @@
 {
-  "name": "ng-toggle-switch",
+  "name": "ngx-toggle",
   "version": "1.0.0-alpha.1",
   "description": "Angular powered Bootstrap Toggle",
   "main": "dist/index.js",
@@ -20,16 +20,16 @@
     "toggle",
     "switch"
   ],
-  "author": "https://github.com/trickeyone/ng-toggle-switch/graphs/contributors",
+  "author": "https://github.com/trickeyone/ngx-toggle/graphs/contributors",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trickeyone/ng-toggle-switch.git"
+    "url": "git+https://github.com/trickeyone/ngx-toggle.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/trickeyone/ng-toggle-switch/issues"
+    "url": "https://github.com/trickeyone/ngx-toggle/issues"
   },
-  "homepage": "https://github.com/trickeyone/ng-toggle-switch#readme",
+  "homepage": "https://github.com/trickeyone/ngx-toggle#readme",
   "dependencies": {
     "@angular/core": "^5.0.0",
     "@angular/common": "^5.0.0",

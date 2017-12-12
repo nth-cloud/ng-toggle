@@ -10,7 +10,7 @@
     "sourceMap": true,
     "baseUrl": "./node_modules",
     "paths": {
-      "@ng-bootstrap/ng-bootstrap": ["../src/index"]
+      "ngx-toggle": ["../src/index"]
     }
   },
   "include": [

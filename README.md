@@ -1,34 +1,34 @@
 # NG Toggle Switch
 
-[![npm version](https://badge.fury.io/js/ng-toggle-switch.svg)](https://badge.fury.io/js/ng-toggle-switch)
-[![Build Status](https://travis-ci.org/trickeyone/ng-toggle-switch.svg?branch=master)](https://travis-ci.org/trickeyone/ng-toggle-switch)
-[![devDependency Status](https://david-dm.org/trickeyone/ng-toggle-switch/dev-status.svg?branch=master)](https://david-dm.org/trickeyone/ng-toggle-switch#info=devDependencies)
+[![npm version](https://badge.fury.io/js/ngx-toggle.svg)](https://badge.fury.io/js/ngx-toggle)
+[![Build Status](https://travis-ci.org/trickeyone/ngx-toggle.svg?branch=master)](https://travis-ci.org/trickeyone/ngx-toggle)
+[![devDependency Status](https://david-dm.org/trickeyone/ngx-toggle/dev-status.svg?branch=master)](https://david-dm.org/trickeyone/ngx-toggle#info=devDependencies)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/trickeyone.svg)](https://saucelabs.com/u/trickeyone)
 
 Angular v2+ Bootstrap-styled Toggle that can be used as a standalone toggle or can convert checkboxes into UI toggles.
 
 ## Demo
 
-View all the directives in action at https://ng-toggle-switch.github.io
+View it in action at https://ngx-toggle.github.io
 
 ## Dependencies
 * [Angular](https://angular.io) (tested with 5.1.0)
 * [Bootstrap 4](https://www.getbootstrap.com) (tested with 4.0.0-beta.2)
 
 ## Installation
-After installing the above dependencies, install `ng-toggle-switch` via:
+After installing the above dependencies, install `ngx-toggle` via:
 ```shell
-npm install --save ng-toggle-switch
+npm install --save ngx-toggle
 ```
 
 Import the main module into your project:
 ```js
-import {NgToggleSwitchModule} from "trickeyone/ng-toggle-switch";
+import {NgToggleSwitchModule} from "trickeyone/ngx-toggle";
 ```
 
 Import the module into your application:
 ```js
-import {NgToggleSwitchModule} from "trickeyone/ng-toggle-switch";
+import {NgToggleSwitchModule} from ngx-toggle;
 
 @NgModule({
     ...
@@ -41,10 +41,10 @@ export class AppModule {
 
 If you are using SystemJS, you should adjust your configuration to point to the UMD bundle.
 
-In your systemJS config file, `map` needs to tell the System loader where to look for `ng-toggle-switch`:
+In your systemJS config file, `map` needs to tell the System loader where to look for `ngx-toggle`:
 ```js
 map: {
-   'trickeyone/ng-toggle-switch': 'node_modules/trickeyone/ng-toggle-switch/bundles/ng-toggle-switch.js' 
+   'trickeyone/ngx-toggle': 'node_modules/trickeyone/ngx-toggle/bundles/ngx-toggle.js' 
 }
 ```
 

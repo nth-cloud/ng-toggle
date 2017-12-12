@@ -2,7 +2,7 @@
   "NgToggleSwitch": {
     "fileName": "src/toggle-switch.ts",
     "className": "NgToggleSwitch",
-    "selector": "ng-toggle-switch",
+    "selector": "ngx-toggle",
     "exportAs": "ngToggleSwitch",
     "description": "",
     "inputs": [
