@@ -1,6 +1,15 @@
-# ng-toggle-switch
+# NG Toggle Switch
+
+[![npm version](https://badge.fury.io/js/ng-toggle-switch.svg)](https://badge.fury.io/js/ng-toggle-switch)
+[![Build Status](https://travis-ci.org/trickeyone/ng-toggle-switch.svg?branch=master)](https://travis-ci.org/trickeyone/ng-toggle-switch)
+[![devDependency Status](https://david-dm.org/trickeyone/ng-toggle-switch/dev-status.svg?branch=master)](https://david-dm.org/trickeyone/ng-toggle-switch#info=devDependencies)
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/trickeyone.svg)](https://saucelabs.com/u/trickeyone)
 
 Angular v2+ Bootstrap-styled Toggle that can be used as a standalone toggle or can convert checkboxes into UI toggles.
+
+## Demo
+
+View all the directives in action at https://ng-toggle-switch.github.io
 
 ## Dependencies
 * [Angular](https://angular.io) (tested with 5.1.0)
@@ -17,20 +26,7 @@ Import the main module into your project:
 import {NgToggleSwitchModule} from "trickeyone/ng-toggle-switch";
 ```
 
-You can import the module into your application either via the root (top-level) of your application (notice `NgToggleSwitchModule.forRoot()`):
-```js
-import {NgToggleSwitchModule} from "trickeyone/ng-toggle-switch";
-
-@NgModule({
-    ...
-    imports: [NgToggleSwitchModule.forRoot(), ...],
-    ...
-})
-export class AppModule {
-}
-```
-
-Or you can import it only in the required modules:
+Import the module into your application:
 ```js
 import {NgToggleSwitchModule} from "trickeyone/ng-toggle-switch";
 
@@ -39,7 +35,7 @@ import {NgToggleSwitchModule} from "trickeyone/ng-toggle-switch";
     imports: [NgToggleSwitchModule, ...],
     ...
 })
-export class OtherModule {
+export class AppModule {
 }
 ```
 

@@ -8,3 +8,6 @@ npm-debug.log
 .idea
 .vscode
 coverage
+demo/src/api-docs.ts
+demo/src/public/**/plnkr.html
+local.docs.json

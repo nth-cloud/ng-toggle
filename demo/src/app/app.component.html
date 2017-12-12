@@ -1,0 +1,58 @@
+<div class="container" style="padding-left: 0; padding-right: 0;">
+  <header class="navbar navbar-light navbar-fixed-top navbar-expand-lg">
+
+    <a class="navbar-brand" [routerLink]="['/']" (click)="navbarCollapsed = true">ng-toggle-switch</a>
+
+    <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
+            [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/getting-started']" (click)="navbarCollapsed = true">Getting Started</a>
+        </li>
+        <li class="nav-item" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/components']" (click)="navbarCollapsed = true">Components</a>
+        </li>
+        <li class="nav-item d-lg-none" *ngFor="let component of components" [routerLinkActive]="['active']">
+          <a class="nav-link" [routerLink]="['/components', component.toLowerCase()]" (click)="navbarCollapsed = true">{{ component }}</a>
+        </li>
+      </ul>
+
+      <span class="github-buttons d-none d-lg-inline">
+        <a class="github-button"
+           href="https://github.com/trickeyone/ng-toggle-switch"
+           target="_blank"
+           data-size="large"
+           data-show-count="true"
+           data-count-aria-label="# stargazers on GitHub"
+           aria-label="Star trickeyone/ng-toggle-switch on GitHub">Star</a>
+        <a href="https://twitter.com/intent/tweet?button_hashtag=ngtoggleswitch"
+           class="twitter-hashtag-button"
+           data-size="large"
+           data-text="I&#39;m checking out ng-toggle-switch"
+           data-url="https://ng-toggle-switch.github.io"
+           data-show-count="true">Tweet #ngtoggleswitch</a>
+      </span>
+    </div>
+  </header>
+</div>
+
+<div>
+  <router-outlet></router-outlet>
+</div>
+
+<footer class="bd-footer text-muted">
+  <div class="container">
+    <p>Designed and built by the <a href="https://github.com/trickeyone/ng-toggle-switch/contributors" target="_blank">ng-toggle-switch
+      team</a>.</p>
+    <p>Code licensed under <a href="https://raw.githubusercontent.com/trickeyone/ng-toggle-switch/master/LICENSE"
+                              target="_blank">MIT license conditions.</a></p>
+    <p>
+      Documentation licensed under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.
+      Design and content of the documentation site heavily inspired by the <a href="https:/getbootstrap.com/"
+                                                                              target="_blank">original Bootstrap design</a>.</p>
+  </div>
+</footer>

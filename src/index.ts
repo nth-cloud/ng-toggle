@@ -1,13 +1,14 @@
+export * from './toggle-switch';
+export * from './toggle-switch-input';
 
-import {ModuleWithProviders, NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {NgModule} from '@angular/core';
 
-@NgModule({imports : [], exports : []})
-export class NgToggleSwitchRootModule {
-}
+import {NgToggleSwitch} from './toggle-switch';
+import {NgToggleSwitchInput} from './toggle-switch-input';
 
-@NgModule({imports : [], exports : []})
+const EXPORT_DIRECTIVES = [NgToggleSwitch, NgToggleSwitchInput];
+
+@NgModule({imports: [CommonModule], exports: EXPORT_DIRECTIVES, declarations: EXPORT_DIRECTIVES})
 export class NgToggleSwitchModule {
-  static forRoot(): ModuleWithProviders {
-    return {ngModule : NgToggleSwitchRootModule};
-  }
 }

@@ -9,24 +9,25 @@ const packageJson = JSON.parse(fs.readFileSync('package.json'));
 const versions = getVersions();
 
 const ENTRY_CMPTS = {
-    modal: ['component']
+  modal: ['component']
 };
 
 function generateAppTsContent(componentName, demoName) {
-    const demoClassName = `Ngd${capitalize(componentName)}${capitalize(demoName)}`;
-    const demoImport = `./${componentName}-${demoName}`;
-    const demoSelector = `ngbd-${componentName}-${demoName}`;
-    const needsEntryCmpt = ENTRY_CMPTS.hasOwnProperty(componentName) && ENTRY_CMPTS[componentName].indexOf(demoName) > -1;
-    const entryCmptClass =  needsEntryCmpt ? `Ngbd${capitalize(componentName)}Content` : null;
-    const demoImports = needsEntryCmpt ? `${demoClassName}, ${entryCmptClass}` : demoClassName;
+  const demoClassName = `Ngtsd${capitalize(componentName)}${capitalize(demoName)}`;
+  const demoImport = `./${componentName}-${demoName}`;
+  const demoSelector = `ngtsd-${componentName}-${demoName}`;
+  const needsEntryCmpt = ENTRY_CMPTS.hasOwnProperty(componentName) && ENTRY_CMPTS[componentName].indexOf(demoName) > -1;
+  const entryCmptClass =  needsEntryCmpt ? `Ngtsd${capitalize(componentName)}Content` : null;
+  const demoImports = needsEntryCmpt ? `${demoClassName}, ${entryCmptClass}` : demoClassName;
 
-    return `
+  return `
 import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgToggleSwitchModule } from 'ng-toggle-switch';
 import { ${demoImports} } from '${demoImport}';
+
 @Component({
   selector: 'my-app',
   template: \`
@@ -34,18 +35,20 @@ import { ${demoImports} } from '${demoImport}';
     
     <hr>
     <p>
-      This is a demo plnkr forked from the <strong>ng-bootstrap</strong> project: Angular powered Bootstrap.
-      Visit <a href="https://ng-bootstrap.github.io/" target="_blank">https://ng-bootstrap.github.io</a> for more widgets and demos.
+      This is a demo plnkr forked from the <strong>ng-toggle-switch</strong> project: Angular powered Bootstrap.
+      Visit <a href="https://ng-toggle-switch.github.io/" target="_blank">https://ng-toggle-switch.github.io</a> for more widgets and demos.
     </p>
     <hr>
+
     <${demoSelector}></${demoSelector}>
   </div>
   \`
 })
 export class App {
 }   
+
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgbModule.forRoot()], 
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgToggleSwitchModule.forRoot()], 
   declarations: [App, ${demoImports}]${needsEntryCmpt ? `,\n  entryComponents: [${entryCmptClass}],` : ''}
   bootstrap: [App]
 }) 
@@ -54,26 +57,26 @@ export class AppModule {}
 }
 
 function generateTags(tags) {
-    return tags.map((tag, idx) => {
-        return `    <input type="hidden" name="tags[${idx}]" value="${tag}">`;
-    }).join('\n');
+  return tags.map((tag, idx) => {
+    return `    <input type="hidden" name="tags[${idx}]" value="${tag}">`;
+  }).join('\n');
 }
 
 function generatePlnkrContent(componentName, demoName) {
-    const fileName = `${componentName}-${demoName}`;
-    const basePath = `demo/src/app/components/${componentName}/demos/${demoName}/${fileName}`;
+  const fileName = `${componentName}-${demoName}`;
+  const basePath = `demo/src/app/components/${componentName}/demos/${demoName}/${fileName}`;
 
-    const codeContent = fs.readFileSync(`${basePath}.ts`).toString();
-    const markupContent = fs.readFileSync(`${basePath}.html`).toString();
-    const demoTplPath = `${fileName}.html`;
+  const codeContent = fs.readFileSync(`${basePath}.ts`).toString();
+  const markupContent = fs.readFileSync(`${basePath}.html`).toString();
+  const demoTplPath = `${fileName}.html`;
 
 
-    return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html lang="en">
 <body>
   <form id="mainForm" method="post" action="${plnkrUrl}">
-    <input type="hidden" name="description" value="Example usage of the ${componentName} widget from https://ng-bootstrap.github.io">
-${generateTags(['Angular', 'Bootstrap', 'ng-bootstrap', capitalize(componentName)])}  
+    <input type="hidden" name="description" value="Example usage of the ${componentName} widget from https://ng-toggle-switch.github.io">
+${generateTags(['Angular', 'Bootstrap', 'ng-toggle-switch', capitalize(componentName)])}  
     <input type="hidden" name="files[index.html]" value="${he.encode(generateIndexHtml())}">
     <input type="hidden" name="files[config.js]" value="${he.encode(generateConfigJs())}">
     <input type="hidden" name="files[src/main.ts]" value="${he.encode(contentMainTs)}">
@@ -87,11 +90,12 @@ ${generateTags(['Angular', 'Bootstrap', 'ng-bootstrap', capitalize(componentName
 }
 
 function generateIndexHtml() {
-    return `<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html>
+
   <head>
   <base href="." />
-    <title>ng-bootstrap demo</title>
+    <title>ng-toggle-switch demo</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/${versions.bootstrap}/css/bootstrap.min.css" />
     <script src="https://unpkg.com/core-js@${versions.coreJs}/client/shim.js"></script>
     <script src="https://unpkg.com/zone.js@${versions.zoneJs}/dist/zone.js"></script>
@@ -103,14 +107,16 @@ function generateIndexHtml() {
     System.import('app').catch(console.error.bind(console));
 </script>
   </head>
+
   <body>
   <my-app>loading...</my-app>
   </body>
+
 </html>`;
 }
 
 function generateConfigJs() {
-    return `var ver = {
+  return `var ver = {
     ng: '${versions.angular}'
   };
   
@@ -130,7 +136,9 @@ function generateConfigJs() {
     'npm:': 'https://unpkg.com/'
   },
   map: {
+
     'app': './src',
+
     '@angular/core': 'npm:@angular/core@' + ver.ng + '/bundles/core.umd.js',
     '@angular/common': 'npm:@angular/common@' + ver.ng + '/bundles/common.umd.js',
     '@angular/common/http': 'npm:@angular/common@' + ver.ng + '/bundles/common-http.umd.js',
@@ -140,10 +148,12 @@ function generateConfigJs() {
     '@angular/http': 'npm:@angular/http@' + ver.ng + '/bundles/http.umd.js',
     '@angular/router': 'npm:@angular/router@' + ver.ng + '/bundles/router.umd.js',
     '@angular/forms': 'npm:@angular/forms@' + ver.ng + '/bundles/forms.umd.js',
+
     'rxjs': 'npm:rxjs@${versions.rxjs}',
     'rxjs/operators': 'npm:rxjs@${versions.rxjs}/operators/index.js',
     'tslib': 'npm:tslib/tslib.js',
     'typescript': 'npm:typescript@${versions.typescript}/lib/typescript.js',
+
     'ng-toggle-switch': 'npm:ng-toggle-switch@${versions.ngBootstrap}/bundles/ng-toggle-switch.js'
   },
   packages: {
@@ -160,25 +170,25 @@ function generateConfigJs() {
 }
 
 function getVersions() {
-    return {
-        angular: getVersion('@angular/core'),
-        typescript: getVersion('typescript'),
-        rxjs: getVersion('rxjs'),
-        ngBootstrap: packageJson.version,
-        zoneJs: getVersion('zone.js'),
-        coreJs: getVersion('core-js'),
-        systemjs: getVersion('systemjs'),
-        reflectMetadata: getVersion('reflect-metadata'),
-        bootstrap: getVersion('bootstrap')
-    };
+  return {
+    angular: getVersion('@angular/core'),
+    typescript: getVersion('typescript'),
+    rxjs: getVersion('rxjs'),
+    ngBootstrap: packageJson.version,
+    zoneJs: getVersion('zone.js'),
+    coreJs: getVersion('core-js'),
+    systemjs: getVersion('systemjs'),
+    reflectMetadata: getVersion('reflect-metadata'),
+    bootstrap: getVersion('bootstrap')
+  };
 }
 
 function getVersion(name) {
-    var value = packageJson.dependencies[name] || packageJson.devDependencies[name];
-    if (!value) {
-        throw `couldn't find version for ${name} in package.json`;
-    }
-    return value;
+  var value = packageJson.dependencies[name] || packageJson.devDependencies[name];
+  if (!value) {
+    throw `couldn't find version for ${name} in package.json`;
+  }
+  return value;
 }
 
 module.exports = generatePlnkrContent;
