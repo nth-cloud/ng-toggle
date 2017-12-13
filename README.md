@@ -1,4 +1,4 @@
-# NG Toggle Switch
+# NG v2+ Toggle
 
 [![npm version](https://badge.fury.io/js/ngx-toggle.svg)](https://badge.fury.io/js/ngx-toggle)
 [![Build Status](https://travis-ci.org/trickeyone/ngx-toggle.svg?branch=master)](https://travis-ci.org/trickeyone/ngx-toggle)
@@ -44,7 +44,7 @@ If you are using SystemJS, you should adjust your configuration to point to the 
 In your systemJS config file, `map` needs to tell the System loader where to look for `ngx-toggle`:
 ```js
 map: {
-   'trickeyone/ngx-toggle': 'node_modules/trickeyone/ngx-toggle/bundles/ngx-toggle.js' 
+   'ngx-toggle/ngx-toggle': 'node_modules/ngx-toggle/ngx-toggle/bundles/ngx-toggle.js' 
 }
 ```
 

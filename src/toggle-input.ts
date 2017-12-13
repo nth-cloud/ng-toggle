@@ -3,12 +3,12 @@ import {NG_VALIDATORS, NG_VALUE_ACCESSOR} from '@angular/forms';
 
 const NG_TOGGLE_VALUE_ACCESSOR = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => NgToggleSwitchInput)
+    useExisting: forwardRef(() => NgxToggleInput)
 };
 
 const NG_TOGGLE_VALIDATOR = {
     provide: NG_VALIDATORS,
-    useExisting: forwardRef(() => NgToggleSwitchInput),
+    useExisting: forwardRef(() => NgxToggleInput),
     multi: true
 };
 
@@ -17,5 +17,5 @@ const NG_TOGGLE_VALIDATOR = {
     exportAs: 'ngxToggle',
     providers: [NG_TOGGLE_VALUE_ACCESSOR, NG_TOGGLE_VALIDATOR]
 })
-export class NgToggleSwitchInput {
+export class NgxToggleInput {
 }

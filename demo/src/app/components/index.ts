@@ -1,16 +1,16 @@
-export * from './toggle-switch';
+export * from './toggle';
 
 import {NgModule} from '@angular/core';
 import {NgbdSharedModule} from '../shared';
-import {NgtsdToggleSwitchModule} from './toggle-switch';
+import {NgxdToggleModule} from './toggle';
 
 @NgModule({
   imports: [
     NgbdSharedModule,
-    NgtsdToggleSwitchModule
+    NgxdToggleModule
   ],
   exports: [
-    NgtsdToggleSwitchModule
+    NgxdToggleModule
   ]
 })
-export class NgtsdDemoModule {}
+export class NgxdDemoModule {}

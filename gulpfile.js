@@ -218,7 +218,7 @@ gulp.task('check-format', function() {
 gulp.task('enforce-format', function() {
   return doCheckFormat().on('warning', function(e) {
     console.log("ERROR: You forgot to run clang-format on your change.");
-    console.log("See https://github.com/trickeyone/ngx-toggle/blob/master/DEVELOPER.md#clang-format");
+    console.log("See https://github.com/ngx-toggle/ngx-toggle/blob/master/DEVELOPER.md#clang-format");
     process.exit(1);
   });
 });
@@ -275,7 +275,7 @@ gulp.task(
 
 gulp.task('demo-push', function() {
   return gulp.src(PATHS.demoDist)
-      .pipe(ghPages({remoteUrl: "https://github.com/trickeyone/ngx-toggle.github.io.git", branch: "master"}));
+      .pipe(ghPages({remoteUrl: "https://github.com/ngx-toggle/ngx-toggle.github.io.git", branch: "master"}));
 });
 
 // Public Tasks

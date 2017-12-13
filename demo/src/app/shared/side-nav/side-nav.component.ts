@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 export const componentsList = [
     {
       name: 'Toggle Switch',
-      route: 'toggle-switch'
+      route: 'toggle'
     }
 ];
 

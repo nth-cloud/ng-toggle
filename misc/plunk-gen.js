@@ -25,7 +25,7 @@ import { Component, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { NgToggleSwitchModule } from 'ngx-toggle';
+import { NgxToggleModule } from 'ngx-toggle';
 import { ${demoImports} } from '${demoImport}';
 
 @Component({
@@ -48,7 +48,7 @@ export class App {
 }   
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgToggleSwitchModule.forRoot()], 
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgxToggleModule], 
   declarations: [App, ${demoImports}]${needsEntryCmpt ? `,\n  entryComponents: [${entryCmptClass}],` : ''}
   bootstrap: [App]
 }) 

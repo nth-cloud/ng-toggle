@@ -1,0 +1,34 @@
+<div>
+    <ngx-toggle
+        onColor="{{model.onColor}}"
+        onText="{{model.onText}}"
+        offColor="{{model.offColor}}"
+        offText="{{model.offText}}"
+    >
+    </ngx-toggle>
+</div>
+<pre>{{model | json}}</pre>
+<div class="row mb-2">
+    <div class="col-3">On Color:</div>
+    <div class="col-9">
+        <button *ngFor="let color of colors" [class]="'btn-' + color" (click)="setOnColor($event, color)">{{color | titlecase}}</button>
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-3">On Text</div>
+    <div class="col-9">
+        <input type="text" [(ngModel)]="model.onText" class="form-control" placeholder="On Text" />
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-3">Off Color:</div>
+    <div class="col-9">
+        <button *ngFor="let color of colors" [class]="'btn-' + color" (click)="setOffColor($event, color)">{{color | titlecase}}</button>
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-3">Off Text</div>
+    <div class="col-9">
+        <input type="text" [(ngModel)]="model.offText" class="form-control" placeholder="Off Text" />
+    </div>
+</div>

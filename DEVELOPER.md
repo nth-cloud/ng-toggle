@@ -10,7 +10,7 @@ It also explains the basic mechanics of using `git`, `node`, and `npm`.
 * [Running Tests Locally](#running-tests-locally)
 * [Formatting](#clang-format)
 
-See the [contribution guidelines](https://github.com/trickeyone/ngx-toggle/blob/master/CONTRIBUTING.md)
+See the [contribution guidelines](https://github.com/ngx-toggle/ngx-toggle/blob/master/CONTRIBUTING.md)
 if you'd like to contribute to ngx-toggle.
 
 ## Prerequisite Software
@@ -35,7 +35,7 @@ Fork and clone the ngx-toggle repository:
 1. Login to your GitHub account or create one by following the instructions given
    [here](https://github.com/signup/free).
 2. [Fork](http://help.github.com/forking) the [main ngx-toggle
-   repository](https://github.com/trickeyone/ngx-toggle).
+   repository](https://github.com/ngx-toggle/ngx-toggle).
 3. Clone your fork of the ngx-toggle's ngx-toggle repository and define an `upstream` remote pointing back to
    the ngx-toggle's ngx-toggle repository that you forked in the first place.
 
@@ -47,7 +47,7 @@ git clone git@github.com:<github username>/ngx-toggle.git ngx-toggle
 cd ngx-toggle
 
 # Add the main ngx-toggle repository as an upstream remote to your repository:
-git remote add upstream https://github.com/trickeyone/ngx-toggle.git
+git remote add upstream https://github.com/ngx-toggle/ngx-toggle.git
 ```
 
 ## Installing NPM Modules
