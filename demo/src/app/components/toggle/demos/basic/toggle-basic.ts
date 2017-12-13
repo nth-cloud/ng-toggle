@@ -9,7 +9,10 @@ export class NgxdToggleBasic {
     onColor: 'primary',
     offColor: 'secondary',
     onText: 'On',
-    offText: 'Off'
+    offText: 'Off',
+    disabled: false,
+    size: '',
+    value: null
   };
 
   colors: any = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];

@@ -6,12 +6,12 @@ import {DEMO_SNIPPETS} from './demos';
   template: `
     <ngbd-component-wrapper component="Toggle">
       <ngbd-api-docs directive="NgxToggle"></ngbd-api-docs>
-      <ngbd-example-box demoTitle="Toggle" [snippets]="snippets" component="toggle" demo="basic">
+      <ngbd-example-box demoTitle="Toggle Basic" [snippets]="snippets" component="toggle" demo="basic">
         <ngxd-toggle-basic></ngxd-toggle-basic>
       </ngbd-example-box>
-      <!--<ngbd-example-box demoTitle="Checkbox Toggle Switch" [snippets]="snippets" component="toggle-input" demo="checkbox">-->
-        <!--<ngxd-toggle-input></ngxd-toggle-input>-->
-      <!--</ngbd-example-box>-->
+      <ngbd-example-box demoTitle="Toggle Checkbox" [snippets]="snippets" component="toggle" demo="input">
+        <ngxd-toggle-input></ngxd-toggle-input>
+      </ngbd-example-box>
     </ngbd-component-wrapper>
   `
 })

@@ -1,6 +1,7 @@
 export * from './toggle';
 
 import {NgModule} from '@angular/core';
+
 import {NgbdSharedModule} from '../shared';
 import {NgxdToggleModule} from './toggle';
 

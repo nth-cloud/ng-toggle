@@ -5,4 +5,13 @@ import { Component } from '@angular/core';
   templateUrl: './toggle-input.html'
 })
 export class NgxdToggleInput {
+  model: any = {
+    onColor: 'primary',
+    offColor: 'secondary',
+    onText: 'On',
+    offText: 'Off',
+    disabled: false,
+    size: '',
+    value: null
+  };
 }

@@ -1,9 +1,9 @@
 import {TestBed, ComponentFixture, async, inject} from '@angular/core/testing';
-import {createGenericTestComponent} from './test/common';
-
 import {Component, TemplateRef, DebugElement} from '@angular/core';
 import {By} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule, FormGroup, FormControl, Validators} from '@angular/forms';
+
+import {createGenericTestComponent} from './test/common';
 import {NgxToggleModule} from './index';
 
 const createTestComponent = (html: string) =>

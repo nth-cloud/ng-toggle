@@ -1,4 +1,5 @@
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 import {NgbdSharedModule} from '../../shared';
 import {ExampleBoxComponent} from './example-box';
@@ -6,9 +7,8 @@ import {NgbdApiDocs, NgbdApiDocsBadge, NgbdApiDocsClass, NgbdApiDocsConfig} from
 import {NgbdFragment} from './fragment';
 
 @NgModule({
-  imports: [NgbdSharedModule],
+  imports: [NgbdSharedModule, NgbModule],
   declarations: [ExampleBoxComponent, NgbdApiDocsBadge, NgbdApiDocs, NgbdApiDocsClass, NgbdApiDocsConfig, NgbdFragment],
-  exports: [ExampleBoxComponent, NgbdApiDocsBadge, NgbdApiDocs, NgbdApiDocsClass, NgbdApiDocsConfig, NgbdFragment],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  exports: [ExampleBoxComponent, NgbdApiDocsBadge, NgbdApiDocs, NgbdApiDocsClass, NgbdApiDocsConfig, NgbdFragment]
 })
 export class NgbdComponentsSharedModule {}

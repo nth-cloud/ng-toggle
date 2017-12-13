@@ -1,4 +1,4 @@
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
@@ -13,7 +13,7 @@ import {Analytics} from './analytics/analytics';
 export {componentsList} from './side-nav/side-nav.component';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule.forRoot()],
+  imports: [CommonModule, RouterModule, NgbModule],
   exports: [
     CommonModule,
     RouterModule,
@@ -29,8 +29,7 @@ export {componentsList} from './side-nav/side-nav.component';
     PageWrapper,
     SideNavComponent,
   ],
-  providers: [Analytics],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  providers: [Analytics]
 })
 export class NgbdSharedModule {
 }

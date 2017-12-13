@@ -1,1 +1,20 @@
-<input type="checkbox" ngxToggle />
+<div>
+    <ngx-toggle
+            onColor="{{model.onColor}}"
+            onText="{{model.onText}}"
+            offColor="{{model.offColor}}"
+            offText="{{model.offText}}"
+            [disabled]="model.disabled"
+            [size]="model.size"
+            [(value)]="model.value"
+    >
+        <input type="checkbox" [disabled]="model.disabled" [(ngModel)]="model.value" />
+    </ngx-toggle>
+</div>
+<pre class="my-2">{{model | json}}</pre>
+<div class="row mb-2">
+    <div class="col-3">Disable:</div>
+    <div class="col-9">
+        <input type="checkbox" [(ngModel)]="model.disabled" />
+    </div>
+</div>

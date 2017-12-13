@@ -1,7 +1,8 @@
 
 export * from './toggle.component';
 
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
+import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 
 import {NgxToggleModule} from 'ngx-toggle';
 import {NgbdSharedModule} from '../../shared';
@@ -10,9 +11,8 @@ import {NgxdToggle} from './toggle.component';
 import {DEMO_DIRECTIVES} from './demos';
 
 @NgModule({
-  imports: [NgbdSharedModule, NgbdComponentsSharedModule, NgxToggleModule],
+  imports: [NgbdSharedModule, NgbdComponentsSharedModule, NgxToggleModule, NgbModule],
   exports: [NgxdToggle],
-  declarations: [NgxdToggle, ...DEMO_DIRECTIVES],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  declarations: [NgxdToggle, ...DEMO_DIRECTIVES]
 })
 export class NgxdToggleModule {}

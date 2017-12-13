@@ -1,8 +1,6 @@
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
-import {NgxToggleModule} from 'ngx-toggle';
 
 import {DefaultComponent} from './default';
 import {GettingStarted} from './getting-started';
@@ -22,11 +20,9 @@ import {NgbdSharedModule} from './shared';
     routing,
     NgbModule.forRoot(),
     NgxdDemoModule,
-    NgbdSharedModule,
-    NgxToggleModule
+    NgbdSharedModule
   ],
-  bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  bootstrap: [AppComponent]
 })
-export class NgtsdModule {
+export class NgxdModule {
 }
