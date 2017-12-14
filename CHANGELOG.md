@@ -1,3 +1,8 @@
+<a name="1.0.0-beta.2"></a>
+# [1.0.0-beta.2](https://github.com/ngx-toggle/ngx-toggle/compare/1.0.0-beta.1...1.0.0-beta.2) (2017-12-14)
+
+
+
 <a name="1.0.0-beta.1"></a>
 # [1.0.0-beta.1](https://github.com/ngx-toggle/ngx-toggle/compare/1.0.0-alpha.3...1.0.0-beta.1) (2017-12-14)
 
