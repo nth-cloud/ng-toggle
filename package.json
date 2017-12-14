@@ -1,6 +1,6 @@
 {
   "name": "ngx-toggle",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-beta.1",
   "description": "Angular powered Bootstrap Toggle",
   "main": "dist/index.js",
   "engines": {
@@ -17,8 +17,7 @@
     "angular",
     "bootstrap",
     "components",
-    "toggle",
-    "switch"
+    "toggle"
   ],
   "author": "https://github.com/ngx-toggle/ngx-toggle/graphs/contributors",
   "repository": {
