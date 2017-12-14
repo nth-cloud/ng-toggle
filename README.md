@@ -1,8 +1,8 @@
 # NG v2+ Toggle
 
 [![npm version](https://badge.fury.io/js/ngx-toggle.svg)](https://badge.fury.io/js/ngx-toggle)
-[![Build Status](https://travis-ci.org/trickeyone/ngx-toggle.svg?branch=master)](https://travis-ci.org/trickeyone/ngx-toggle)
-[![devDependency Status](https://david-dm.org/trickeyone/ngx-toggle/dev-status.svg?branch=master)](https://david-dm.org/trickeyone/ngx-toggle#info=devDependencies)
+[![Build Status](https://travis-ci.org/ngx-toggle/ngx-toggle.svg?branch=master)](https://travis-ci.org/ngx-toggle/ngx-toggle)
+[![devDependency Status](https://david-dm.org/trickeyone/ngx-toggle/dev-status.svg?branch=master)](https://david-dm.org/ngx-toggle/ngx-toggle#info=devDependencies)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/trickeyone.svg)](https://saucelabs.com/u/trickeyone)
 
 [![NPM](https://nodei.co/npm/ngx-toggle.png?compact=true)](https://www.npmjs.com/package/ngx-toggle)
