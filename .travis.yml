@@ -11,6 +11,7 @@ env:
 
 addons:
   firefox: "latest"
+  sause_connect: true
 
 before_install:
   - export DISPLAY=:99.0
@@ -20,16 +21,8 @@ before_install:
 install:
   - npm install
 
-before_script:
-  - mkdir -p $LOGS_DIR
-  - ./scripts/sauce_connect_setup.sh
-
 script:
   - gulp ci && npm run api-doc-test
-  - ./scripts/sauce_connect_block.sh
   - gulp saucelabs
-
-after_script:
-  - ./scripts/sauce_connect_teardown.sh
 
 sudo: false
