@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+  <form id="mainForm" method="post" action="http://plnkr.co/edit/?p=preview">
+    <input type="hidden" name="description" value="Example usage of the toggle widget from https://ngx-toggle.github.io">
+    <input type="hidden" name="tags[0]" value="Angular">
+    <input type="hidden" name="tags[1]" value="Bootstrap">
+    <input type="hidden" name="tags[2]" value="ngx-toggle">
+    <input type="hidden" name="tags[3]" value="Toggle">  
+    <input type="hidden" name="files[index.html]" value="&#x3C;!DOCTYPE html&#x3E;
+&#x3C;html&#x3E;
+
+  &#x3C;head&#x3E;
+  &#x3C;base href=&#x22;.&#x22; /&#x3E;
+    &#x3C;title&#x3E;ngx-toggle demo&#x3C;/title&#x3E;
+    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/zone.js@0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;https://unpkg.com/systemjs@^0.19.40/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script src=&#x22;config.js&#x22;&#x3E;&#x3C;/script&#x3E;
+    &#x3C;script&#x3E;
+    System.import(&#x27;app&#x27;).catch(console.error.bind(console));
+&#x3C;/script&#x3E;
+  &#x3C;/head&#x3E;
+
+  &#x3C;body&#x3E;
+  &#x3C;my-app&#x3E;loading...&#x3C;/my-app&#x3E;
+  &#x3C;/body&#x3E;
+
+&#x3C;/html&#x3E;">
+    <input type="hidden" name="files[config.js]" value="var ver = {
+    ng: &#x27;^5.0.0&#x27;
+  };
+  
+  System.config({
+  //use typescript for compilation
+  transpiler: &#x27;typescript&#x27;,
+  //typescript compiler options
+  typescriptOptions: {
+    emitDecoratorMetadata: true
+  },
+  meta: {
+    &#x27;typescript&#x27;: {
+      &#x22;exports&#x22;: &#x22;ts&#x22;
+    }
+  },  
+  paths: {
+    &#x27;npm:&#x27;: &#x27;https://unpkg.com/&#x27;
+  },
+  map: {
+
+    &#x27;app&#x27;: &#x27;./src&#x27;,
+
+    &#x27;@angular/core&#x27;: &#x27;npm:@angular/core@&#x27; + ver.ng + &#x27;/bundles/core.umd.js&#x27;,
+    &#x27;@angular/common&#x27;: &#x27;npm:@angular/common@&#x27; + ver.ng + &#x27;/bundles/common.umd.js&#x27;,
+    &#x27;@angular/common/http&#x27;: &#x27;npm:@angular/common@&#x27; + ver.ng + &#x27;/bundles/common-http.umd.js&#x27;,
+    &#x27;@angular/compiler&#x27;: &#x27;npm:@angular/compiler@&#x27; + ver.ng + &#x27;/bundles/compiler.umd.js&#x27;,
+    &#x27;@angular/platform-browser&#x27;: &#x27;npm:@angular/platform-browser@&#x27; + ver.ng + &#x27;/bundles/platform-browser.umd.js&#x27;,
+    &#x27;@angular/platform-browser-dynamic&#x27;: &#x27;npm:@angular/platform-browser-dynamic@&#x27; + ver.ng + &#x27;/bundles/platform-browser-dynamic.umd.js&#x27;,
+    &#x27;@angular/http&#x27;: &#x27;npm:@angular/http@&#x27; + ver.ng + &#x27;/bundles/http.umd.js&#x27;,
+    &#x27;@angular/router&#x27;: &#x27;npm:@angular/router@&#x27; + ver.ng + &#x27;/bundles/router.umd.js&#x27;,
+    &#x27;@angular/forms&#x27;: &#x27;npm:@angular/forms@&#x27; + ver.ng + &#x27;/bundles/forms.umd.js&#x27;,
+
+    &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.5.2&#x27;,
+    &#x27;rxjs/operators&#x27;: &#x27;npm:rxjs@^5.5.2/operators/index.js&#x27;,
+    &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
+    &#x27;typescript&#x27;: &#x27;npm:typescript@2.4.2/lib/typescript.js&#x27;,
+
+    &#x27;ngx-toggle&#x27;: &#x27;npm:ngx-toggle@1.0.0-alpha.3/bundles/ngx-toggle.js&#x27;
+  },
+  packages: {
+    app: {
+      main: &#x27;./main.ts&#x27;,
+      defaultExtension: &#x27;ts&#x27;
+    },
+    rxjs: {
+      defaultExtension: &#x27;js&#x27;
+    }
+  }
+});
+">
+    <input type="hidden" name="files[src/main.ts]" value="import {platformBrowserDynamic} from &#x27;@angular/platform-browser-dynamic&#x27;;
+import {AppModule} from &#x27;./app&#x27;;
+
+platformBrowserDynamic().bootstrapModule(AppModule);
+">
+    <input type="hidden" name="files[src/app.ts]" value="
+import { Component, NgModule } from &#x27;@angular/core&#x27;;
+import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
+import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
+import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
+import { NgxToggleModule } from &#x27;ngx-toggle&#x27;;
+import { NgtsdToggleKitchen-sink } from &#x27;./toggle-kitchen-sink&#x27;;
+
+@Component({
+  selector: &#x27;my-app&#x27;,
+  template: &#x60;
+    &#x3C;div class=&#x22;container-fluid&#x22;&#x3E;
+    
+    &#x3C;hr&#x3E;
+    &#x3C;p&#x3E;
+      This is a demo plnkr forked from the &#x3C;strong&#x3E;ngx-toggle&#x3C;/strong&#x3E; project: Angular powered Bootstrap.
+      Visit &#x3C;a href=&#x22;https://ngx-toggle.github.io/&#x22; target=&#x22;_blank&#x22;&#x3E;https://ngx-toggle.github.io&#x3C;/a&#x3E; for more widgets and demos.
+    &#x3C;/p&#x3E;
+    &#x3C;hr&#x3E;
+
+    &#x3C;ngtsd-toggle-kitchen-sink&#x3E;&#x3C;/ngtsd-toggle-kitchen-sink&#x3E;
+  &#x3C;/div&#x3E;
+  &#x60;
+})
+export class App {
+}   
+
+@NgModule({
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgxToggleModule], 
+  declarations: [App, NgtsdToggleKitchen-sink]
+  bootstrap: [App]
+}) 
+export class AppModule {}
+">
+    <input type="hidden" name="files[src/toggle-kitchen-sink.ts]" value="import { Component } from &#x27;@angular/core&#x27;;
+
+@Component({
+  selector: &#x27;ngxd-toggle-kitchen-sink&#x27;,
+  templateUrl: &#x27;src/toggle-kitchen-sink.html&#x27;
+})
+export class NgxdToggleKitchenSink {
+  model: any = {
+    onColor: &#x27;primary&#x27;,
+    offColor: &#x27;secondary&#x27;,
+    onText: &#x27;On&#x27;,
+    offText: &#x27;Off&#x27;,
+    disabled: false,
+    size: &#x27;&#x27;,
+    value: null
+  };
+
+  colors: any = [&#x27;primary&#x27;, &#x27;secondary&#x27;, &#x27;success&#x27;, &#x27;danger&#x27;, &#x27;warning&#x27;, &#x27;info&#x27;, &#x27;light&#x27;, &#x27;dark&#x27;];
+
+  setOnColor(event: MouseEvent, color: string) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.model.onColor = color;
+  }
+
+  setOffColor(event: MouseEvent, color: string) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.model.offColor = color;
+  }
+}
+">
+    <input type="hidden" name="files[src/toggle-kitchen-sink.html]" value="&#x3C;div&#x3E;
+    &#x3C;ngx-toggle
+        onColor=&#x22;{{model.onColor}}&#x22;
+        onText=&#x22;{{model.onText}}&#x22;
+        offColor=&#x22;{{model.offColor}}&#x22;
+        offText=&#x22;{{model.offText}}&#x22;
+        [disabled]=&#x22;model.disabled&#x22;
+        [size]=&#x22;model.size&#x22;
+        [(value)]=&#x22;model.value&#x22;
+    &#x3E;
+        &#x3C;ng-template ngxToggleLabel forLabel=&#x22;on&#x22;&#x3E;&#x3C;span class=&#x22;fa fa-play&#x22;&#x3E;&#x3C;/span&#x3E;&#x26;nbsp;It&#x27;s On!&#x3C;br /&#x3E;Like Donkey Kong!&#x3C;/ng-template&#x3E;
+        &#x3C;ng-template ngxToggleLabel forLabel=&#x22;off&#x22;&#x3E;&#x3C;span class=&#x22;fa fa-stop&#x22;&#x3E;&#x3C;/span&#x3E;&#x26;nbsp;And... We&#x27;re Down.&#x3C;/ng-template&#x3E;
+        &#x3C;input type=&#x22;checkbox&#x22; [(ngModel)]=&#x22;model.value&#x22; [disabled]=&#x22;model.disabled&#x22; /&#x3E;
+    &#x3C;/ngx-toggle&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;pre class=&#x22;my-2&#x22;&#x3E;{{model | json}}&#x3C;/pre&#x3E;
+&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
+    &#x3C;div class=&#x22;col-3&#x22;&#x3E;Disable:&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
+        &#x3C;input type=&#x22;checkbox&#x22; [(ngModel)]=&#x22;model.disabled&#x22; /&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
+    &#x3C;div class=&#x22;col-3&#x22;&#x3E;Indeterminate:&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
+        &#x3C;input type=&#x22;checkbox&#x22; #ind [checked]=&#x22;model.value === null&#x22; (change)=&#x22;model.value = ind.checked ? null : (model.value || false)&#x22; /&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
+    &#x3C;div class=&#x22;col-3&#x22;&#x3E;Size:&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
+        &#x3C;label class=&#x22;mr-2&#x22;&#x3E;
+            &#x3C;input type=&#x22;radio&#x22; [(ngModel)]=&#x22;model.size&#x22; value=&#x22;sm&#x22; /&#x3E;
+            Small
+        &#x3C;/label&#x3E;
+        &#x3C;label class=&#x22;mr-2&#x22;&#x3E;
+            &#x3C;input type=&#x22;radio&#x22; [(ngModel)]=&#x22;model.size&#x22; value=&#x22;&#x22; /&#x3E;
+            Normal
+        &#x3C;/label&#x3E;
+        &#x3C;label&#x3E;
+            &#x3C;input type=&#x22;radio&#x22; [(ngModel)]=&#x22;model.size&#x22; value=&#x22;lg&#x22; /&#x3E;
+            Large
+        &#x3C;/label&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
+    &#x3C;div class=&#x22;col-3&#x22;&#x3E;On Color:&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
+        &#x3C;button *ngFor=&#x22;let color of colors&#x22; class=&#x22;mr-1 mb-1 btn btn-{{color}}&#x22; [ngClass]=&#x22;{&#x27;active&#x27;: model.onColor === color}&#x22; (click)=&#x22;setOnColor($event, color)&#x22;&#x3E;{{color | titlecase}}&#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
+    &#x3C;div class=&#x22;col-3&#x22;&#x3E;On Text&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
+        &#x3C;input type=&#x22;text&#x22; [(ngModel)]=&#x22;model.onText&#x22; class=&#x22;form-control&#x22; placeholder=&#x22;On Text&#x22; /&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
+    &#x3C;div class=&#x22;col-3&#x22;&#x3E;Off Color:&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
+        &#x3C;button *ngFor=&#x22;let color of colors&#x22; class=&#x22;mr-1 mb-1 btn btn-{{color}}&#x22; [ngClass]=&#x22;{&#x27;active&#x27;: model.offColor === color}&#x22; (click)=&#x22;setOffColor($event, color)&#x22;&#x3E;{{color | titlecase}}&#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
+    &#x3C;div class=&#x22;col-3&#x22;&#x3E;Off Text&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
+        &#x3C;input type=&#x22;text&#x22; [(ngModel)]=&#x22;model.offText&#x22; class=&#x22;form-control&#x22; placeholder=&#x22;Off Text&#x22; /&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+">
+  </form>
+  <script>document.getElementById("mainForm").submit();</script>
+</body>
+</html>
