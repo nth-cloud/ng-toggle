@@ -88,16 +88,11 @@ module.exports = function(config) {
     },
 
     sauceLabs: {
-      testName: 'ng-bootstrap',
+      testName: 'ngx-toggle',
       retryLimit: 3,
-      startConnect: false,
+      startConnect: true,
       recordVideo: false,
-      recordScreenshots: false,
-      options: {
-        'command-timeout': 600,
-        'idle-timeout': 600,
-        'max-duration': 5400
-      }
+      recordScreenshots: false
     },
 
     reporters: ['progress', 'coverage'],
