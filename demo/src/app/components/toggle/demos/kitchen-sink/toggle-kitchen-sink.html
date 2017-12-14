@@ -1,0 +1,69 @@
+<div>
+    <ngx-toggle
+        onColor="{{model.onColor}}"
+        onText="{{model.onText}}"
+        offColor="{{model.offColor}}"
+        offText="{{model.offText}}"
+        [disabled]="model.disabled"
+        [size]="model.size"
+        [(value)]="model.value"
+    >
+        <ng-template ngxToggleLabel forLabel="on"><span class="fa fa-play"></span>&nbsp;It's On!<br />Like Donkey Kong!</ng-template>
+        <ng-template ngxToggleLabel forLabel="off"><span class="fa fa-stop"></span>&nbsp;And... We're Down.</ng-template>
+        <input type="checkbox" [(ngModel)]="model.value" [disabled]="model.disabled" />
+    </ngx-toggle>
+</div>
+<pre class="my-2">{{model | json}}</pre>
+<div class="row mb-2">
+    <div class="col-3">Disable:</div>
+    <div class="col-9">
+        <input type="checkbox" [(ngModel)]="model.disabled" />
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-3">Indeterminate:</div>
+    <div class="col-9">
+        <input type="checkbox" #ind [checked]="model.value === null" (change)="model.value = ind.checked ? null : (model.value || false)" />
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-3">Size:</div>
+    <div class="col-9">
+        <label class="mr-2">
+            <input type="radio" [(ngModel)]="model.size" value="sm" />
+            Small
+        </label>
+        <label class="mr-2">
+            <input type="radio" [(ngModel)]="model.size" value="" />
+            Normal
+        </label>
+        <label>
+            <input type="radio" [(ngModel)]="model.size" value="lg" />
+            Large
+        </label>
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-3">On Color:</div>
+    <div class="col-9">
+        <button *ngFor="let color of colors" class="mr-1 mb-1 btn btn-{{color}}" [ngClass]="{'active': model.onColor === color}" (click)="setOnColor($event, color)">{{color | titlecase}}</button>
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-3">On Text</div>
+    <div class="col-9">
+        <input type="text" [(ngModel)]="model.onText" class="form-control" placeholder="On Text" />
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-3">Off Color:</div>
+    <div class="col-9">
+        <button *ngFor="let color of colors" class="mr-1 mb-1 btn btn-{{color}}" [ngClass]="{'active': model.offColor === color}" (click)="setOffColor($event, color)">{{color | titlecase}}</button>
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-3">Off Text</div>
+    <div class="col-9">
+        <input type="text" [(ngModel)]="model.offText" class="form-control" placeholder="Off Text" />
+    </div>
+</div>

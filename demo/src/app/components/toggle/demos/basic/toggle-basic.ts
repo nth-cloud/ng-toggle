@@ -14,18 +14,4 @@ export class NgxdToggleBasic {
     size: '',
     value: null
   };
-
-  colors: any = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];
-
-  setOnColor(event: MouseEvent, color: string) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.model.onColor = color;
-  }
-
-  setOffColor(event: MouseEvent, color: string) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.model.offColor = color;
-  }
 }

@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {NgbdSharedModule} from '../../shared';
 import {ExampleBoxComponent} from './example-box';

@@ -84,7 +84,12 @@ gulp.task('umd', function(cb) {
             '@angular/core': ngExternal('core'),
             '@angular/common': ngExternal('common'),
             '@angular/forms': ngExternal('forms'),
-            '@ng-bootstrap/ng-bootstrap': {root: ['@ng-bootstrap', 'ng-bootstrap'], commonjs: '@ng-bootstrap/ng-bootstrap', commonjs2: '@ng-bootstrap/ng-bootstrap', amd: '@ng-bootstrap/ng-bootstrap'}
+            '@ng-bootstrap/ng-bootstrap': {
+              root: ['@ng-bootstrap', 'ng-bootstrap'],
+              commonjs: '@ng-bootstrap/ng-bootstrap',
+              commonjs2: '@ng-bootstrap/ng-bootstrap',
+              amd: '@ng-bootstrap/ng-bootstrap'
+            }
           },
           rxjsExternal
         ]

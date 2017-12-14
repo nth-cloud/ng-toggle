@@ -1,41 +1,87 @@
-
 import {
-    AfterViewInit, Component, ElementRef, HostListener, Input, Output, ViewChild, EventEmitter,
-    NgZone, OnChanges, SimpleChanges
+  AfterContentInit,
+  AfterViewChecked,
+  AfterViewInit,
+  Component,
+  ContentChildren,
+  Directive,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Input,
+  NgZone,
+  OnChanges,
+  Output,
+  QueryList,
+  SimpleChanges,
+  TemplateRef,
+  ViewChild
 } from '@angular/core';
 
-@Component({selector: 'ngx-toggle', template: `
+/**
+ * The NgxToggleLabel directive allows you to customize the label for the "On" and "Off" states,
+ * allowing for more robust and complex displays.
+ * This directive must be used in conjunction with a ng-template.
+ */
+@Directive({selector: 'ng-template[ngxToggleLabel]'})
+export class NgxToggleLabel {
+  /**
+   * Determines which state the label will be used.
+   */
+  @Input() forLabel: 'on' | 'off';
+
+  constructor(public templateRef: TemplateRef<any>, private elRef: ElementRef) {}
+
+  get element(): ElementRef { return this.elRef; }
+}
+
+
+/**
+ * The NgxToggle directive allows for standalone or checkbox-enabled switch toggling via a UI element.
+ * The toggle is styled using Bootstrap v4+ classes.
+ */
+@Component({
+  selector: 'ngx-toggle',
+  template: `
     <div class="ngx-toggle-wrapper btn" [ngClass]="btnClasses" [style.width]="(width + handleWidth) + 'px'">
         <div #container class="ngx-toggle-container"
              [style.width]="((width * 2) + handleWidth) + 'px'"
              [style.margin-left]="marginLeft"
         >
-            <span #on [innerHTML]="onText" class="ngx-toggle-on btn" [ngClass]="onClasses"></span>
+            <span #on class="ngx-toggle-on btn" [ngClass]="onClasses">
+                <ng-template [ngTemplateOutlet]="onLabel?.templateRef"></ng-template>
+                <ng-container *ngIf="!onLabel">{{onText}}</ng-container>
+            </span>
             <span #handle class="ngx-toggle-handle btn" [ngClass]="handleClass">&nbsp;</span>
-            <span #off [innerHTML]="offText" class="ngx-toggle-off btn" [ngClass]="offClasses"></span>
+            <span #off class="ngx-toggle-off btn" [ngClass]="offClasses">
+                <ng-template [ngTemplateOutlet]="offLabel?.templateRef"></ng-template>
+                <ng-container *ngIf="!offLabel">{{offText}}</ng-container>
+            </span>
         </div>
         <ng-content></ng-content>
     </div>
 `,
-    styles: [
-        ':host {position: relative; display: inline-block;}',
-        `.ngx-toggle-wrapper {
-        position: relative; display: inline-block; direction: ltr; cursor: pointer; overflow: hidden; padding:0;
+  styles: [
+    ':host {position: relative; display: inline-block;}', `.ngx-toggle-wrapper {
+        position: relative; display: flex!important;
+        direction: ltr; cursor: pointer; overflow: hidden; padding:0;
         text-align: left; z-index: 0; user-select: none; vertical-align: middle;
         transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out; box-sizing: content-box;
         }.ngx-toggle-wrapper.disabled,.ngx-toggle-wrapper.disabled .btn{cursor: default;}`,
-        '.ngx-toggle-wrapper input{z-index: -1; visibility: hidden;}',
-        '.ngx-toggle-container {display: inline-block; top: 0; border-radius: 0; transform: translateZ(0);}',
-        '.ngx-toggle-wrapper.ngx-toggle-animate .ngx-toggle-container {transition: margin-left 0.5s;}',
-        '.ngx-toggle-on,.ngx-toggle-off {text-align: center; z-index: 1; border-radius: 0;}',
-        `.ngx-toggle-on,.ngx-toggle-off,.ngx-toggle-handle {
+    '.ngx-toggle-wrapper input{position: absolute; z-index: -1; visibility: hidden; width: 1px; height: 1px;}',
+    `.ngx-toggle-container {
+            display: flex!important; align-items: stretch!important; top: 0; border-radius: 0; transform: translateZ(0);
+        }`,
+    '.ngx-toggle-wrapper.ngx-toggle-animate .ngx-toggle-container {transition: margin-left 0.5s;}',
+    `.ngx-toggle-on,.ngx-toggle-off {
+            display: flex!important; align-items: center!important; text-align: center; z-index: 1; border-radius: 0;
+        }`,
+    `.ngx-toggle-on,.ngx-toggle-off,.ngx-toggle-handle {
             box-sizing: border-box;
             cursor: pointer;
-            display: inline-block!important;
-            height: 100%;
             user-select: none;
         }`,
-        `.ngx-toggle-handle {
+    `.ngx-toggle-handle {
             text-align: center;
             margin-top: -1px;
             margin-bottom: -1px;
@@ -43,281 +89,336 @@ import {
             width: 1em;
             padding-left: 0;
             padding-right: 0;
+            align-self: stretch !important;
         }`
-    ],
-    preserveWhitespaces: false
+  ],
+  preserveWhitespaces: false
 })
-export class NgxToggle implements AfterViewInit, OnChanges {
-    @Input() onText: string = 'On';
-    @Input() offText: string = 'Off';
-    @Input() onColor: string = 'primary';
-    @Input() offColor: string = 'secondary';
-    @Input() size: 'sm' | 'lg' | '' = '';
-    @Input() disabled: boolean = false;
+export class NgxToggle implements AfterViewInit,
+    AfterContentInit, AfterViewChecked, OnChanges {
+  /**
+   * Display text when toggled in the "On" position
+   * @type {string}
+   */
+  @Input() onText: string = 'On';
+  /**
+   * Display text when toggled in the "Off" position
+   * @type {string}
+   */
+  @Input() offText: string = 'Off';
+  /**
+   * Bootstrap color scheme when toggled in the "On" position (i.e. "primary" translates to "btn-primary")
+   * @type {string}
+   */
+  @Input() onColor: string = 'primary';
+  /**
+   * Bootstrap color scheme when toggled in the "Off" position (i.e. "primary" translates to "btn-primary")
+   * @type {string}
+   */
+  @Input() offColor: string = 'secondary';
+  /**
+   * Button size to display the toggle
+   * @type {string}
+   */
+  @Input() size: 'sm' | 'lg' | '' = '';
+  /**
+   * Whether the toggle is disabled or not
+   * @type {boolean}
+   */
+  @Input() disabled: boolean = false;
 
-    @Input() set value(value: boolean) {
-        this.setState(value);
+  /**
+   * @param {boolean} value
+   */
+  @Input()
+  set value(value: boolean) {
+    this.setState(value);
+  }
+  get value(): boolean { return this._innerState; }
+
+  /**
+   * An event fired when the user causes a change.
+   * The payload of the event is the currently selected value.
+   * @type {EventEmitter<boolean>}
+   */
+  @Output() valueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
+  width: number = 0;
+  handleWidth: number = 0;
+
+  @ViewChild('container') containerElement: ElementRef;
+  @ViewChild('on') onElement: ElementRef;
+  @ViewChild('off') offElement: ElementRef;
+  @ViewChild('handle') handleElement: ElementRef;
+  @ContentChildren(NgxToggleLabel) labelElements: QueryList<NgxToggleLabel>;
+  onLabel: NgxToggleLabel;
+  offLabel: NgxToggleLabel;
+
+  private _animate: boolean = true;
+  private _innerAnimate: boolean = true;
+  private _innerState: boolean = false;
+  private _innerWidth: string | number = 'auto';
+
+  private _dragStart: any = null;
+  private _dragEnd: any = null;
+  private _initialized: boolean = false;
+  private _hidden: boolean = false;
+
+  constructor(private ngZone: NgZone, private elRef: ElementRef) {}
+
+  ngAfterViewInit(): void {
+    this.calculateWidth();
+    this._initialized = true;
+  }
+
+  ngAfterViewChecked(): void {
+    let hidden = this.elRef.nativeElement.offsetParent === null;
+    if (this._initialized && this._hidden && !hidden) {
+      this.calculateWidth();
     }
-    get value(): boolean {
-        return this._innerState;
+    this._hidden = hidden;
+  }
+
+  ngAfterContentInit(): void {
+    let onElement: NgxToggleLabel =
+        this.labelElements.find((item: NgxToggleLabel) => item.forLabel.toLowerCase() === 'on');
+    let offElement: NgxToggleLabel =
+        this.labelElements.find((item: NgxToggleLabel) => item.forLabel.toLowerCase() === 'off');
+
+    if (onElement) {
+      this.onLabel = onElement;
     }
-
-    @Output() valueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-
-    width: number = 0;
-    handleWidth: number = 0;
-
-    @ViewChild('container') containerElement: ElementRef;
-    @ViewChild('on') onElement: ElementRef;
-    @ViewChild('off') offElement: ElementRef;
-    @ViewChild('handle') handleElement: ElementRef;
-
-    private _animate: boolean = true;
-    private _innerAnimate: boolean = true;
-    private _innerState: boolean = false;
-    private _innerWidth: string | number = 'auto';
-
-    private _dragStart: any = null;
-    private _dragEnd: any = null;
-    private _initialized: boolean = false;
-
-    @Output() change: EventEmitter<any> = new EventEmitter<any>();
-
-    constructor(private ngZone: NgZone) {}
-
-    ngAfterViewInit(): void {
-        this.calculateWidth();
-        this._initialized = true;
+    if (offElement) {
+      this.offLabel = offElement;
     }
-
-    ngOnChanges(changes: SimpleChanges): void {
-        if (changes['onText'] ||
-            changes['offText'] ||
-            changes['size']
-        ) {
-            this.calculateWidth(this._initialized);
-        }
+    if (onElement || offElement) {
+      this.calculateWidth(true);
     }
+  }
 
-    get btnClasses(): any {
-        let btnClasses = {
-            'disabled': this.disabled,
-            'ngx-toggle-lg': this.size === 'lg',
-            'ngx-toggle-sm': this.size === 'sm',
-            'btn-lg': this.size === 'lg',
-            'btn-sm': this.size === 'sm',
-            'ngx-toggled-on': this.innerState,
-            'ngx-toggled-off': !this.innerState,
-            'ngx-toggle-indeterminate': this.indeterminate,
-            'ngx-toggle-animate': this.animate,
-            'ngx-toggle-disabled': this.disabled
-        };
-        btnClasses[this.activeClass] = this.value;
-        btnClasses[this.inactiveClass] = !this.value;
-        if (this.activeClass === this.inactiveClass) {
-            btnClasses[this.activeClass] = true;
-        }
-
-        return btnClasses;
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['onText'] || changes['offText'] || changes['size']) {
+      this.calculateWidth(this._initialized);
     }
+  }
 
-    get handleClass(): any {
-        let handleClass = 'btn-light';
-        let classes = {'disabled': this.disabled,'btn-lg': this.size === 'lg','btn-sm': this.size === 'sm'};
-        if ((this.value && this.onColor === 'light') ||
-            (!this.value && this.offColor === 'light')
-        ) {
-            handleClass = 'btn-dark';
-        }
-        classes[handleClass] = true;
-
-        return classes;
-    }
-
-    get onClasses(): any {
-        let classes = {'disabled': this.disabled,'btn-lg': this.size === 'lg','btn-sm': this.size === 'sm'};
-        classes['btn-' + this.onColor] = true;
-
-        return classes;
-    }
-
-    get offClasses(): any {
-        let classes = {'disabled': this.disabled,'btn-lg': this.size === 'lg','btn-sm': this.size === 'sm'};
-        classes['btn-' + this.offColor] = true;
-
-        return classes;
-    }
-
-    get indeterminate(): boolean {
-        return this._innerState === null || typeof this._innerState === 'undefined';
-    }
-
-    get activeClass(): string {
-        return 'btn-' + this.onColor;
-    }
-
-    get inactiveClass(): string {
-        return 'btn-' + this.offColor;
-    }
-
-    get innerState(): boolean {
-        return this._innerState;
-    }
-
-    get animate(): boolean {
-        return this._animate;
-    }
-
-    get marginLeft(): string {
-        let margin = 0;
-        if (this.indeterminate || this._innerState === null || typeof this._innerState === 'undefined') {
-            margin = -(this.width / 2);
-        } else if (this._dragEnd) {
-            margin = this._dragEnd;
-        } else if (!this._innerState) {
-            margin = -this.width;
-        }
-
-        return margin + 'px';
+  get btnClasses(): any {
+    let btnClasses = {
+      'disabled': this.disabled,
+      'ngx-toggle-lg': this.size === 'lg',
+      'ngx-toggle-sm': this.size === 'sm',
+      'btn-lg': this.size === 'lg',
+      'btn-sm': this.size === 'sm',
+      'ngx-toggled-on': this.innerState === true,
+      'ngx-toggled-off': this.innerState === false,
+      'ngx-toggle-indeterminate': this.indeterminate,
+      'ngx-toggle-animate': this.animate,
+      'ngx-toggle-disabled': this.disabled
+    };
+    btnClasses[this.activeClass] = this.value;
+    btnClasses[this.inactiveClass] = !this.value;
+    if (this.activeClass === this.inactiveClass) {
+      btnClasses[this.activeClass] = true;
     }
 
-    @HostListener('click')
-    handleClick() {
-        if (!this.disabled && !this._dragEnd) {
-            this.setState(!this._innerState);
-        } else if (this._dragEnd) {
-            this._dragEnd = null;
-        }
+    return btnClasses;
+  }
+
+  get handleClass(): any {
+    let handleClass = 'btn-light';
+    let classes = {'disabled': this.disabled, 'btn-lg': this.size === 'lg', 'btn-sm': this.size === 'sm'};
+    if ((this.value && this.onColor === 'light') || (!this.value && this.offColor === 'light')) {
+      handleClass = 'btn-dark';
+    }
+    classes[handleClass] = true;
+
+    return classes;
+  }
+
+  get onClasses(): any {
+    let classes = {'disabled': this.disabled, 'btn-lg': this.size === 'lg', 'btn-sm': this.size === 'sm'};
+    classes['btn-' + this.onColor] = true;
+
+    return classes;
+  }
+
+  get offClasses(): any {
+    let classes = {'disabled': this.disabled, 'btn-lg': this.size === 'lg', 'btn-sm': this.size === 'sm'};
+    classes['btn-' + this.offColor] = true;
+
+    return classes;
+  }
+
+  get indeterminate(): boolean { return this._innerState === null || typeof this._innerState === 'undefined'; }
+
+  get activeClass(): string { return 'btn-' + this.onColor; }
+
+  get inactiveClass(): string { return 'btn-' + this.offColor; }
+
+  get innerState(): boolean { return this._innerState; }
+
+  get animate(): boolean { return this._animate; }
+
+  get marginLeft(): string {
+    let margin = 0;
+    if (this.indeterminate || this._innerState === null || typeof this._innerState === 'undefined') {
+      margin = -(this.width / 2);
+    } else if (this._dragEnd) {
+      margin = this._dragEnd;
+    } else if (!this._innerState) {
+      margin = -this.width;
     }
 
-    @HostListener('touchstart', ['$event'])
-    onTouchStart(event: any) {
-        this.onDragStart(event);
+    return margin + 'px';
+  }
+
+  @HostListener('click')
+  handleClick() {
+    if (!this.disabled && !this._dragEnd) {
+      this.setState(!this._innerState);
+    } else if (this._dragEnd) {
+      this._dragEnd = null;
+    }
+  }
+
+  @HostListener('touchstart', ['$event'])
+  onTouchStart(event: any) {
+    this.onDragStart(event);
+  }
+
+  @HostListener('mousedown', ['$event'])
+  onMouseDown(event: any) {
+    this.onDragStart(event);
+  }
+
+  @HostListener('touchmove', ['$event'])
+  onTouchMove(event: any) {
+    this.onDragMove(event);
+  }
+
+  @HostListener('mousemove', ['$event'])
+  onMouseMove(event: any) {
+    this.onDragMove(event);
+  }
+
+  @HostListener('touchend', ['$event'])
+  onTouchEnd(event: any) {
+    this.onDragEnd(event, true);
+  }
+
+  @HostListener('mouseup', ['$event'])
+  onMouseUp(event: any) {
+    this.onDragEnd(event);
+  }
+
+  @HostListener('mouseleave', ['$event'])
+  onMouseLeave(event: any) {
+    this.onDragEnd(event, true);
+  }
+
+  @HostListener('keydown', ['$event'])
+  onKeyDown(event: KeyboardEvent) {
+    console.log(event);
+    if (!event.key || this.disabled) {
+      return;
+    }
+    switch (event.key) {
+      case 'Left':
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        this.setState(false);
+        break;
+      case 'Right':
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        this.setState(true);
+        break;
+    }
+  }
+
+  private onDragStart(event: any): void {
+    if (event.target === this.handle$) {
+      if (this._dragStart || this.disabled) {
+        return;
+      }
+      event.preventDefault();
+      event.stopPropagation();
+      this._dragStart = (event.pageX || event.touches[0].pageX) - parseInt(this.container$.style.marginLeft, 10);
+      if (this._animate) {
+        this._animate = !this._animate;
+      }
+    }
+  }
+
+  private onDragMove(event: any): void {
+    if (this._dragStart) {
+      event.preventDefault();
+      let difference = (event.pageX || event.touches[0].pageX) - this._dragStart;
+      if (difference < -(Number(this.width)) || difference > 0) {
+        return;
+      }
+      this._dragEnd = difference;
+    }
+  }
+
+  private onDragEnd(event: any, clearDragEnd: boolean = false): void {
+    if (this._dragStart) {
+      event.preventDefault();
+      event.stopPropagation();
+      if (this._dragEnd) {
+        this.setState(this._dragEnd > -(Number(this.width) / 2));
+      }
+      this._dragStart = null;
+      if (clearDragEnd) {
+        this._dragEnd = null;
+      }
+      if (this._innerAnimate) {
+        this._animate = true;
+      }
+    }
+  }
+
+  private calculateWidth(disableAnimation: boolean = false) {
+    if (disableAnimation && this._innerAnimate) {
+      this._animate = false;
     }
 
-    @HostListener('mousedown', ['$event'])
-    onMouseDown(event: any) {
-        this.onDragStart(event);
+    setTimeout(() => {
+      this.on$.style.width = 'auto';
+      this.off$.style.width = 'auto';
+
+      let width = this._innerWidth;
+      if (this._innerWidth === 'auto') {
+        width = Math.max(this.on$.offsetWidth, this.off$.offsetWidth);
+      }
+
+      this.handleWidth = this.handle$.offsetWidth;
+      this.width = Number(width);
+
+      this.ngZone.run(() => {
+        this.on$.style.width = this.width + 'px';
+        this.off$.style.width = this.width + 'px';
+        setTimeout(() => {
+          if (disableAnimation && this._innerAnimate) {
+            this._animate = true;
+          }
+        });
+      });
+    });
+  }
+
+  private setState(value: boolean) {
+    if (value !== this._innerState) {
+      this._innerState = value;
+      this.valueChange.emit(this._innerState);
     }
+  }
 
-    @HostListener('touchmove', ['$event'])
-    onTouchMove(event: any) {
-        this.onDragMove(event);
-    }
+  private get on$(): HTMLElement { return this.onElement.nativeElement; }
 
-    @HostListener('mousemove', ['$event'])
-    onMouseMove(event: any) {
-        this.onDragMove(event);
-    }
+  private get off$(): HTMLElement { return this.offElement.nativeElement; }
 
-    @HostListener('touchend', ['$event'])
-    onTouchEnd(event: any) {
-        this.onDragEnd(event, true);
-    }
+  private get handle$(): HTMLElement { return this.handleElement.nativeElement; }
 
-    @HostListener('mouseup', ['$event'])
-    onMouseUp(event: any) {
-        this.onDragEnd(event);
-    }
-
-    @HostListener('mouseleave', ['$event'])
-    onMouseLeave(event: any) {
-        this.onDragEnd(event, true);
-    }
-
-    private onDragStart(event: any): void {
-        if (event.target === this.handle$) {
-            if (this._dragStart || this.disabled) {
-                return;
-            }
-            event.preventDefault();
-            event.stopPropagation();
-            this._dragStart = (event.pageX || event.touches[0].pageX) - parseInt(this.container$.style.marginLeft, 10);
-            if (this._animate) {
-                this._animate = !this._animate;
-            }
-        }
-    }
-
-    private onDragMove(event: any): void {
-        if (this._dragStart) {
-            event.preventDefault();
-            let difference = (event.pageX || event.touches[0].pageX) - this._dragStart;
-            if (difference < -(Number(this.width)) || difference > 0) {
-                return;
-            }
-            this._dragEnd = difference;
-        }
-    }
-
-    private onDragEnd(event: any, clearDragEnd: boolean = false): void {
-        if (this._dragStart) {
-            event.preventDefault();
-            event.stopPropagation();
-            if (this._dragEnd) {
-                this.setState(this._dragEnd > -(Number(this.width) / 2));
-            }
-            this._dragStart = null;
-            if (clearDragEnd) {
-                this._dragEnd = null;
-            }
-            if (this._innerAnimate) {
-                this._animate = true;
-            }
-        }
-    }
-
-    private calculateWidth(disableAnumation: boolean = false) {
-        if (disableAnumation && this._innerAnimate) {
-            this._animate = false;
-        }
-
-        setTimeout(
-            () => {
-                this.on$.style.width = 'auto';
-                this.off$.style.width = 'auto';
-
-                let width = this._innerWidth;
-                if (this._innerWidth === 'auto') {
-                    width = Math.max(this.on$.offsetWidth, this.off$.offsetWidth);
-                }
-
-                this.handleWidth = this.handle$.offsetWidth;
-                this.width = Number(width);
-
-                this.ngZone.run(() => {
-                    this.on$.style.width = this.width + 'px';
-                    this.off$.style.width = this.width + 'px';
-                    setTimeout(() => {
-                        if (disableAnumation && this._innerAnimate) {
-                            this._animate = true;
-                        }
-                    });
-                });
-            }
-        );
-    }
-
-    private setState(value: boolean) {
-        if (value !== this._innerState) {
-            this._innerState = value;
-            this.valueChange.emit(this._innerState);
-        }
-    }
-
-    private get on$(): HTMLElement {
-        return this.onElement.nativeElement;
-    }
-
-    private get off$(): HTMLElement {
-        return this.offElement.nativeElement;
-    }
-
-    private get handle$(): HTMLElement {
-        return this.handleElement.nativeElement;
-    }
-
-    private get container$(): HTMLElement {
-        return this.containerElement.nativeElement;
-    }
+  private get container$(): HTMLElement { return this.containerElement.nativeElement; }
 }

@@ -2,7 +2,7 @@
 export * from './toggle.component';
 
 import {NgModule} from '@angular/core';
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {NgxToggleModule} from 'ngx-toggle';
 import {NgbdSharedModule} from '../../shared';

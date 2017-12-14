@@ -25,16 +25,16 @@ npm install --save ngx-toggle
 
 Import the main module into your project:
 ```js
-import {NgToggleSwitchModule} from "trickeyone/ngx-toggle";
+import {NgxToggleModule} from "ngx-toggle";
 ```
 
 Import the module into your application:
 ```js
-import {NgToggleSwitchModule} from ngx-toggle;
+import {NgxToggleModule} from "ngx-toggle";
 
 @NgModule({
     ...
-    imports: [NgToggleSwitchModule, ...],
+    imports: [NgxToggleModule, ...],
     ...
 })
 export class AppModule {

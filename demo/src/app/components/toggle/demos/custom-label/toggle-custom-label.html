@@ -8,6 +8,7 @@
         [size]="model.size"
         [(value)]="model.value"
     >
+        <ng-template ngxToggleLabel forLabel="on"><span class="fa fa-play"></span>&nbsp;On</ng-template>
     </ngx-toggle>
 </div>
 <pre class="my-2">{{model | json}}</pre>
