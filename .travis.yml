@@ -5,7 +5,7 @@ node_js:
 env:
   global:
     - SAUCE_USERNAME=trickeyone
-    - SAUCE_ACCESS_KEY=298cfe3e-8e2d-45a6-a6fb-da53ad523963
+    - SAUCE_ACCESS_KEY=369325da35ad-bf6a-6a54-d2e8-e3efc892
     - BROWSER_PROVIDER_READY_FILE=/tmp/sauce-connect-ready
     - LOGS_DIR=/tmp/logs
 
