@@ -1,6 +1,6 @@
 {
   "name": "ngx-toggle",
-  "version": "1.0.0-alpha.2",
+  "version": "1.0.0-alpha.3",
   "description": "Angular powered Bootstrap Toggle",
   "main": "dist/index.js",
   "engines": {
