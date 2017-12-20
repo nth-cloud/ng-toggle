@@ -68,7 +68,7 @@
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
     &#x27;typescript&#x27;: &#x27;npm:typescript@2.4.2/lib/typescript.js&#x27;,
 
-    &#x27;ngx-toggle&#x27;: &#x27;npm:ngx-toggle@1.0.0-alpha.1/bundles/ngx-toggle.js&#x27;
+    &#x27;ngx-toggle&#x27;: &#x27;npm:ngx-toggle@1.0.0-beta.2/bundles/ngx-toggle.js&#x27;
   },
   packages: {
     app: {
@@ -136,20 +136,6 @@ export class NgxdToggleBasic {
     size: &#x27;&#x27;,
     value: null
   };
-
-  colors: any = [&#x27;primary&#x27;, &#x27;secondary&#x27;, &#x27;success&#x27;, &#x27;danger&#x27;, &#x27;warning&#x27;, &#x27;info&#x27;, &#x27;light&#x27;, &#x27;dark&#x27;];
-
-  setOnColor(event: MouseEvent, color: string) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.model.onColor = color;
-  }
-
-  setOffColor(event: MouseEvent, color: string) {
-    event.preventDefault();
-    event.stopPropagation();
-    this.model.offColor = color;
-  }
 }
 ">
     <input type="hidden" name="files[src/toggle-basic.html]" value="&#x3C;div&#x3E;
@@ -165,59 +151,6 @@ export class NgxdToggleBasic {
     &#x3C;/ngx-toggle&#x3E;
 &#x3C;/div&#x3E;
 &#x3C;pre class=&#x22;my-2&#x22;&#x3E;{{model | json}}&#x3C;/pre&#x3E;
-&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
-    &#x3C;div class=&#x22;col-3&#x22;&#x3E;Disable:&#x3C;/div&#x3E;
-    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
-        &#x3C;input type=&#x22;checkbox&#x22; [(ngModel)]=&#x22;model.disabled&#x22; /&#x3E;
-    &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
-&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
-    &#x3C;div class=&#x22;col-3&#x22;&#x3E;Indeterminate:&#x3C;/div&#x3E;
-    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
-        &#x3C;input type=&#x22;checkbox&#x22; #ind [checked]=&#x22;model.value === null&#x22; (change)=&#x22;model.value = ind.checked ? null : (model.value || false)&#x22; /&#x3E;
-    &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
-&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
-    &#x3C;div class=&#x22;col-3&#x22;&#x3E;Size:&#x3C;/div&#x3E;
-    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
-        &#x3C;label class=&#x22;mr-2&#x22;&#x3E;
-            &#x3C;input type=&#x22;radio&#x22; [(ngModel)]=&#x22;model.size&#x22; value=&#x22;sm&#x22; /&#x3E;
-            Small
-        &#x3C;/label&#x3E;
-        &#x3C;label class=&#x22;mr-2&#x22;&#x3E;
-            &#x3C;input type=&#x22;radio&#x22; [(ngModel)]=&#x22;model.size&#x22; value=&#x22;&#x22; /&#x3E;
-            Normal
-        &#x3C;/label&#x3E;
-        &#x3C;label&#x3E;
-            &#x3C;input type=&#x22;radio&#x22; [(ngModel)]=&#x22;model.size&#x22; value=&#x22;lg&#x22; /&#x3E;
-            Large
-        &#x3C;/label&#x3E;
-    &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
-&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
-    &#x3C;div class=&#x22;col-3&#x22;&#x3E;On Color:&#x3C;/div&#x3E;
-    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
-        &#x3C;button *ngFor=&#x22;let color of colors&#x22; class=&#x22;mr-1 mb-1 btn btn-{{color}}&#x22; [ngClass]=&#x22;{&#x27;active&#x27;: model.onColor === color}&#x22; (click)=&#x22;setOnColor($event, color)&#x22;&#x3E;{{color | titlecase}}&#x3C;/button&#x3E;
-    &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
-&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
-    &#x3C;div class=&#x22;col-3&#x22;&#x3E;On Text&#x3C;/div&#x3E;
-    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
-        &#x3C;input type=&#x22;text&#x22; [(ngModel)]=&#x22;model.onText&#x22; class=&#x22;form-control&#x22; placeholder=&#x22;On Text&#x22; /&#x3E;
-    &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
-&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
-    &#x3C;div class=&#x22;col-3&#x22;&#x3E;Off Color:&#x3C;/div&#x3E;
-    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
-        &#x3C;button *ngFor=&#x22;let color of colors&#x22; class=&#x22;mr-1 mb-1 btn btn-{{color}}&#x22; [ngClass]=&#x22;{&#x27;active&#x27;: model.offColor === color}&#x22; (click)=&#x22;setOffColor($event, color)&#x22;&#x3E;{{color | titlecase}}&#x3C;/button&#x3E;
-    &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
-&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
-    &#x3C;div class=&#x22;col-3&#x22;&#x3E;Off Text&#x3C;/div&#x3E;
-    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
-        &#x3C;input type=&#x22;text&#x22; [(ngModel)]=&#x22;model.offText&#x22; class=&#x22;form-control&#x22; placeholder=&#x22;Off Text&#x22; /&#x3E;
-    &#x3C;/div&#x3E;
-&#x3C;/div&#x3E;
 ">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
