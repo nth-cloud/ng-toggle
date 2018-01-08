@@ -2,6 +2,7 @@
 
 [![npm version](https://badge.fury.io/js/ngx-toggle.svg)](https://badge.fury.io/js/ngx-toggle)
 [![Build Status](https://travis-ci.org/ngx-toggle/ngx-toggle.svg?branch=master)](https://travis-ci.org/ngx-toggle/ngx-toggle)
+[![dependency Status](https://david-dm.org/ngx-toggle/ngx-toggle.svg?branch=master)](https://david-dm.org/ngx-toggle/ngx-toggle)
 [![devDependency Status](https://david-dm.org/ngx-toggle/ngx-toggle/dev-status.svg?branch=master)](https://david-dm.org/ngx-toggle/ngx-toggle#info=devDependencies)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/trickeyone.svg)](https://saucelabs.com/u/trickeyone)
 
