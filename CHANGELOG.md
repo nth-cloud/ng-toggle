@@ -1,5 +1,12 @@
 <a name="1.0.0"></a>
-# 1.0.0 (2018-01-08)
+# [1.0.1](https://github.com/ngx-toggle/ngx-toggle/compare/1.0.1...1.0.0) (2018-01-29)
+
+
+
+
+
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/ngx-toggle/ngx-toggle/compare/1.0.0-beta.2...1.0.0) (2018-01-08)
 
 
 ### Bug Fixes
