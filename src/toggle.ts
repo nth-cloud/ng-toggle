@@ -28,11 +28,13 @@ export class NgxToggleLabel {
   /**
    * Determines which state the label will be used.
    */
-  @Input() forLabel: 'on' | 'off';
+  @Input() forLabel: 'on'|'off';
 
   constructor(public templateRef: TemplateRef<any>, private elRef: ElementRef) {}
 
-  get element(): ElementRef { return this.elRef; }
+  get element(): ElementRef {
+    return this.elRef;
+  }
 }
 
 
@@ -74,7 +76,7 @@ export class NgxToggleLabel {
         }`,
     '.ngx-toggle-wrapper.ngx-toggle-animate .ngx-toggle-container {transition: margin-left 0.5s;}',
     `.ngx-toggle-on,.ngx-toggle-off {
-            display: flex!important; align-items: center!important; text-align: center; z-index: 1; border-radius: 0;
+            display: flex!important; align-items: center!important; text-align: center; z-index: 1; border-radius: 0; width: auto;
         }`,
     `.ngx-toggle-on,.ngx-toggle-off,.ngx-toggle-handle {
             box-sizing: border-box;
@@ -94,8 +96,7 @@ export class NgxToggleLabel {
   ],
   preserveWhitespaces: false
 })
-export class NgxToggle implements AfterViewInit,
-    AfterContentInit, AfterViewChecked, OnChanges {
+export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChecked, OnChanges {
   /**
    * Display text when toggled in the "On" position
    * @type {string}
@@ -120,7 +121,7 @@ export class NgxToggle implements AfterViewInit,
    * Button size to display the toggle
    * @type {string}
    */
-  @Input() size: 'sm' | 'lg' | '' = '';
+  @Input() size: 'sm'|'lg'|'' = '';
   /**
    * Whether the toggle is disabled or not
    * @type {boolean}
@@ -134,7 +135,9 @@ export class NgxToggle implements AfterViewInit,
   set value(value: boolean) {
     this.setState(value);
   }
-  get value(): boolean { return this._innerState; }
+  get value(): boolean {
+    return this._innerState;
+  }
 
   /**
    * An event fired when the user causes a change.
@@ -157,7 +160,7 @@ export class NgxToggle implements AfterViewInit,
   private _animate: boolean = true;
   private _innerAnimate: boolean = true;
   private _innerState: boolean = false;
-  private _innerWidth: string | number = 'auto';
+  private _innerWidth: string|number = 'auto';
 
   private _dragStart: any = null;
   private _dragEnd: any = null;
@@ -249,15 +252,25 @@ export class NgxToggle implements AfterViewInit,
     return classes;
   }
 
-  get indeterminate(): boolean { return this._innerState === null || typeof this._innerState === 'undefined'; }
+  get indeterminate(): boolean {
+    return this._innerState === null || typeof this._innerState === 'undefined';
+  }
 
-  get activeClass(): string { return 'btn-' + this.onColor; }
+  get activeClass(): string {
+    return 'btn-' + this.onColor;
+  }
 
-  get inactiveClass(): string { return 'btn-' + this.offColor; }
+  get inactiveClass(): string {
+    return 'btn-' + this.offColor;
+  }
 
-  get innerState(): boolean { return this._innerState; }
+  get innerState(): boolean {
+    return this._innerState;
+  }
 
-  get animate(): boolean { return this._animate; }
+  get animate(): boolean {
+    return this._animate;
+  }
 
   get marginLeft(): string {
     let margin = 0;
@@ -404,7 +417,7 @@ export class NgxToggle implements AfterViewInit,
           }
         });
       });
-    });
+    }, 1000);
   }
 
   private setState(value: boolean) {
@@ -414,11 +427,19 @@ export class NgxToggle implements AfterViewInit,
     }
   }
 
-  private get on$(): HTMLElement { return this.onElement.nativeElement; }
+  private get on$(): HTMLElement {
+    return this.onElement.nativeElement;
+  }
 
-  private get off$(): HTMLElement { return this.offElement.nativeElement; }
+  private get off$(): HTMLElement {
+    return this.offElement.nativeElement;
+  }
 
-  private get handle$(): HTMLElement { return this.handleElement.nativeElement; }
+  private get handle$(): HTMLElement {
+    return this.handleElement.nativeElement;
+  }
 
-  private get container$(): HTMLElement { return this.containerElement.nativeElement; }
+  private get container$(): HTMLElement {
+    return this.containerElement.nativeElement;
+  }
 }

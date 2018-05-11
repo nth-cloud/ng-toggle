@@ -1,12 +1,12 @@
-var apiDoc = require('./api-doc');
+let apiDoc = require('./api-doc');
 
 describe('APIDocVisitor', function() {
-
-  it('should return [] if there are no docs to extract',
-     function() { expect(apiDoc(['./misc/api-doc-test-cases/no-docs.ts'])).toEqual({}); });
+  it('should return [] if there are no docs to extract', function() {
+    expect(apiDoc(['./misc/api-doc-test-cases/no-docs.ts'])).toEqual({});
+  });
 
   it('should extract basic info from directives and components', function() {
-    var docs = apiDoc(['misc/api-doc-test-cases/directives-no-in-out.ts']);
+    let docs = apiDoc(['misc/api-doc-test-cases/directives-no-in-out.ts']);
 
     expect(Object.keys(docs).length).toBe(2);
 
@@ -24,7 +24,7 @@ describe('APIDocVisitor', function() {
   });
 
   it('should extract basic type info from classes', function() {
-    var docs = apiDoc(['misc/api-doc-test-cases/types.ts']);
+    let docs = apiDoc(['misc/api-doc-test-cases/types.ts']);
 
     expect(Object.keys(docs).length).toBe(5);
 
@@ -36,7 +36,7 @@ describe('APIDocVisitor', function() {
   });
 
   it('should extract inputs info', function() {
-    var inputDocs = apiDoc(['./misc/api-doc-test-cases/directives-with-inputs.ts']).Foo.inputs;
+    let inputDocs = apiDoc(['./misc/api-doc-test-cases/directives-with-inputs.ts']).Foo.inputs;
 
     expect(inputDocs.length).toBe(3);
 
@@ -57,7 +57,7 @@ describe('APIDocVisitor', function() {
   });
 
   it('should extract input default value', function() {
-    var inputDocs = apiDoc(['./misc/api-doc-test-cases/directives-with-inputs-default-vals.ts']).Foo.inputs;
+    let inputDocs = apiDoc(['./misc/api-doc-test-cases/directives-with-inputs-default-vals.ts']).Foo.inputs;
 
     expect(inputDocs.length).toBe(3);
 
@@ -67,7 +67,7 @@ describe('APIDocVisitor', function() {
   });
 
   it('should extract inferred types', function() {
-    var inputDocs = apiDoc(['./misc/api-doc-test-cases/directives-with-inputs-types-to-infer.ts']).Foo.inputs;
+    let inputDocs = apiDoc(['./misc/api-doc-test-cases/directives-with-inputs-types-to-infer.ts']).Foo.inputs;
 
     expect(inputDocs.length).toBe(3);
 
@@ -80,7 +80,7 @@ describe('APIDocVisitor', function() {
   });
 
   it('should extract inputs info from setters', function() {
-    var inputDocs = apiDoc(['./misc/api-doc-test-cases/directives-with-tricky-inputs.ts']).Foo.inputs;
+    let inputDocs = apiDoc(['./misc/api-doc-test-cases/directives-with-tricky-inputs.ts']).Foo.inputs;
 
     expect(inputDocs.length).toBe(3);
 
@@ -90,7 +90,7 @@ describe('APIDocVisitor', function() {
   });
 
   it('should extract outputs info', function() {
-    var outDocs = apiDoc(['./misc/api-doc-test-cases/directives-with-outputs.ts']).Foo.outputs;
+    let outDocs = apiDoc(['./misc/api-doc-test-cases/directives-with-outputs.ts']).Foo.outputs;
 
     expect(outDocs.length).toBe(2);
 
@@ -101,7 +101,7 @@ describe('APIDocVisitor', function() {
   });
 
   it('should extract public methods info', function() {
-    var methodDocs = apiDoc(['./misc/api-doc-test-cases/directives-with-methods.ts']).Foo.methods;
+    let methodDocs = apiDoc(['./misc/api-doc-test-cases/directives-with-methods.ts']).Foo.methods;
 
     expect(methodDocs.length).toBe(1);
     expect(methodDocs[0].name).toBe('fooMethod');
@@ -116,13 +116,13 @@ describe('APIDocVisitor', function() {
   });
 
   it('should not extract public methods info when annotated with @internal', function() {
-    var methodDocs = apiDoc(['./misc/api-doc-test-cases/component-with-internal-methods.ts']).Foo.methods;
+    let methodDocs = apiDoc(['./misc/api-doc-test-cases/component-with-internal-methods.ts']).Foo.methods;
 
     expect(methodDocs.length).toBe(0);
   });
 
   it('should extract documentation from services', function() {
-    var serviceDocs = apiDoc(['./misc/api-doc-test-cases/services-with-methods.ts']).ModalService;
+    let serviceDocs = apiDoc(['./misc/api-doc-test-cases/services-with-methods.ts']).ModalService;
 
     expect(serviceDocs.fileName).toBe('./misc/api-doc-test-cases/services-with-methods.ts');
     expect(serviceDocs.className).toBe('ModalService');
@@ -141,7 +141,7 @@ describe('APIDocVisitor', function() {
   });
 
   it('should extract documentation of properties from services', function() {
-    var serviceDocs = apiDoc(['./misc/api-doc-test-cases/services-with-properties.ts']).ProgressbarConfig;
+    let serviceDocs = apiDoc(['./misc/api-doc-test-cases/services-with-properties.ts']).ProgressbarConfig;
 
     expect(serviceDocs.properties.length).toBe(3);
 
@@ -162,7 +162,7 @@ describe('APIDocVisitor', function() {
   });
 
   it('should extract documentation from interfaces', function() {
-    var interfaceDocs = apiDoc(['./misc/api-doc-test-cases/interface-with-properties.ts']).NgbModalOptions;
+    let interfaceDocs = apiDoc(['./misc/api-doc-test-cases/interface-with-properties.ts']).NgbModalOptions;
 
     expect(interfaceDocs.className).toBe('NgbModalOptions');
     expect(interfaceDocs.description).toBe('Represent options available when opening new modal windows.');
@@ -172,7 +172,7 @@ describe('APIDocVisitor', function() {
     expect(interfaceDocs.properties[0].description)
         .toContain('Weather a backdrop element should be created for a given modal (true by default)');
     expect(interfaceDocs.properties[0].description)
-        .toContain("Alternatively, specify 'static' for a backdrop which doesn't close the modal on click.");
+        .toContain('Alternatively, specify \'static\' for a backdrop which doesn\'t close the modal on click.');
     expect(interfaceDocs.properties[0].type).toBe('boolean | "static"');
     expect(interfaceDocs.properties[0].defaultValue).toBeUndefined();
 
@@ -189,7 +189,7 @@ describe('APIDocVisitor', function() {
   });
 
   it('should extract method documentation from interfaces', function() {
-    var interfaceDocs = apiDoc(['./misc/api-doc-test-cases/interface-with-methods.ts']).SomeInterface;
+    let interfaceDocs = apiDoc(['./misc/api-doc-test-cases/interface-with-methods.ts']).SomeInterface;
 
     expect(interfaceDocs.className).toBe('SomeInterface');
     expect(interfaceDocs.description).toBe('Some interface');
@@ -201,7 +201,7 @@ describe('APIDocVisitor', function() {
   });
 
   it('should extract documentation from documented classes', function() {
-    var classDocs = apiDoc(['./misc/api-doc-test-cases/class-with-doc.ts']).DocumentedFoo;
+    let classDocs = apiDoc(['./misc/api-doc-test-cases/class-with-doc.ts']).DocumentedFoo;
 
     expect(classDocs.className).toBe('DocumentedFoo');
     expect(classDocs.description).toBe('This is a documented foo');
@@ -222,5 +222,4 @@ describe('APIDocVisitor', function() {
     expect(classDocs.methods[0].description).toContain('some method');
     expect(classDocs.methods[0].returnType).toBe('void');
   });
-
 });

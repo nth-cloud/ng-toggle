@@ -1,3 +1,4 @@
-Language:        JavaScript
-BasedOnStyle:    Google
-ColumnLimit:     120
+Language:               JavaScript
+BasedOnStyle:           Google
+ColumnLimit:            120
+JavaScriptWrapImports:  true

@@ -52,7 +52,7 @@ function isPrivateOrInternal(member) {
 
 class APIDocVisitor {
   constructor(fileNames) {
-    this.program = ts.createProgram(fileNames, {lib: ["lib.es6.d.ts"]});
+    this.program = ts.createProgram(fileNames, {lib: ['lib.es6.d.ts']});
     this.typeChecker = this.program.getTypeChecker(true);
   }
 
@@ -201,7 +201,9 @@ class APIDocVisitor {
   }
 
   visitArgument(arg) {
-    return { name: arg.name.text, type: this.visitType(arg) }
+    return {
+      name: arg.name.text, type: this.visitType(arg)
+    }
   }
 
   visitInput(property, inDecorator) {
@@ -241,14 +243,18 @@ class APIDocVisitor {
     };
   }
 
-  visitType(node) { return node ? this.typeChecker.typeToString(this.typeChecker.getTypeAtLocation(node)) : 'void'; }
+  visitType(node) {
+    return node ? this.typeChecker.typeToString(this.typeChecker.getTypeAtLocation(node)) : 'void';
+  }
 
   isDirectiveDecorator(decorator) {
     var decoratorIdentifierText = decorator.expression.expression.text;
     return decoratorIdentifierText === 'Directive' || decoratorIdentifierText === 'Component';
   }
 
-  isServiceDecorator(decorator) { return decorator.expression.expression.text === 'Injectable'; }
+  isServiceDecorator(decorator) {
+    return decorator.expression.expression.text === 'Injectable';
+  }
 
   getDecoratorOfType(node, decoratorType) {
     var decorators = node.decorators || [];
@@ -266,15 +272,15 @@ class APIDocVisitor {
 function parseOutApiDocs(programFiles) {
   var apiDocVisitor = new APIDocVisitor(programFiles);
 
-  return programFiles.reduce(
-      (soFar, file) => {
-        var directivesInFile = apiDocVisitor.visitSourceFile(file);
+  return programFiles.reduce((soFar, file) => {
+    var directivesInFile = apiDocVisitor.visitSourceFile(file);
 
-        directivesInFile.forEach((directive) => { soFar[directive.className] = directive; });
+    directivesInFile.forEach((directive) => {
+      soFar[directive.className] = directive;
+    });
 
-        return soFar;
-      },
-      {});
+    return soFar;
+  }, {});
 }
 
 module.exports = parseOutApiDocs;

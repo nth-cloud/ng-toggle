@@ -1,4 +1,4 @@
-import {TestBed, ComponentFixture} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 export function createGenericTestComponent<T>(html: string, type: {new (...args: any[]): T}): ComponentFixture<T> {
   TestBed.overrideComponent(type, {set: {template: html}});
@@ -7,7 +7,7 @@ export function createGenericTestComponent<T>(html: string, type: {new (...args:
   return fixture as ComponentFixture<T>;
 }
 
-export type Browser = 'ie9' | 'ie10' | 'ie11' | 'ie' | 'edge' | 'chrome' | 'safari' | 'firefox';
+export type Browser = 'ie9'|'ie10'|'ie11'|'ie'|'edge'|'chrome'|'safari'|'firefox';
 
 export function getBrowser(ua = window.navigator.userAgent) {
   let browser = 'unknown';
@@ -49,7 +49,7 @@ export function getBrowser(ua = window.navigator.userAgent) {
   }
 }
 
-export function isBrowser(browsers: Browser | Browser[], ua = window.navigator.userAgent) {
+export function isBrowser(browsers: Browser|Browser[], ua = window.navigator.userAgent) {
   let browsersStr = Array.isArray(browsers) ? (browsers as Browser[]).map(x => x.toString()) : [browsers.toString()];
   let browser = getBrowser(ua);
 

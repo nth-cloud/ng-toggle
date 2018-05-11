@@ -52,7 +52,9 @@ function genDemosIndex(component) {
           })
           .join('\n');
 
-  const demoDirectives = demoNames.map((demo) => { return `Ngbd${capitalize(component)}${capitalize(demo)}`; });
+  const demoDirectives = demoNames.map((demo) => {
+    return `Ngbd${capitalize(component)}${capitalize(demo)}`;
+  });
 
   const demoSnippets = demoNames.map((demo) => {
     return `  '${demo}': {
@@ -80,7 +82,9 @@ const componentName = args[2];
 const demoNames = args[3];
 
 if (args.length === 4) {
-  demoNames.split(',').forEach((demo) => { genDemo(componentName, demo); });
+  demoNames.split(',').forEach((demo) => {
+    genDemo(componentName, demo);
+  });
   genIndex(componentName);
 } else if (args.length === 3) {
   genIndex(componentName);

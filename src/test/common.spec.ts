@@ -14,9 +14,7 @@ const sampleAgents = {
 };
 
 describe('test-tools', () => {
-
   describe('getBrowser()', () => {
-
     it('should detect browsers', () => {
       expect(getBrowser(sampleAgents.ie11)).toBe('ie11');
       expect(getBrowser(sampleAgents.ie10)).toBe('ie10');
@@ -27,11 +25,14 @@ describe('test-tools', () => {
       expect(getBrowser(sampleAgents.firefox)).toBe('firefox');
     });
 
-    it('should crash for an unknown browser', () => { expect(() => { getBrowser(sampleAgents.unknown); }).toThrow(); });
+    it('should crash for an unknown browser', () => {
+      expect(() => {
+        getBrowser(sampleAgents.unknown);
+      }).toThrow();
+    });
   });
 
   describe('isBrowser()', () => {
-
     it('should match browser to the current one', () => {
       expect(isBrowser('ie9', sampleAgents.ie9)).toBeTruthy();
       expect(isBrowser('ie9', sampleAgents.ie10)).toBeFalsy();
@@ -49,5 +50,4 @@ describe('test-tools', () => {
       expect(isBrowser('edge', sampleAgents.ie11)).toBeFalsy();
     });
   });
-
 });
