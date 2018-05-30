@@ -13,7 +13,7 @@ export const componentsList = [
   templateUrl: './side-nav.component.html',
 })
 export class SideNavComponent {
-  @Input() activeTab: String;
+  @Input() activeTab: String = '';
   components = componentsList;
 
   constructor(private router: Router) {}

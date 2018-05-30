@@ -1,21 +1,21 @@
 import {
-  AfterContentInit,
-  AfterViewChecked,
-  AfterViewInit,
-  Component,
-  ContentChildren,
-  Directive,
-  ElementRef,
-  EventEmitter,
-  HostListener,
-  Input,
-  NgZone,
-  OnChanges,
-  Output,
-  QueryList,
-  SimpleChanges,
-  TemplateRef,
-  ViewChild
+    AfterContentInit,
+    AfterViewChecked,
+    AfterViewInit,
+    Component,
+    ContentChildren,
+    Directive,
+    ElementRef,
+    EventEmitter,
+    HostListener,
+    Input,
+    NgZone,
+    OnChanges,
+    Output,
+    QueryList,
+    SimpleChanges,
+    TemplateRef,
+    ViewChild, ViewEncapsulation
 } from '@angular/core';
 
 /**
@@ -45,9 +45,8 @@ export class NgxToggleLabel {
 @Component({
   selector: 'ngx-toggle',
   template: `
-    <div class="ngx-toggle-wrapper btn" [ngClass]="btnClasses" [style.width]="(width + handleWidth) + 'px'">
+    <div #wrapper class="ngx-toggle-wrapper btn" [ngClass]="btnClasses">
         <div #container class="ngx-toggle-container"
-             [style.width]="((width * 2) + handleWidth) + 'px'"
              [style.margin-left]="marginLeft"
         >
             <span #on class="ngx-toggle-on btn" [ngClass]="onClasses">
@@ -64,37 +63,44 @@ export class NgxToggleLabel {
     </div>
 `,
   styles: [
-    ':host {position: relative; display: inline-block;}', `.ngx-toggle-wrapper {
-        position: relative; display: flex!important;
-        direction: ltr; cursor: pointer; overflow: hidden; padding:0;
-        text-align: left; z-index: 0; user-select: none; vertical-align: middle;
-        transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out; box-sizing: content-box;
-        }.ngx-toggle-wrapper.disabled,.ngx-toggle-wrapper.disabled .btn{cursor: default;}`,
+    ':host {position: relative; display: inline-block;}',
+    `.ngx-toggle-container,.ngx-toggle-on,.ngx-toggle-off,.ngx-toggle-handle {
+        display: -webkit-box!important;
+        display: -webkit-flex!important;
+        display: -ms-flexbox!important;
+        display: flex!important;
+      }`,
+    `.ngx-toggle-wrapper {
+      position: relative;
+      display: block;
+      direction: ltr; cursor: pointer; overflow: hidden; padding:0;
+      text-align: left; z-index: 0; user-select: none; vertical-align: middle;
+      transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
+      box-sizing: content-box;
+    }`,
+    '.ngx-toggle-wrapper.disabled,.ngx-toggle-wrapper.disabled .btn{cursor: default;}',
     '.ngx-toggle-wrapper input{position: absolute; z-index: -1; visibility: hidden; width: 1px; height: 1px;}',
-    `.ngx-toggle-container {
-            display: flex!important; align-items: stretch!important; top: 0; border-radius: 0; transform: translateZ(0);
-        }`,
+    '.ngx-toggle-container{align-items: stretch!important; top: 0; border-radius: 0; transform: translateZ(0);}',
     '.ngx-toggle-wrapper.ngx-toggle-animate .ngx-toggle-container {transition: margin-left 0.5s;}',
-    `.ngx-toggle-on,.ngx-toggle-off {
-            display: flex!important; align-items: center!important; text-align: center; z-index: 1; border-radius: 0; width: auto;
-        }`,
+    '.ngx-toggle-on,.ngx-toggle-off {align-items: center!important; text-align: center; z-index: 1; border-radius: 0;}',
     `.ngx-toggle-on,.ngx-toggle-off,.ngx-toggle-handle {
-            box-sizing: border-box;
-            cursor: pointer;
-            user-select: none;
-        }`,
+        box-sizing: border-box;
+        cursor: pointer;
+        user-select: none;
+      }`,
     `.ngx-toggle-handle {
-            text-align: center;
-            margin-top: -1px;
-            margin-bottom: -1px;
-            z-index: 100;
-            width: 1em;
-            padding-left: 0;
-            padding-right: 0;
-            align-self: stretch !important;
-        }`
+        text-align: center;
+        margin-top: -1px;
+        margin-bottom: -1px;
+        z-index: 100;
+        width: 1em;
+        padding-left: 0;
+        padding-right: 0;
+        align-self: stretch !important;
+      }`
   ],
-  preserveWhitespaces: false
+  preserveWhitespaces: false,
+  encapsulation: ViewEncapsulation.None
 })
 export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChecked, OnChanges {
   /**
@@ -149,6 +155,7 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
   width: number = 0;
   handleWidth: number = 0;
 
+  @ViewChild('wrapper') wrapperElement: ElementRef;
   @ViewChild('container') containerElement: ElementRef;
   @ViewChild('on') onElement: ElementRef;
   @ViewChild('off') offElement: ElementRef;
@@ -201,7 +208,9 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['onText'] || changes['offText'] || changes['size']) {
+      this._initialized = false;
       this.calculateWidth(this._initialized);
+      this._initialized = true;
     }
   }
 
@@ -274,7 +283,8 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
 
   get marginLeft(): string {
     let margin = 0;
-    if (this.indeterminate || this._innerState === null || typeof this._innerState === 'undefined') {
+    if (!this._initialized) {
+    } else if (this.indeterminate || this._innerState === null || typeof this._innerState === 'undefined') {
       margin = -(this.width / 2);
     } else if (this._dragEnd) {
       margin = this._dragEnd;
@@ -396,10 +406,14 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
       this._animate = false;
     }
 
+    let initialized = this._initialized;
+    if (!initialized) {
+      this.container$.style.width = 'auto';
+      this.wrapper$.style.width = 'auto';
+    }
+    this.on$.style.width = 'auto';
+    this.off$.style.width = 'auto';
     setTimeout(() => {
-      this.on$.style.width = 'auto';
-      this.off$.style.width = 'auto';
-
       let width = this._innerWidth;
       if (this._innerWidth === 'auto') {
         width = Math.max(this.on$.offsetWidth, this.off$.offsetWidth);
@@ -407,6 +421,11 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
 
       this.handleWidth = this.handle$.offsetWidth;
       this.width = Number(width);
+
+      if (!initialized) {
+        this.container$.style.width = ((this.width * 2) + this.handleWidth) + 'px';
+        this.wrapper$.style.width = (this.width + this.handleWidth) + 'px';
+      }
 
       this.ngZone.run(() => {
         this.on$.style.width = this.width + 'px';
@@ -417,7 +436,7 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
           }
         });
       });
-    }, 1000);
+    });
   }
 
   private setState(value: boolean) {
@@ -425,6 +444,10 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
       this._innerState = value;
       this.valueChange.emit(this._innerState);
     }
+  }
+
+  private get wrapper$(): HTMLElement {
+    return this.wrapperElement.nativeElement;
   }
 
   private get on$(): HTMLElement {

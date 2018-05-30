@@ -301,7 +301,7 @@ gulp.task('clean:demo-cache', function () {
 });
 
 gulp.task('demo-server', ['generate-docs', 'generate-plunks'], shell.task([
-    `webpack-dev-server --mode development --port ${docsConfig.port} --config webpack.demo.js --inline --progress`
+    `webpack-dev-server --mode development --host \$(ifconfig en0| grep inet | awk '{print $2}') --port ${docsConfig.port} --config webpack.demo.js --inline --progress`
 ]));
 
 gulp.task(

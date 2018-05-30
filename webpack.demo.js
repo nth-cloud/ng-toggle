@@ -106,13 +106,15 @@ module.exports = function makeWebpackConfig() {
                 exclude: root('demo', 'src', 'app'),
                 use: [
                     MiniCssExtractPlugin.loader,
+                    // 'style-loader',
                     'css-loader?sourceMap-loader',
                     'postcss-loader',
                 ]
             },
             // all css required in src/app files will be merged in js files
             {
-                test: /\.css$/, include: root('demo', 'src', 'app'),
+                test: /\.css$/,
+                include: root('demo', 'src', 'app'),
                 use: [
                     'raw-loader',
                     'postcss-loader',
@@ -127,6 +129,7 @@ module.exports = function makeWebpackConfig() {
                 exclude: root('src', 'app'),
                 use: [
                     MiniCssExtractPlugin.loader,
+                    // 'style-loader',
                     'css-loader?sourceMap-loader',
                     'postcss-loader',
                     'sass-loader',
@@ -218,7 +221,11 @@ module.exports = function makeWebpackConfig() {
         new webpack.ContextReplacementPlugin(
             /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
             root('demo', 'src', 'app')
-        )
+        ),
+
+        new MiniCssExtractPlugin({
+            filename: 'css/[name].[hash].css'
+        }),
     ];
 
     // Add build specific plugins
@@ -236,13 +243,6 @@ module.exports = function makeWebpackConfig() {
             })
         ];
         config.plugins.push(
-            // Extract css files
-            // Reference: https://github.com/webpack/extract-text-webpack-plugin
-            // Disabled when in test mode or not in build mode
-            new MiniCssExtractPlugin({
-                filename: 'css/[name].[hash].css'
-            }),
-
             // Reference: https://github.com/angular/angular-cli/tree/master/packages/webpack
             new ngToolsWebpack.AngularCompilerPlugin({
                 tsConfigPath: './tsconfig-aot.json',
@@ -267,7 +267,7 @@ module.exports = function makeWebpackConfig() {
      * Reference: http://webpack.github.io/docs/webpack-dev-server.html
      */
     config.devServer = {
-        contentBase: 'demo/src/public',
+        contentBase: 'demo/dist',
         historyApiFallback: true,
         stats: 'minimal' // none (or false), errors-only, minimal, normal (or true) and verbose
     };
