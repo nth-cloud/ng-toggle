@@ -1,3 +1,13 @@
+<a name="1.0.2"></a>
+## [1.0.2](https://github.com/ngx-toggle/ngx-toggle/compare/1.0.0...1.0.2) (2018-05-30)
+
+
+### Bug Fixes
+
+* IE11 rendering issue with flexbox [#1](https://github.com/ngx-toggle/ngx-toggle/issues/1) ([2c79cb9](https://github.com/ngx-toggle/ngx-toggle/commit/2c79cb9),[a3783fe](https://github.com/ngx-toggle/ngx-toggle/commit/a3783fe))
+
+
+
 <a name="1.0.1"></a>
 # [1.0.1](https://github.com/ngx-toggle/ngx-toggle/compare/1.0.0...1.0.1) (2018-01-29)
 
