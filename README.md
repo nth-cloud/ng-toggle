@@ -63,4 +63,6 @@ See [this](https://github.com/angular/angular/blob/master/README.md) for up-to-d
 
 Also, check [Bootstrap 4's notes](https://getbootstrap.com/docs/4.0/getting-started/browsers-devices/#supported-browsers) on supported browsers.
 
+### Big Thanks
+
 Cross-browser Testing Platform and Open Source <3 Provided by [Sauce Labs](https://saucelabs.com)
