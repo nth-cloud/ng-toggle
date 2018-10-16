@@ -2,14 +2,14 @@
   <h2 class="title">
     <a
       [routerLink]=""
-      fragment="{{apiDocs.className}}" ngbdFragment
+      fragment="{{apiDocs.className}}" ngxdFragment
       title="Anchor link to: {{apiDocs.className}}"
     >
       <img src="img/link-symbol.svg" alt="Anchor link to: {{apiDocs.className}}"/>
     </a>
     <span>{{apiDocs.className}}</span>
     <a
-      class="github-link"
+      class="github-link ml-2"
       (click)="trackSourceClick()"
       href="https://github.com/ngx-toggle/ngx-toggle/tree/master/{{apiDocs.fileName}}"
       target="_blank"
@@ -18,7 +18,7 @@
       <img src="img/github.svg" alt="Link to Github {{apiDocs.className}}"/>
     </a>
   </h2>
-  <ngbd-api-docs-badge [type]="apiDocs.type"></ngbd-api-docs-badge>
+  <ngxd-api-docs-badge [type]="apiDocs.type"></ngxd-api-docs-badge>
   <p class="lead">
     {{apiDocs.description}}
   </p>

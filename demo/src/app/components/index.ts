@@ -2,12 +2,12 @@ export * from './toggle';
 
 import {NgModule} from '@angular/core';
 
-import {NgbdSharedModule} from '../shared';
+import {NgxdSharedModule} from '../shared';
 import {NgxdToggleModule} from './toggle';
 
 @NgModule({
   imports: [
-    NgbdSharedModule,
+    NgxdSharedModule,
     NgxdToggleModule
   ],
   exports: [

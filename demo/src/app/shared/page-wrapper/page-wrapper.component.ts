@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'ngtsd-page-wrapper',
+  selector: 'ngxd-page-wrapper',
   templateUrl: './page-wrapper.component.html'
 })
 export class PageWrapper {

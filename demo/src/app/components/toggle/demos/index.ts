@@ -7,19 +7,19 @@ export const DEMO_DIRECTIVES = [NgxdToggleBasic, NgxdToggleInput, NgxdToggleCust
 
 export const DEMO_SNIPPETS = {
   'basic': {
-    'code': require('!!prismjs-loader?lang=typescript!./basic/toggle-basic'),
-    'markup': require('!!prismjs-loader?lang=markup!./basic/toggle-basic.html')
+    'code': require('!!raw-loader!./basic/toggle-basic'),
+    'markup': require('!!raw-loader!./basic/toggle-basic.html')
   },
   'input': {
-    'code': require('!!prismjs-loader?lang=typescript!./input/toggle-input'),
-    'markup': require('!!prismjs-loader?lang=markup!./input/toggle-input.html')
+    'code': require('!!raw-loader!./input/toggle-input'),
+    'markup': require('!!raw-loader!./input/toggle-input.html')
   },
   'custom-label': {
-    'code': require('!!prismjs-loader?lang=typescript!./custom-label/toggle-custom-label'),
-    'markup': require('!!prismjs-loader?lang=markup!./custom-label/toggle-custom-label.html')
+    'code': require('!!raw-loader!./custom-label/toggle-custom-label'),
+    'markup': require('!!raw-loader!./custom-label/toggle-custom-label.html')
   },
   'kitchen-sink': {
-    'code': require('!!prismjs-loader?lang=typescript!./kitchen-sink/toggle-kitchen-sink'),
-    'markup': require('!!prismjs-loader?lang=markup!./kitchen-sink/toggle-kitchen-sink.html')
+    'code': require('!!raw-loader!./kitchen-sink/toggle-kitchen-sink'),
+    'markup': require('!!raw-loader!./kitchen-sink/toggle-kitchen-sink.html')
   }
 };

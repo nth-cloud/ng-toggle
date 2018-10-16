@@ -6,10 +6,10 @@ import {Analytics} from '../../../shared/analytics/analytics';
 /**
  * Displays the API docs of a class, which is not a directive.
  *
- * For Config services, use NgbdApiDocsConfig instead.
+ * For Config services, use NgxdApiDocsConfig instead.
  */
 @Component({
-  selector: 'ngbd-api-docs-class',
+  selector: 'ngxd-api-docs-class',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './api-docs-class.component.html',
   styles: [`
@@ -22,7 +22,7 @@ import {Analytics} from '../../../shared/analytics/analytics';
     `
   ]
 })
-export class NgbdApiDocsClass {
+export class NgxdApiDocsClass {
   apiDocs: ClassDesc;
 
   constructor(private _analytics: Analytics) {}

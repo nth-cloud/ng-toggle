@@ -4,22 +4,22 @@ import {DEMO_SNIPPETS} from './demos';
 @Component({
   selector: 'ngxd-toggle',
   template: `
-    <ngbd-component-wrapper component="Toggle">
-      <ngbd-api-docs directive="NgxToggle"></ngbd-api-docs>
-      <ngbd-api-docs directive="NgxToggleLabel"></ngbd-api-docs>
-      <ngbd-example-box demoTitle="Basic" [snippets]="snippets" component="toggle" demo="basic">
+    <ngxd-component-wrapper component="Toggle">
+      <ngxd-api-docs directive="NgxToggle"></ngxd-api-docs>
+      <ngxd-api-docs directive="NgxToggleLabel"></ngxd-api-docs>
+      <ngxd-example-box demoTitle="Basic" [snippets]="snippets" component="toggle" demo="basic">
         <ngxd-toggle-basic></ngxd-toggle-basic>
-      </ngbd-example-box>
-      <ngbd-example-box demoTitle="Checkbox" [snippets]="snippets" component="toggle" demo="input">
+      </ngxd-example-box>
+      <ngxd-example-box demoTitle="Checkbox" [snippets]="snippets" component="toggle" demo="input">
         <ngxd-toggle-input></ngxd-toggle-input>
-      </ngbd-example-box>
-      <ngbd-example-box demoTitle="Custom Label" [snippets]="snippets" component="toggle" demo="custom-label">
+      </ngxd-example-box>
+      <ngxd-example-box demoTitle="Custom Label" [snippets]="snippets" component="toggle" demo="custom-label">
         <ngxd-toggle-custom-label></ngxd-toggle-custom-label>
-      </ngbd-example-box>
-      <ngbd-example-box demoTitle="Everything... and the kitchen sink" [snippets]="snippets" component="toggle" demo="kitchen-sink">
+      </ngxd-example-box>
+      <ngxd-example-box demoTitle="Everything... and the kitchen sink" [snippets]="snippets" component="toggle" demo="kitchen-sink">
         <ngxd-toggle-kitchen-sink></ngxd-toggle-kitchen-sink>
-      </ngbd-example-box>
-    </ngbd-component-wrapper>
+      </ngxd-example-box>
+    </ngxd-component-wrapper>
   `
 })
 export class NgxdToggle {

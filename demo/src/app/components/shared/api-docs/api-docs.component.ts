@@ -12,7 +12,7 @@ import {Analytics} from '../../../shared/analytics/analytics';
  * The config service of a directive NgbFoo is, by convention, named NgbFooConfig.
  */
 @Component({
-  selector: 'ngbd-api-docs',
+  selector: 'ngxd-api-docs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './api-docs.component.html',
   styles: [`
@@ -25,7 +25,7 @@ import {Analytics} from '../../../shared/analytics/analytics';
     `
   ]
 })
-export class NgbdApiDocs {
+export class NgxdApiDocs {
 
   /**
    * Object which contains, for each input name of the directive, the corresponding property of the associated config

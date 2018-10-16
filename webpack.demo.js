@@ -1,5 +1,6 @@
 let path = require('path');
 let webpack = require('webpack');
+let rxPaths = require('rxjs/_esm5/path-mapping');
 
 // Webpack Plugins
 let autoprefixer = require('autoprefixer');
@@ -19,14 +20,14 @@ let isProd = ENV === 'build';
 module.exports = function makeWebpackConfig() {
     /**
      * Config
-     * Reference: http://webpack.github.io/docs/configuration.html
+     * Reference: https://webpack.js.org/configuration
      * This is the object where all configuration gets set
      */
     let config = {};
 
     /**
      * Devtool
-     * Reference: http://webpack.github.io/docs/configuration.html#devtool
+     * Reference: https://webpack.js.org/configuration/devtool
      * Type of sourcemap to use per build type
      */
     if (isProd) {
@@ -37,7 +38,7 @@ module.exports = function makeWebpackConfig() {
 
     /**
      * Entry
-     * Reference: http://webpack.github.io/docs/configuration.html#entry
+     * Reference: https://webpack.js.org/concepts/entry-points
      */
     config.entry = {
         'polyfills': './demo/src/polyfills.ts',
@@ -50,7 +51,7 @@ module.exports = function makeWebpackConfig() {
 
     /**
      * Output
-     * Reference: http://webpack.github.io/docs/configuration.html#output
+     * Reference: https://webpack.js.org/concepts/output
      */
     config.output = {
         path: root('demo', 'dist'),
@@ -59,24 +60,27 @@ module.exports = function makeWebpackConfig() {
         chunkFilename: isProd ? 'js/[id].[hash].chunk.js' : 'js/[id].chunk.js'
     };
 
+    // allow tree shaking of pipeable operators.
+    // See https://github.com/ReactiveX/rxjs/blob/master/doc/pipeable-operators.md#build-and-treeshaking
+    let alias = rxPaths();
+    alias['ngx-toggle'] = root('src/index.ts');
+
     /**
      * Resolve
-     * Reference: http://webpack.github.io/docs/configuration.html#resolve
+     * Reference: https://webpack.js.org/configuration/resolve
      */
     config.resolve = {
         modules: [root('demo'), 'node_modules'],
         // only discover files that have those extensions
         extensions: ['.ts', '.js', '.css', '.scss', '.html'],
 
-        alias: {
-            'ngx-toggle': root('src/index.ts')
-        }
+        alias: alias
     };
 
     /**
      * Loaders
-     * Reference: http://webpack.github.io/docs/configuration.html#module-loaders
-     * List: http://webpack.github.io/docs/list-of-loaders.html
+     * Reference: https://webpack.js.org/concepts/loaders
+     * List: https://webpack.js.org/loaders/
      * This handles most of the magic responsible for converting modules
      */
     config.module = {
@@ -84,7 +88,7 @@ module.exports = function makeWebpackConfig() {
             // Support for .ts files.
             {
                 test: /\.ts$/,
-                use: /*isProd ? '@ngtools/webpack' : */'ts-loader'
+                use: isProd ? '@ngtools/webpack' : 'ts-loader'
             },
 
             {
@@ -99,7 +103,7 @@ module.exports = function makeWebpackConfig() {
             },
 
             // Support for CSS as raw text
-            // use 'null' loader in test mode (https://github.com/webpack/null-loader)
+            // use 'null' loader in test mode (https://webpack.js.org/loaders/null-loader)
             // all css in src/style will be bundled in an external css file
             {
                 test: /\.css$/,
@@ -122,7 +126,7 @@ module.exports = function makeWebpackConfig() {
             },
 
             // support for .scss files
-            // use 'null' loader in test mode (https://github.com/webpack/null-loader)
+            // use 'null' loader in test mode (https://webpack.js.org/loaders/null-loader)
             // all css in src/style will be bundled in an external css file
             {
                 test: /\.scss$/,
@@ -179,12 +183,12 @@ module.exports = function makeWebpackConfig() {
 
     /**
      * Plugins
-     * Reference: http://webpack.github.io/docs/configuration.html#plugins
-     * List: http://webpack.github.io/docs/list-of-plugins.html
+     * Reference: https://webpack.js.org/configuration/plugins
+     * List: https://webpack.js.org/plugins/
      */
     config.plugins = [
         // Define env variables to help with builds
-        // Reference: https://webpack.github.io/docs/list-of-plugins.html#defineplugin
+        // Reference: https://webpack.js.org/plugins/define-plugin
         new webpack.DefinePlugin({
             // Environment helpers
             'process.env': {
@@ -249,7 +253,7 @@ module.exports = function makeWebpackConfig() {
                 entryModule: root('demo/src/app/') + 'app.module#NgtsdModule'
             }),
 
-            // Reference: http://webpack.github.io/docs/list-of-plugins.html#noerrorsplugin
+            // Reference: https://webpack.js.org/list-of-plugins/noerrorsplugin
             // Only emit files when there are no errors
             new webpack.NoEmitOnErrorsPlugin(),
 
@@ -263,8 +267,8 @@ module.exports = function makeWebpackConfig() {
 
     /**
      * Dev server configuration
-     * Reference: http://webpack.github.io/docs/configuration.html#devserver
-     * Reference: http://webpack.github.io/docs/webpack-dev-server.html
+     * Reference: https://webpack.js.org/configuration/devserver
+     * Reference: https://webpack.js.org/webpack-dev-server/
      */
     config.devServer = {
         contentBase: 'demo/dist',

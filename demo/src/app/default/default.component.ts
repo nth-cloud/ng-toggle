@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngtsd-default',
+  selector: 'ngxd-default',
   templateUrl: './default.component.html'
 })
 export class DefaultComponent {

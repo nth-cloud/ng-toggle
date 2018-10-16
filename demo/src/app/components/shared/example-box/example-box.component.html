@@ -17,19 +17,19 @@
       <ngb-tab id="{{component}}-{{demo}}-html">
         <ng-template ngbTabTitle>
           <small class="badge badge-secondary" title="HTML template">T</small>
-          <span>{{component}}-{{demo}}.html</span>
+          <span class="ml-2">{{component}}-{{demo}}.html</span>
         </ng-template>
         <ng-template ngbTabContent>
-          <pre class="language-html"><code class="language-html" [innerHTML]="snippets[demo]['markup']"></code></pre>
+          <ngxd-code [code]="snippets[demo]['markup']" lang="html"></ngxd-code>
         </ng-template>
       </ngb-tab>
       <ngb-tab id="{{component}}-{{demo}}-typescript">
         <ng-template ngbTabTitle>
           <small class="badge badge-info" title="Component class">C</small>
-          <span>{{component}}-{{demo}}.ts</span>
+          <span class="ml-2">{{component}}-{{demo}}.ts</span>
         </ng-template>
         <ng-template ngbTabContent>
-          <pre class="language-typescript"><code class="language-typescript" [innerHTML]="snippets[demo]['code']"></code></pre>
+          <ngxd-code [code]="snippets[demo]['code']" lang="typescript"></ngxd-code>
         </ng-template>
       </ngb-tab>
     </ngb-tabset>

@@ -15,8 +15,8 @@ Angular v2+ Bootstrap-styled Toggle that can be used as a standalone toggle or c
 View it in action at https://ngx-toggle.github.io
 
 ## Dependencies
-* [Angular](https://angular.io) (tested with 5.1.0)
-* [Bootstrap 4](https://www.getbootstrap.com) (tested with 4.0.0-beta.2)
+* [Angular](https://angular.io) (tested with 6.1.10)
+* [Bootstrap 4](https://www.getbootstrap.com) (tested with 4.1.3)
 
 ## Installation
 After installing the above dependencies, install `ngx-toggle` via:

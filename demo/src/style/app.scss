@@ -54,7 +54,7 @@
     padding-left: 0;
   }
 
-  ngbd-default & {
+  ngxd-default & {
     text-align: center;
     margin-top: 2rem;
   }
@@ -239,7 +239,7 @@ div.component-demo {
   }
 }
 
-ngbd-api-docs, ngbd-api-docs-class, ngbd-api-docs-config {
+ngxd-api-docs, ngxd-api-docs-class, ngxd-api-docs-config {
   display: block;
 
   &:not(:first-child) {
@@ -262,7 +262,7 @@ span.token.tag {
   padding: 0;
 }
 
-ngbd-component-wrapper, ngbd-page-wrapper {
+ngxd-component-wrapper, ngxd-page-wrapper {
   .jumbotron {
     border-radius: 0;
   }

@@ -7,7 +7,7 @@ import {GettingStarted} from './getting-started';
 import {AppComponent} from './app.component';
 import {routing} from './app.routing';
 import {NgxdDemoModule} from './components';
-import {NgbdSharedModule} from './shared';
+import {NgxdSharedModule} from './shared';
 
 @NgModule({
   declarations: [
@@ -20,7 +20,7 @@ import {NgbdSharedModule} from './shared';
     routing,
     NgbModule.forRoot(),
     NgxdDemoModule,
-    NgbdSharedModule
+    NgxdSharedModule
   ],
   bootstrap: [AppComponent]
 })
