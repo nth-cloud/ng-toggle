@@ -7,10 +7,12 @@ import {
   Directive,
   ElementRef,
   EventEmitter,
+  forwardRef,
   HostListener,
   Input,
   NgZone,
   OnChanges,
+  OnDestroy,
   Output,
   QueryList,
   SimpleChanges,
@@ -18,6 +20,8 @@ import {
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
+import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
+import {Subscription} from 'rxjs';
 
 /**
  * The NgxToggleLabel directive allows you to customize the label for the "On" and "Off" states,
@@ -38,7 +42,6 @@ export class NgxToggleLabel {
   }
 }
 
-
 /**
  * The NgxToggle directive allows for standalone or checkbox-enabled switch toggling via a UI element.
  * The toggle is styled using Bootstrap v4+ classes.
@@ -46,59 +49,65 @@ export class NgxToggleLabel {
 @Component({
   selector: 'ngx-toggle',
   template: `
-    <div #wrapper class="ngx-toggle-wrapper btn" [ngClass]="btnClasses">
-        <div #container class="ngx-toggle-container"
-             [style.margin-left]="marginLeft"
-        >
+        <div #wrapper class="ngx-toggle-wrapper btn" [ngClass]="btnClasses">
+            <div #container class="ngx-toggle-container"
+                 [style.margin-left]="marginLeft"
+            >
             <span #on class="ngx-toggle-on btn" [ngClass]="onClasses">
                 <ng-template [ngTemplateOutlet]="onLabel?.templateRef"></ng-template>
                 <ng-container *ngIf="!onLabel">{{onText}}</ng-container>
             </span>
-            <span #handle class="ngx-toggle-handle btn" [ngClass]="handleClass">&nbsp;</span>
-            <span #off class="ngx-toggle-off btn" [ngClass]="offClasses">
+                <span #handle class="ngx-toggle-handle btn" [ngClass]="handleClass">&nbsp;</span>
+                <span #off class="ngx-toggle-off btn" [ngClass]="offClasses">
                 <ng-template [ngTemplateOutlet]="offLabel?.templateRef"></ng-template>
                 <ng-container *ngIf="!offLabel">{{offText}}</ng-container>
             </span>
+            </div>
+            <ng-content></ng-content>
         </div>
-        <ng-content></ng-content>
-    </div>
-`,
+    `,
   styles: [
     ':host {position: relative; display: inline-block;}',
-    `.ngx-toggle-container,.ngx-toggle-on,.ngx-toggle-off,.ngx-toggle-handle {
-        display: -webkit-box!important;
-        display: -webkit-flex!important;
-        display: -ms-flexbox!important;
-        display: flex!important;
-      }`,
+    `.ngx-toggle-container, .ngx-toggle-on, .ngx-toggle-off, .ngx-toggle-handle {
+            display: -webkit-box !important;
+            display: -webkit-flex !important;
+            display: -ms-flexbox !important;
+            display: flex !important;
+        }`,
     `.ngx-toggle-wrapper {
-      position: relative;
-      display: block;
-      direction: ltr; cursor: pointer; overflow: hidden; padding:0;
-      text-align: left; z-index: 0; user-select: none; vertical-align: middle;
-      transition: border-color 0.15s ease-in-out,box-shadow 0.15s ease-in-out;
-      box-sizing: content-box;
-    }`,
+            position:       relative;
+            display:        block;
+            direction:      ltr;
+            cursor:         pointer;
+            overflow:       hidden;
+            padding:        0;
+            text-align:     left;
+            z-index:        0;
+            user-select:    none;
+            vertical-align: middle;
+            transition:     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            box-sizing:     content-box;
+        }`,
     '.ngx-toggle-wrapper.disabled,.ngx-toggle-wrapper.disabled .btn{cursor: default;}',
     '.ngx-toggle-wrapper input{position: absolute; z-index: -1; visibility: hidden; width: 1px; height: 1px;}',
     '.ngx-toggle-container{align-items: stretch!important; top: 0; border-radius: 0; transform: translateZ(0);}',
     '.ngx-toggle-wrapper.ngx-toggle-animate .ngx-toggle-container {transition: margin-left 0.5s;}',
     '.ngx-toggle-on,.ngx-toggle-off {align-items: center!important; text-align: center; z-index: 1; border-radius: 0;}',
-    `.ngx-toggle-on,.ngx-toggle-off,.ngx-toggle-handle {
-        box-sizing: border-box;
-        cursor: pointer;
-        user-select: none;
-      }`,
+    `.ngx-toggle-on, .ngx-toggle-off, .ngx-toggle-handle {
+            box-sizing:  border-box;
+            cursor:      pointer;
+            user-select: none;
+        }`,
     `.ngx-toggle-handle {
-        text-align: center;
-        margin-top: -1px;
-        margin-bottom: -1px;
-        z-index: 100;
-        width: 1em;
-        padding-left: 0;
-        padding-right: 0;
-        align-self: stretch !important;
-      }`
+            text-align:    center;
+            margin-top:    -1px;
+            margin-bottom: -1px;
+            z-index:       100;
+            width:         1em;
+            padding-left:  0;
+            padding-right: 0;
+            align-self:    stretch !important;
+        }`
   ],
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None
@@ -142,6 +151,7 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
   set value(value: boolean) {
     this.setState(value);
   }
+
   get value(): boolean {
     return this._innerState;
   }
@@ -464,5 +474,57 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
 
   private get container$(): HTMLElement {
     return this.containerElement.nativeElement;
+  }
+}
+
+@Directive({
+  selector: 'ngx-toggle',
+  host: {'(change)': 'onChange($event)', '(touch)': 'onTouched()'},
+  providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NgxToggleAccessor), multi: true}]
+})
+export class NgxToggleAccessor implements ControlValueAccessor, OnDestroy {
+  private _onChange: (_: any) => void;
+  private _onTouched: () => void;
+  private _subscription: Subscription;
+
+  constructor(private _host: NgxToggle) {
+    this._subscription = this._host.valueChange.subscribe(value => this.onChange(value));
+  }
+
+  ngOnDestroy(): void {
+    if (this._subscription) {
+      this._subscription.unsubscribe();
+      this._subscription = null;
+    }
+  }
+
+  onChange(_: any) {
+    if (this._onChange) {
+      this._onChange(this._host.value);
+    }
+  }
+
+  onTouched() {
+    if (this._onTouched) {
+      this._onTouched();
+    }
+  }
+
+  registerOnChange(fn: any): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this._onTouched = fn;
+  }
+
+  setDisabledState?(isDisabled: boolean): void {
+    this._host.disabled = isDisabled;
+  }
+
+  writeValue(obj: any): void {
+    if (typeof obj === 'boolean' || obj === null) {
+      this._host.value = obj;
+    }
   }
 }
