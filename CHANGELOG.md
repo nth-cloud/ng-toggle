@@ -1,3 +1,13 @@
+<a name="1.0.3"></a>
+## [1.0.3](https://github.com/ngx-toggle/ngx-toggle/compare/1.0.2...1.0.3) (2018-10-16)
+
+
+### Features
+
+* added value accessor capability (i.e. using ngModel) ([e62f395](https://github.com/ngx-toggle/ngx-toggle/commit/e62f395)), closes [#2](https://github.com/ngx-toggle/ngx-toggle/issues/2)
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/ngx-toggle/ngx-toggle/compare/1.0.0...1.0.2) (2018-05-30)
 
