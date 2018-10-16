@@ -4,7 +4,7 @@
       class="title-fragment"
       [routerLink]=""
       fragment="{{apiDocs.className}}"
-      ngbdFragment
+      ngxdFragment
       title="Anchor link to: {{apiDocs.className}}"
     >
       <img src="img/link-symbol.svg" alt="Anchor link to: {{apiDocs.className}}"/>
@@ -19,7 +19,7 @@
       <img src="img/github.svg" alt="Link to Github {{apiDocs.className}}"/>
     </a>
   </h3>
-  <ngbd-api-docs-badge type="Configuration"></ngbd-api-docs-badge>
+  <ngxd-api-docs-badge type="Configuration"></ngxd-api-docs-badge>
   <p class="lead">{{apiDocs.description}}</p>
 
   <ng-template [ngIf]="apiDocs.properties && apiDocs.properties.length">

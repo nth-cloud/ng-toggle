@@ -7,29 +7,28 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import {ComponentWrapper} from './component-wrapper/component-wrapper.component';
 import {PageWrapper} from './page-wrapper/page-wrapper.component';
-import {SideNavComponent} from './side-nav/side-nav.component';
 import {Analytics} from './analytics/analytics';
-
-export {componentsList} from './side-nav/side-nav.component';
+import {NgxdCodeComponent} from './code/code.component';
+import {CodeHighlightService} from './code/code-highlight.service';
 
 @NgModule({
-  imports: [CommonModule, RouterModule, NgbModule],
-  exports: [
-    CommonModule,
-    RouterModule,
-    ComponentWrapper,
-    PageWrapper,
-    SideNavComponent,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
-  declarations: [
-    ComponentWrapper,
-    PageWrapper,
-    SideNavComponent,
-  ],
-  providers: [Analytics]
+    imports: [CommonModule, RouterModule, NgbModule],
+    exports: [
+        CommonModule,
+        RouterModule,
+        ComponentWrapper,
+        PageWrapper,
+        NgxdCodeComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule
+    ],
+    declarations: [
+        ComponentWrapper,
+        PageWrapper,
+        NgxdCodeComponent
+    ],
+    providers: [Analytics, CodeHighlightService]
 })
-export class NgbdSharedModule {
+export class NgxdSharedModule {
 }

@@ -1,12 +1,12 @@
 import { Directive, Input } from '@angular/core';
 
 @Directive({
-  selector: 'a[ngbdFragment]',
+  selector: 'a[ngxdFragment]',
   host: {
     '[class.title-fragment]': 'true',
     '[attr.id]': 'fragment'
   }
 })
-export class NgbdFragment {
+export class NgxdFragment {
   @Input() fragment: string;
 }

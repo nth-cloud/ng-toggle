@@ -156,7 +156,7 @@ function startKarmaServer(isTddMode, isSaucelabs, done) {
   if (isSaucelabs) {
     config['reporters'] = ['dots', 'saucelabs'];
     config['browsers'] =
-        ['SL_CHROME', 'SL_FIREFOX', 'SL_IE10', 'SL_IE11', 'SL_EDGE14', 'SL_EDGE15', 'SL_SAFARI10', 'SL_SAFARI11'];
+        ['SL_CHROME', 'SL_FIREFOX', 'SL_IE10', 'SL_IE11', 'SL_EDGE16', 'SL_EDGE15', 'SL_SAFARI10', 'SL_SAFARI11'];
 
     if (process.env.TRAVIS) {
       let buildId = `TRAVIS #${process.env.TRAVIS_BUILD_NUMBER} (${process.env.TRAVIS_BUILD_ID})`;
@@ -229,7 +229,7 @@ gulp.task('saucelabs', ['build:tests'], function(done) {
 
 gulp.task('lint', function() {
   return gulp.src([PATHS.src, PATHS.demo, '!demo/src/api-docs.ts'])
-      .pipe(tslint({configuration: require('./tslint.json'), formatter: 'prose'}))
+      .pipe(tslint({formatter: 'prose'}))
       .pipe(tslint.report({summarizeFailureOutput: true}));
 });
 

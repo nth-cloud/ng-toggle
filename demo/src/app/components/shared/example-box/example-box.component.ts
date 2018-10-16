@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import {Analytics} from '../../../shared/analytics/analytics';
 
 @Component({
-  selector: 'ngbd-example-box',
+  selector: 'ngxd-example-box',
   templateUrl: './example-box.component.html'
 })
 export class ExampleBoxComponent {

@@ -14,10 +14,7 @@
           <a class="nav-link" [routerLink]="['/getting-started']" (click)="navbarCollapsed = true">Getting Started</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/components']" (click)="navbarCollapsed = true">Components</a>
-        </li>
-        <li class="nav-item d-lg-none" *ngFor="let component of components" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/components', component.route.toLowerCase()]" (click)="navbarCollapsed = true">{{ component.name }}</a>
+          <a class="nav-link" [routerLink]="['/demo']" (click)="navbarCollapsed = true">Demo</a>
         </li>
       </ul>
 

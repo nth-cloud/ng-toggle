@@ -49,7 +49,7 @@ export class App {
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgxToggleModule], 
-  declarations: [App, ${demoImports}]${needsEntryCmpt ? `,\n  entryComponents: [${entryCmptClass}],` : ''}
+  declarations: [App, ${demoImports}]${needsEntryCmpt ? `,\n  entryComponents: [${entryCmptClass}],` : ','}
   bootstrap: [App]
 }) 
 export class AppModule {}
@@ -150,7 +150,6 @@ function generateConfigJs() {
     '@angular/forms': 'npm:@angular/forms@' + ver.ng + '/bundles/forms.umd.js',
 
     'rxjs': 'npm:rxjs@${versions.rxjs}',
-    'rxjs/operators': 'npm:rxjs@${versions.rxjs}/operators/index.js',
     'tslib': 'npm:tslib/tslib.js',
     'typescript': 'npm:typescript@${versions.typescript}/lib/typescript.js',
 
@@ -162,6 +161,11 @@ function generateConfigJs() {
       defaultExtension: 'ts'
     },
     rxjs: {
+      main: 'index.js',
+      defaultExtension: 'js'
+    },
+    'rxjs/operators': {
+      main: 'index.js',
       defaultExtension: 'js'
     }
   }

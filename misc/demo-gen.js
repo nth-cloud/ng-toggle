@@ -10,10 +10,10 @@ function genDemoComponent(component, demo) {
   return `import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-${component}-${demo}',
+  selector: 'Ngxd-${component}-${demo}',
   template: require('./${component}-${demo}.html')
 })
-export class Ngbd${capitalize(component)}${capitalize(demo)} {
+export class Ngxd${capitalize(component)}${capitalize(demo)} {
 }
 `;
 }
@@ -48,18 +48,18 @@ function genDemosIndex(component) {
   const demoImports =
       demoNames
           .map((demo) => {
-            return `import {Ngbd${capitalize(component)}${capitalize(demo)}} from './${demo}/${component}-${demo}';`;
+            return `import {Ngxd${capitalize(component)}${capitalize(demo)}} from './${demo}/${component}-${demo}';`;
           })
           .join('\n');
 
   const demoDirectives = demoNames.map((demo) => {
-    return `Ngbd${capitalize(component)}${capitalize(demo)}`;
+    return `Ngxd${capitalize(component)}${capitalize(demo)}`;
   });
 
   const demoSnippets = demoNames.map((demo) => {
     return `  '${demo}': {
-    'code': require('!!prismjs-loader-loader?lang=typescript!./${demo}/${component}-${demo}'), 
-    'markup': require('!!prismjs-loader-loader?lang=markup!./${demo}/${component}-${demo}.html')}`;
+    'code': require('!!raw-loader!./${demo}/${component}-${demo}'),
+    'markup': require('!!raw-loader!./${demo}/${component}-${demo}.html')}`;
   });
 
   return `${demoImports}

@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
-  selector: 'ngbd-getting-started',
+  selector: 'ngxd-getting-started',
   templateUrl: './getting-started.component.html'
 })
 export class GettingStarted {}
