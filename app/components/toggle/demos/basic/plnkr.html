@@ -13,7 +13,7 @@
   &#x3C;head&#x3E;
   &#x3C;base href=&#x22;.&#x22; /&#x3E;
     &#x3C;title&#x3E;ngx-toggle demo&#x3C;/title&#x3E;
-    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/^4.1.1/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/^4.1.3/css/bootstrap.min.css&#x22; /&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
     &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
@@ -31,7 +31,7 @@
 
 &#x3C;/html&#x3E;">
     <input type="hidden" name="files[config.js]" value="var ver = {
-    ng: &#x27;^5.0.0&#x27;
+    ng: &#x27;^6.1.10&#x27;
   };
   
   System.config({
@@ -63,12 +63,11 @@
     &#x27;@angular/router&#x27;: &#x27;npm:@angular/router@&#x27; + ver.ng + &#x27;/bundles/router.umd.js&#x27;,
     &#x27;@angular/forms&#x27;: &#x27;npm:@angular/forms@&#x27; + ver.ng + &#x27;/bundles/forms.umd.js&#x27;,
 
-    &#x27;rxjs&#x27;: &#x27;npm:rxjs@^5.5.2&#x27;,
-    &#x27;rxjs/operators&#x27;: &#x27;npm:rxjs@^5.5.2/operators/index.js&#x27;,
+    &#x27;rxjs&#x27;: &#x27;npm:rxjs@^6.3.3&#x27;,
     &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
-    &#x27;typescript&#x27;: &#x27;npm:typescript@&#x3E;=2.4.2 &#x3C;2.7/lib/typescript.js&#x27;,
+    &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
 
-    &#x27;ngx-toggle&#x27;: &#x27;npm:ngx-toggle@1.0.3/bundles/ngx-toggle.js&#x27;
+    &#x27;ngx-toggle&#x27;: &#x27;npm:ngx-toggle@2.0.0/bundles/ngx-toggle.js&#x27;
   },
   packages: {
     app: {
@@ -76,6 +75,11 @@
       defaultExtension: &#x27;ts&#x27;
     },
     rxjs: {
+      main: &#x27;index.js&#x27;,
+      defaultExtension: &#x27;js&#x27;
+    },
+    &#x27;rxjs/operators&#x27;: {
+      main: &#x27;index.js&#x27;,
       defaultExtension: &#x27;js&#x27;
     }
   }
@@ -115,7 +119,7 @@ export class App {
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgxToggleModule], 
-  declarations: [App, NgtsdToggleBasic]
+  declarations: [App, NgtsdToggleBasic],
   bootstrap: [App]
 }) 
 export class AppModule {}
