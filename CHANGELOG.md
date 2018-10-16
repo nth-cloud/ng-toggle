@@ -1,3 +1,13 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/ngx-toggle/ngx-toggle/compare/1.0.3...2.0.0) (2018-10-16)
+
+
+### Features
+
+* upgrade to Angular v6 ([e258228](https://github.com/ngx-toggle/ngx-toggle/commit/e258228)), closes [#5](https://github.com/ngx-toggle/ngx-toggle/issues/5)
+
+
+
 <a name="1.0.3"></a>
 ## [1.0.3](https://github.com/ngx-toggle/ngx-toggle/compare/1.0.2...1.0.3) (2018-10-16)
 
