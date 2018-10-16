@@ -342,7 +342,6 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
 
   @HostListener('keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
-    console.log(event);
     if (!event.key || this.disabled) {
       return;
     }
