@@ -47,7 +47,7 @@ If you are using SystemJS, you should adjust your configuration to point to the 
 In your systemJS config file, `map` needs to tell the System loader where to look for `ngx-toggle`:
 ```js
 map: {
-   'ngx-toggle/ngx-toggle': 'node_modules/ngx-toggle/ngx-toggle/bundles/ngx-toggle.js' 
+   'ngx-toggle/ngx-toggle': 'node_modules/ngx-toggle/dist/bundles/ngx-toggle.js' 
 }
 ```
 
