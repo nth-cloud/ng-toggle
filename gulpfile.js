@@ -84,6 +84,7 @@ gulp.task('umd', function(cb) {
   webpack(
       {
         entry: './temp/index.js',
+        mode: 'production',
         output: {filename: 'dist/bundles/ngx-toggle.js', library: 'ngb', libraryTarget: 'umd'},
         devtool: 'source-map',
         externals: [
