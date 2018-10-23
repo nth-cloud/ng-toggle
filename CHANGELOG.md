@@ -1,3 +1,13 @@
+<a name="2.0.1"></a>
+## [2.0.1](https://github.com/ngx-toggle/ngx-toggle/compare/2.0.0...2.0.1) (2018-10-23)
+
+
+### Bug Fixes
+
+* demo page not working due to AOT compilation not working ([1806c57](https://github.com/ngx-toggle/ngx-toggle/commit/1806c57))
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/ngx-toggle/ngx-toggle/compare/1.0.3...2.0.0) (2018-10-16)
 
