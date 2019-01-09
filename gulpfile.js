@@ -306,7 +306,7 @@ gulp.task(
 
 gulp.task('demo-push', function() {
   return gulp.src(PATHS.demoDist)
-      .pipe(ghPages({remoteUrl: 'https://github.com/ngx-toggle/ngx-toggle.github.io.git', branch: 'master'}));
+      .pipe(ghPages({remoteUrl: 'https://github.com/ngx-toggle/ngx-toggle..git', branch: 'gh-pages'}));
 });
 
 // Public Tasks

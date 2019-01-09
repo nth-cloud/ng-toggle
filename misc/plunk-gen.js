@@ -36,7 +36,7 @@ import { ${demoImports} } from '${demoImport}';
     <hr>
     <p>
       This is a demo plnkr forked from the <strong>ngx-toggle</strong> project: Angular powered Bootstrap.
-      Visit <a href="https://ngx-toggle.github.io/" target="_blank">https://ngx-toggle.github.io</a> for more widgets and demos.
+      Visit <a href="https://nth-cloud.github.io/ngx-toggle/" target="_blank">https://nth-cloud.github.io/ngx-toggle</a> for more widgets and demos.
     </p>
     <hr>
 
@@ -75,7 +75,7 @@ function generatePlnkrContent(componentName, demoName) {
 <html lang="en">
 <body>
   <form id="mainForm" method="post" action="${plnkrUrl}">
-    <input type="hidden" name="description" value="Example usage of the ${componentName} widget from https://ngx-toggle.github.io">
+    <input type="hidden" name="description" value="Example usage of the ${componentName} widget from https://nth-cloud.github.io/ngx-toggle">
 ${generateTags(['Angular', 'Bootstrap', 'ngx-toggle', capitalize(componentName)])}  
     <input type="hidden" name="files[index.html]" value="${he.encode(generateIndexHtml())}">
     <input type="hidden" name="files[config.js]" value="${he.encode(generateConfigJs())}">
