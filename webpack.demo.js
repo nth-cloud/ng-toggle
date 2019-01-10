@@ -55,9 +55,9 @@ module.exports = function makeWebpackConfig() {
      */
     config.output = {
         path: root('demo', 'dist'),
-        publicPath: '/',
-        filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
-        chunkFilename: isProd ? 'js/[id].[hash].chunk.js' : 'js/[id].chunk.js'
+        publicPath: '',
+        filename: isProd ? 'js/[name].[hash].js' : '/js/[name].js',
+        chunkFilename: isProd ? 'js/[id].[hash].chunk.js' : '/js/[id].chunk.js'
     };
 
     // allow tree shaking of pipeable operators.
