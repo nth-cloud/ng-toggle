@@ -1,28 +1,30 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {FormsModule} from '@angular/forms';
 
+import {PrismComponent} from './default/prism.component';
 import {DefaultComponent} from './default';
-import {GettingStarted} from './getting-started';
+import {SupportComponent} from './support';
 import {AppComponent} from './app.component';
 import {routing} from './app.routing';
-import {NgxdDemoModule} from './components';
-import {NgxdSharedModule} from './shared';
+import {NthdSharedModule} from './shared';
+import {NthdToggleModule} from "./components/toggle";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    DefaultComponent,
-    GettingStarted
-  ],
-  imports: [
-    BrowserModule,
-    routing,
-    NgbModule.forRoot(),
-    NgxdDemoModule,
-    NgxdSharedModule
-  ],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        DefaultComponent,
+        SupportComponent,
+        PrismComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        routing,
+        NthdToggleModule,
+        NthdSharedModule
+    ],
+    bootstrap: [AppComponent]
 })
-export class NgxdModule {
+export class NthdModule {
 }

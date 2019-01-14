@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ngxd-toggle-kitchen-sink',
+  selector: 'nthd-toggle-kitchen-sink',
   templateUrl: './toggle-kitchen-sink.html'
 })
-export class NgxdToggleKitchenSink {
+export class NthdToggleKitchenSink {
   model: any = {
     onColor: 'primary',
     offColor: 'secondary',

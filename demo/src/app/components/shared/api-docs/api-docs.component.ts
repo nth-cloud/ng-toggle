@@ -8,11 +8,9 @@ import {Analytics} from '../../../shared/analytics/analytics';
  *
  * The default values of its inputs are looked for in the directive api doc itself, or in the matching property
  * of associated Config service, if any.
- *
- * The config service of a directive NgbFoo is, by convention, named NgbFooConfig.
  */
 @Component({
-  selector: 'ngxd-api-docs',
+  selector: 'nthd-api-docs',
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './api-docs.component.html',
   styles: [`
@@ -25,7 +23,7 @@ import {Analytics} from '../../../shared/analytics/analytics';
     `
   ]
 })
-export class NgxdApiDocs {
+export class NthdApiDocs {
 
   /**
    * Object which contains, for each input name of the directive, the corresponding property of the associated config

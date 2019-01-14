@@ -4,10 +4,10 @@ import {Injectable} from '@angular/core';
  * Service defining default values for progress bars
  */
 @Injectable()
-export class ProgressbarConfig {
+export class MyConfig {
 
   /**
-   * Maximal value to be displayed in the progressbar.
+   * Maximal value to be displayed
    */
   max = 100;
 

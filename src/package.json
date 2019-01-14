@@ -1,0 +1,28 @@
+{
+  "name": "@nth-cloud/ng-toggle",
+  "version": "2.1.0",
+  "description": "Angular powered Bootstrap Toggle",
+  "keywords": [
+    "angular",
+    "bootstrap",
+    "components",
+    "toggle"
+  ],
+  "author": "https://github.com/@nth-cloud/ng-toggle/graphs/contributors",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/@nth-cloud/ng-toggle.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/@nth-cloud/ng-toggle/issues"
+  },
+  "homepage": "https://github.com/@nth-cloud/ng-toggle#readme",
+  "peerDependencies": {
+    "@angular/common": "^6.1.10",
+    "@angular/core": "^6.1.10",
+    "@angular/forms": "^6.1.10",
+    "bootstrap": "^4.1.3",
+    "rxjs": "^6.3.0"
+  }
+}

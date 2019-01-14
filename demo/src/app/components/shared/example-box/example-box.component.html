@@ -1,37 +1,33 @@
 <div class="component-demo">
+  <a [id]="id"></a>
   <h2>
-    {{ demoTitle }}
-    <a
-      class="plunker"
-      target="_blank" href="app/components/{{component}}/demos/{{demo}}/plnkr.html"
-      title="Edit in Plunker"
-    >
-      <img src="img/plunker-icon.png" height="24" width="24" alt="Plunker icon"/>
+    <span>{{ title }}</span>
+    <a role="button" (click)="trackStackBlitzClick()" class="plunker"
+      target="_blank" href="app/components/{{component}}/demos/{{demo}}/plnkr.html" title="Edit in Plunker">
+      <img class="plunkr-icon" src="img/plunker-icon.png" height="24" width="24" alt="Plunker icon"/>
+    </a>
+    <a role="button" (click)="trackStackBlitzClick()" class="stackblitz btn btn-light" target="_blank"
+       href="app/components/{{component}}/demos/{{id}}/stackblitz.html" title="Edit in StackBlitz">
+      <img class="stackblitz-icon" src="img/stackblitz-icon.svg" alt="StackBlitz icon"/>
+      StackBlitz
     </a>
   </h2>
-  <div class="card">
-    <div class="card-body">
-      <ng-content></ng-content>
+  <hr class="mt-1 mb-4"/>
+  <div class="row">
+    <div class="col-12 col-lg-6"><ng-content></ng-content></div>
+    <div class="col-12 col-lg-6">
+      <nthd-tabset class="tabset-code">
+        <nthd-tab id="{{component}}-{{demo}}-markup" title="Markup">
+          <ng-template nthd-tab-content>
+            <nthd-code [code]="snippets[demo]['markup']" lang="html"></nthd-code>
+          </ng-template>
+        </nthd-tab>
+        <nthd-tab id="{{component}}-{{demo}}-typescript" title="Typescript">
+          <ng-template nthd-tab-content>
+            <nthd-code [code]="snippets[demo]['code']" lang="typescript"></nthd-code>
+          </ng-template>
+        </nthd-tab>
+      </nthd-tabset>
     </div>
-    <ngb-tabset class="tabset-code">
-      <ngb-tab id="{{component}}-{{demo}}-html">
-        <ng-template ngbTabTitle>
-          <small class="badge badge-secondary" title="HTML template">T</small>
-          <span class="ml-2">{{component}}-{{demo}}.html</span>
-        </ng-template>
-        <ng-template ngbTabContent>
-          <ngxd-code [code]="snippets[demo]['markup']" lang="html"></ngxd-code>
-        </ng-template>
-      </ngb-tab>
-      <ngb-tab id="{{component}}-{{demo}}-typescript">
-        <ng-template ngbTabTitle>
-          <small class="badge badge-info" title="Component class">C</small>
-          <span class="ml-2">{{component}}-{{demo}}.ts</span>
-        </ng-template>
-        <ng-template ngbTabContent>
-          <ngxd-code [code]="snippets[demo]['code']" lang="typescript"></ngxd-code>
-        </ng-template>
-      </ngb-tab>
-    </ngb-tabset>
   </div>
 </div>

@@ -1,9 +1,9 @@
-import {NgxdToggleBasic} from './basic/toggle-basic';
-import {NgxdToggleInput} from './input/toggle-input';
-import {NgxdToggleCustomLabel} from './custom-label/toggle-custom-label';
-import {NgxdToggleKitchenSink} from './kitchen-sink/toggle-kitchen-sink';
+import {NthdToggleBasic} from './basic/toggle-basic';
+import {NthdToggleInput} from './input/toggle-input';
+import {NthdToggleCustomLabel} from './custom-label/toggle-custom-label';
+import {NthdToggleKitchenSink} from './kitchen-sink/toggle-kitchen-sink';
 
-export const DEMO_DIRECTIVES = [NgxdToggleBasic, NgxdToggleInput, NgxdToggleCustomLabel, NgxdToggleKitchenSink];
+export const DEMO_DIRECTIVES = [NthdToggleBasic, NthdToggleInput, NthdToggleCustomLabel, NthdToggleKitchenSink];
 
 export const DEMO_SNIPPETS = {
   'basic': {

@@ -1,12 +1,20 @@
-export * from './toggle';
-
 import {CommonModule} from '@angular/common';
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 
-import {NgxToggle, NgxToggleAccessor, NgxToggleLabel} from './toggle';
+import {NgToggle} from './toggle';
+import {NgToggleAccessor} from './toggle-accessor';
+import {NgToggleLabel} from './toggle-label';
 
-const EXPORT_DIRECTIVES = [NgxToggle, NgxToggleLabel, NgxToggleAccessor];
+export {NgToggle} from './toggle';
+export {NgToggleAccessor} from './toggle-accessor';
+export {NgToggleLabel} from './toggle-label';
 
-@NgModule({imports: [CommonModule], exports: EXPORT_DIRECTIVES, declarations: EXPORT_DIRECTIVES})
-export class NgxToggleModule {
+const declarations = [
+  NgToggle,
+  NgToggleAccessor,
+  NgToggleLabel,
+];
+
+@NgModule({imports: [CommonModule], exports: declarations, declarations: declarations, schemas: [CUSTOM_ELEMENTS_SCHEMA]})
+export class NgToggleModule {
 }

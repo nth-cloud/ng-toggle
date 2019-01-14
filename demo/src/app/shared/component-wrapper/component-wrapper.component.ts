@@ -5,7 +5,7 @@ export const DEFAULT_TAB = 'examples';
 const VALID_TABS = [DEFAULT_TAB, 'api'];
 
 @Component({
-  selector: 'ngxd-component-wrapper',
+  selector: 'nthd-component-wrapper',
   templateUrl: './component-wrapper.component.html'
 })
 export class ComponentWrapper {

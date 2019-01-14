@@ -1,5 +1,5 @@
 <div>
-    <ngx-toggle
+    <ng-toggle
         onColor="{{model.onColor}}"
         onText="{{model.onText}}"
         offColor="{{model.offColor}}"
@@ -8,8 +8,8 @@
         [size]="model.size"
         [(ngModel)]="model.value"
     >
-        <ng-template ngxToggleLabel forLabel="on"><span class="fa fa-play"></span>&nbsp;It's On!<br />Like Donkey Kong!</ng-template>
-        <ng-template ngxToggleLabel forLabel="off"><span class="fa fa-stop"></span>&nbsp;And... We're Down.</ng-template>
-    </ngx-toggle>
+        <ng-template toggleLabel forLabel="on"><span class="fa fa-play"></span>&nbsp;It's On!<br />Like Donkey Kong!</ng-template>
+        <ng-template toggleLabel forLabel="off"><span class="fa fa-stop"></span>&nbsp;And... We're Down.</ng-template>
+    </ng-toggle>
 </div>
 <pre class="my-2">{{model | json}}</pre>

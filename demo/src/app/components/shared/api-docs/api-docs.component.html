@@ -2,7 +2,7 @@
   <h2 class="title">
     <a
       [routerLink]=""
-      fragment="{{apiDocs.className}}" ngxdFragment
+      fragment="{{apiDocs.className}}" nthFragment
       title="Anchor link to: {{apiDocs.className}}"
     >
       <img src="img/link-symbol.svg" alt="Anchor link to: {{apiDocs.className}}"/>
@@ -11,14 +11,14 @@
     <a
       class="github-link ml-2"
       (click)="trackSourceClick()"
-      href="https://github.com/ngx-toggle/ngx-toggle/tree/master/{{apiDocs.fileName}}"
+      href="https://github.com/nth-cloud/ng-mentions/tree/master/{{apiDocs.fileName}}"
       target="_blank"
       title="Link to Github: {{apiDocs.className}}"
     >
       <img src="img/github.svg" alt="Link to Github {{apiDocs.className}}"/>
     </a>
   </h2>
-  <ngxd-api-docs-badge [type]="apiDocs.type"></ngxd-api-docs-badge>
+  <nthd-api-docs-badge [type]="apiDocs.type"></nthd-api-docs-badge>
   <p class="lead">
     {{apiDocs.description}}
   </p>

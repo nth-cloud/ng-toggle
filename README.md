@@ -1,9 +1,11 @@
 # NG v2+ Toggle
 
-[![npm version](https://badge.fury.io/js/ngx-toggle.svg)](https://badge.fury.io/js/ngx-toggle)
-[![Build Status](https://travis-ci.org/ngx-toggle/ngx-toggle.svg?branch=master)](https://travis-ci.org/ngx-toggle/ngx-toggle)
-[![dependency Status](https://david-dm.org/ngx-toggle/ngx-toggle.svg?branch=master)](https://david-dm.org/ngx-toggle/ngx-toggle)
-[![devDependency Status](https://david-dm.org/ngx-toggle/ngx-toggle/dev-status.svg?branch=master)](https://david-dm.org/ngx-toggle/ngx-toggle#info=devDependencies)
+[![npm version](https://badge.fury.io/js/%40nth-cloud%2Fng-mentions.svg)](https://badge.fury.io/js/%40nth-cloud%2Fng-mentions)
+[![Build Status](https://travis-ci.org/nth-cloud/ng-mentions.svg?branch=master)](https://travis-ci.org/nth-cloud/ng-mentions)
+[![codecov](https://codecov.io/gh/nth-cloud/ng-toggle/branch/master/graph/badge.svg)](https://codecov.io/gh/nth-cloud/ng-toggle)
+[![dependency Status](https://david-dm.org/nth-cloud/ng-mentions.svg?branch=master)](https://david-dm.org/nth-cloud/ng-mentions)
+[![devDependency Status](https://david-dm.org/nth-cloud/ng-mentions/dev-status.svg?branch=master)](https://david-dm.org/nth-cloud/ng-mentions#info=devDependencies)
+[![Sauce Test Status](https://saucelabs.com/buildstatus/trickeyone)](https://saucelabs.com/u/trickeyone)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/trickeyone.svg)](https://saucelabs.com/u/trickeyone)
 
 [![NPM](https://nodei.co/npm/ngx-toggle.png?compact=true)](https://www.npmjs.com/package/ngx-toggle)
@@ -12,7 +14,7 @@ Angular v2+ Bootstrap-styled Toggle that can be used as a standalone toggle or c
 
 ## Demo
 
-View it in action at https://ngx-toggle.github.io
+View it in action at https://nth-cloud.github.io/ng-toggle
 
 ## Dependencies
 * [Angular](https://angular.io) (tested with 6.1.10)
@@ -47,7 +49,7 @@ If you are using SystemJS, you should adjust your configuration to point to the 
 In your systemJS config file, `map` needs to tell the System loader where to look for `ngx-toggle`:
 ```js
 map: {
-   'ngx-toggle/ngx-toggle': 'node_modules/ngx-toggle/dist/bundles/ngx-toggle.js' 
+   '@nth-cloud/ng-toggle': 'node_modules/ngx-toggle/dist/bundles/ngx-toggle.js' 
 }
 ```
 

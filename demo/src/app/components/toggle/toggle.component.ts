@@ -2,26 +2,27 @@ import {Component} from '@angular/core';
 import {DEMO_SNIPPETS} from './demos';
 
 @Component({
-  selector: 'ngxd-toggle',
+  selector: 'nthd-toggle',
   template: `
-    <ngxd-component-wrapper component="Toggle">
-      <ngxd-api-docs directive="NgxToggle"></ngxd-api-docs>
-      <ngxd-api-docs directive="NgxToggleLabel"></ngxd-api-docs>
-      <ngxd-example-box demoTitle="Basic" [snippets]="snippets" component="toggle" demo="basic">
-        <ngxd-toggle-basic></ngxd-toggle-basic>
-      </ngxd-example-box>
-      <ngxd-example-box demoTitle="Checkbox" [snippets]="snippets" component="toggle" demo="input">
-        <ngxd-toggle-input></ngxd-toggle-input>
-      </ngxd-example-box>
-      <ngxd-example-box demoTitle="Custom Label" [snippets]="snippets" component="toggle" demo="custom-label">
-        <ngxd-toggle-custom-label></ngxd-toggle-custom-label>
-      </ngxd-example-box>
-      <ngxd-example-box demoTitle="Everything... and the kitchen sink" [snippets]="snippets" component="toggle" demo="kitchen-sink">
-        <ngxd-toggle-kitchen-sink></ngxd-toggle-kitchen-sink>
-      </ngxd-example-box>
-    </ngxd-component-wrapper>
+      <nthd-component-wrapper component="Toggle">
+          <nthd-api-docs directive="NgToggle"></nthd-api-docs>
+          <nthd-api-docs directive="NgToggleLabel"></nthd-api-docs>
+          <nthd-example-box title="Basic" [snippets]="snippets" component="toggle" demo="basic" id="basic">
+              <nthd-toggle-basic></nthd-toggle-basic>
+          </nthd-example-box>
+          <nthd-example-box title="Checkbox" [snippets]="snippets" component="toggle" demo="input" id="input">
+              <nthd-toggle-input></nthd-toggle-input>
+          </nthd-example-box>
+          <nthd-example-box title="Custom Label" [snippets]="snippets" component="toggle" demo="custom-label" id="custom-label">
+              <nthd-toggle-custom-label></nthd-toggle-custom-label>
+          </nthd-example-box>
+          <nthd-example-box title="Everything... and the kitchen sink" [snippets]="snippets" component="toggle"
+                            demo="kitchen-sink" id="kitchen-sink">
+              <nthd-toggle-kitchen-sink></nthd-toggle-kitchen-sink>
+          </nthd-example-box>
+      </nthd-component-wrapper>
   `
 })
-export class NgxdToggle {
+export class NthdToggleComponent {
   snippets = DEMO_SNIPPETS;
 }

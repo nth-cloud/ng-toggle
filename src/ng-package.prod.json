@@ -1,0 +1,11 @@
+{
+  "$schema": "../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../dist/nth-cloud",
+  "lib": {
+    "flatModuleFile": "ng-toggle",
+    "entryFile": "./index.ts",
+    "umdId": "nthm",
+    "amdId": "nthm",
+    "licensePath": "../LICENSE"
+  }
+}

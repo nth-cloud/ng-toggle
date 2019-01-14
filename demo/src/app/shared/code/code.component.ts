@@ -3,15 +3,15 @@ import {AfterViewInit, ChangeDetectionStrategy, Component, ElementRef, Input, Vi
 import {CodeHighlightService} from './code-highlight.service';
 
 @Component({
-    selector: 'ngxd-code',
+    selector: 'nthd-code',
     changeDetection: ChangeDetectionStrategy.OnPush,
     template: `
     <pre class="language-{{ lang }}"><code #code class="language-{{ lang }}"></code></pre>
   `
 })
-export class NgxdCodeComponent implements AfterViewInit {
+export class NthdCodeComponent implements AfterViewInit {
 
-    @ViewChild('code') codeEl: ElementRef<HTMLElement>;
+    @ViewChild('code') codeEl: ElementRef;
 
     @Input() code = '';
     @Input() lang = '';

@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "6"
+  - "10"
 
 env:
   global:
@@ -10,20 +10,24 @@ env:
     - LOGS_DIR=/tmp/logs
 
 addons:
-  firefox: "latest"
+  chrome: stable
   sause_connect: true
 
 before_install:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - npm install --quiet -g npm
-  - npm install --quiet -g gulp
 
 install:
-  - npm install
+  - yarn
+
+cache: yarn
+
+before_script:
+  - mkdir -p $LOGS_DIR
 
 script:
-  - gulp ci && npm run api-doc-test
-  - gulp saucelabs
+  - yarn ci && yarn api-doc:test
+  - yarn global add codecov && codecov --disable=gcov -f coverage/lcov.info -F unit
+  - yarn saucelabs
 
 sudo: false

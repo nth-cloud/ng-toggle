@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'ngxd-toggle-input',
+  selector: 'nthd-toggle-input',
   templateUrl: './toggle-input.html'
 })
-export class NgxdToggleInput {
+export class NthdToggleInput {
   model: any = {
     onColor: 'primary',
     offColor: 'secondary',

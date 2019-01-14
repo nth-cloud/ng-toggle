@@ -1,34 +1,34 @@
-import {Component, Directive, Injectable} from '@angular/core';
+import { Component, Directive, Injectable } from '@angular/core';
 
-@Directive({
-  selector: '[ngbDirective]'
-})
 /**
  * Should be 'Directive'
  */
-export class NgbDirective {}
-
-@Component({
-  selector: 'ngb-component'
+@Directive({
+  selector: '[nthDirective]'
 })
+export class NthDirective {}
+
 /**
  * Should be 'Component'
  */
-export class NgbComponent {}
+@Component({
+  selector: 'nth-component'
+})
+export class NthComponent {}
 
 
-@Injectable()
 /**
  * Should be 'Service'
  */
-export class NgbService {}
+@Injectable()
+export class NthService {}
 
 /**
  * Should be 'Class'
  */
-export class NgbClass {}
+export class NthClass {}
 
 /**
  * Should be 'Interface'
  */
-export interface NgbInterface {}
+export interface NthInterface {}

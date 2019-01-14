@@ -10,11 +10,11 @@ const BADGES = {
 };
 
 @Component({
-  selector: 'ngxd-api-docs-badge',
+  selector: 'nthd-api-docs-badge',
   template: `<h5><span class="badge" [ngClass]="badgeClass">{{text}}</span></h5>`,
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class NgxdApiDocsBadge {
+export class NthdApiDocsBadge {
 
   badgeClass;
   text;

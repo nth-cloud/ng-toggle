@@ -1,60 +1,199 @@
 // styles in src/style directory are applied to the whole page
 
-.navbar {
-  background: rgba(255,255,255,0.95);
+$header-link-color: #d9d9d9;
+$header-border-color: #1a1a1a;
+$header-bg: #362c23;
+$banner-text-color: #ccc;
+$banner-lead-text-color: #fff;
+$page-footer-bg: #f7f7f7;
+$page-footer-link-color: #55595c;
+$api-docs-border-color: #999;
+$language-syntax-bg: #272822;
+$docs-nav-color: #999;
+$doc-nav-active-bg: #8a5933;
+$doc-nav-active-border-color: darken(#8a5933, 5%);
+$doc-nav-active-color: #eee;
+$doc-nav-hover-color: rgba(51, 94, 138, 0.1);
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+html {
+  font-size:   100%;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
-.bd-booticon {
-  margin: 1.25rem;
-  width: 256px;
-  height: 256px;
+body {
+  font-size: 0.8125rem;
 }
 
-.bd-masthead, .jumbotron {
-  background-color: #0143A3;
-  background: linear-gradient(135deg, #0143A3, #0273D4);
+hr {
+  display:    block;
+  margin:     2rem 0;
+  border-top: solid 1px #d8dde6;
+  height:     1px;
+  clear:      both;
 }
 
-.bd-masthead {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  margin-bottom: 4rem;
-  text-align: center;
-  color: #efefef;
+@import "~bootstrap/scss/utilities/flex";
+@import "~bootstrap/scss/navbar";
 
-  .lead {
+nthd-app {
+  display:        flex;
+  flex-direction: column;
+  height:         100vh;
+}
+
+header {
+  background: $header-bg;
+  border-bottom: 1px solid $header-border-color;
+  position:      fixed;
+  top:           0;
+  width:         100%;
+  z-index:       10000;
+  box-shadow:    0 4px 10px 0 rgba(0, 0, 0, 0.5);
+
+  .navbar {
+    display:      flex;
+    margin-left:  auto;
     margin-right: auto;
-    margin-bottom: 2rem;
-    margin-left: auto;
-    width: 80%;
-    font-size: 2rem;
-    color: #fff;
+    max-width:    64rem;
+    padding:      0.55rem 2rem 0.75rem;
+    a:not(.nav-link) {
+      font-size:    0.75rem;
+      line-height:  1.25;
+    }
+
+    a.nav-link {
+      color: rgba($header-link-color, 0.8) !important;
+    }
+
+    .navbar-logo {
+      height:       2.2em;
+      margin-right: 0.75em;
+    }
+
+    .navbar-nav-scroll {
+      margin-left: 1.5rem;
+    }
   }
 
-  .btn {
-    color: #fff;
-    border-color: #fff;
-    &:hover {
-      background-color: #f7f7f7;
-      color: #0273D4;
+  a {
+    color: $header-link-color !important;
+  }
+}
+
+main {
+  position:   relative;
+  display:    block;
+  margin-top: 54px;
+  flex:       1 0 auto;
+
+  .container {
+    max-width: 64rem;
+
+    &.container-md {
+      max-width:  48rem;
+      margin-top: 1.5rem;
+      padding:    2rem;
     }
   }
 }
 
-.jumbotron {
-  color: #fff;
-  border-radius: 0;
+@include media-breakpoint-down(sm) {
+  header {
+    position: relative;
+    z-index: auto;
+
+    .navbar {
+      a:not(.nav-link) {
+        font-size: 1.2rem;
+      }
+
+      .nav-link {
+        font-size: 1rem;
+      }
+
+      .navbar-nav-scroll {
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+
+  main {
+    margin-top: 0;
+  }
+}
+
+.banner {
+  background-color: #111;
+  padding:          1.5rem;
+  margin-bottom:    0.75rem;
+  text-align:       center;
+  color: $banner-text-color;
+
+  .lead {
+    margin-right:  auto;
+    margin-left:   auto;
+    width:         80%;
+    color: $banner-lead-text-color;
+
+    p {
+      font-size: 0.8125rem;
+      margin:    0 0 1em;
+    }
+    p:first-of-type {
+      margin-top: 0.75rem;
+    }
+    p:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .logo {
+    height: 170px;
+  }
+}
+
+.heading {
+  font-size:   1.75rem;
+  font-weight: 300;
+  line-height: 1.25;
+}
+
+section {
+  .heading {
+    margin-top:    1.5rem;
+    margin-bottom: 1.5rem;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  p {
+    margin-bottom: 0.75rem;
+
+  }
+
+  prism + p {
+    margin-top: 1.5rem;
+  }
 }
 
 .github-buttons {
+  > * {
+    margin-left: 0.5rem;
+  }
 
   header & {
-    margin-bottom: 0;
-    margin-top: 4px;
+    margin:       0;
     padding-left: 0;
   }
 
-  ngxd-default & {
+  nthd-default & {
     text-align: center;
     margin-top: 2rem;
   }
@@ -64,63 +203,28 @@
   .bd-sidebar {
     padding-left: 1rem;
 
-    display: inline-block;
-    position: -webkit-sticky;
-    position: sticky;
-    top: 1rem;
+    display:      inline-block;
+    position:     -webkit-sticky;
+    position:     sticky;
+    top:          1rem;
   }
 }
 
 .bd-toc-link {
   display: block;
   padding: .25rem .75rem;
-  color: #55595c;
+  color:   #55595c;
 }
 
 .bd-toc-link:focus,
 .bd-toc-link:hover {
-  color: #0275d8;
+  color:           #0275d8;
   text-decoration: none;
 }
 
 .active > .bd-toc-link {
   font-weight: 500;
-  color: #373a3c;
-}
-
-.bd-toc-item.active {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-}
-
-.bd-toc-item:first-child {
-  margin-top: 0;
-}
-
-.bd-toc-item:last-child {
-  margin-bottom: 2rem;
-}
-
-.bd-sidebar .nav > li > a {
-  display: block;
-  padding: .25rem .75rem;
-  font-size: 90%;
-  color: #99979c;
-}
-
-.bd-sidebar .nav > li > a:focus,
-.bd-sidebar .nav > li > a:hover {
-  color: #0275d8;
-  text-decoration: none;
-  background-color: transparent;
-}
-
-.bd-sidebar .nav > .active:focus > a,
-.bd-sidebar .nav > .active:hover > a,
-.bd-sidebar .nav > .active > a {
-  font-weight: 500;
-  color: #373a3c;
-  background-color: transparent;
+  color:       #373a3c;
 }
 
 div.api-doc-component {
@@ -129,7 +233,7 @@ div.api-doc-component {
   > h2, > h3 {
     .github-link {
       transition: opacity .5s;
-      opacity: .3;
+      opacity:    .3;
     }
 
     &:hover {
@@ -145,12 +249,12 @@ div.api-doc-component {
   section {
     margin-top: 3rem;
     h4 {
-      margin-top: 2rem;
+      margin-top:    2rem;
       margin-bottom: 1rem;
     }
 
     .meta {
-      font-size: .8rem;
+      font-size:     .8rem;
       margin-bottom: 1rem;
       > div {
         margin-bottom: .5rem;
@@ -160,15 +264,15 @@ div.api-doc-component {
 }
 
 a.title-fragment {
-  opacity: 0;
-  transition: opacity 125ms ease;
-  line-height: inherit;
-  position: absolute;
-  margin-left: -1.2em;
+  opacity:       0;
+  transition:    opacity 125ms ease;
+  line-height:   inherit;
+  position:      absolute;
+  margin-left:   -1.2em;
   padding-right: 0.5em;
 
   & > img {
-    width: 1em;
+    width:  1em;
     height: 1em;
   }
 }
@@ -176,46 +280,94 @@ a.title-fragment {
 div.component-demo {
   margin-bottom: 3rem;
   h2 {
-    margin-bottom: 1rem;
+    display: flex;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+
+    span {
+      flex-grow: 1;
+    }
+
+    .plunker, .stackblitz {
+      display: flex;
+      align-items: center;
+      align-self: center;
+      opacity:    0.3;
+      transition: opacity .5s;
+      margin-left: 1rem;
+    }
 
     .plunker {
-      opacity: 0.3;
-      transition: opacity .5s;
+      .plunkr-icon {
+        height: 1.2rem;
+        margin-left: -0.5rem;
+      }
     }
-    &:hover {
-      .plunker {
+    .stackblitz {
+      .stackblitz-icon {
+        height: 1.2rem;
+        margin-left: -0.5rem;
+      }
+    }
+    .plunker, .stackblitz {
+      &:hover {
         opacity: 1;
       }
     }
   }
 
   .tabset-code {
-    .nav {
-      margin: 0;
-      padding: .5rem 1.25rem 0;
-      font-size: 80%;
-
-      .nav-link.active {
-        background-color: #f5f2f0;
-        border-bottom: 1px solid #f5f2f0;
-      }
-
-      .nav-link:not(.active) {
-        color: #999;
-        &:hover {
-          color: #666;
-        }
-      }
-    }
-
-    .tab-content {
-      overflow: hidden;
-    }
-
     pre {
       margin: 0;
     }
   }
+}
+
+.nav {
+  margin:    0;
+  padding:   .5rem 1.25rem 0;
+  font-size: 80%;
+  border-bottom: 1px solid #d8dde6;
+
+  .nav-item {
+    position: relative;
+    padding: 0 0.75rem;
+    font-size: 0.75rem;
+    line-height: 1.25;
+    background: transparent;
+    border: 0 none;
+
+    &,
+    .nav-link {
+      color: #54698d;
+      text-transform: uppercase;
+      letter-spacing: 0.0625rem;
+      border: 0 none;
+
+      &:after {
+        position: absolute;
+        display: block;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        content: "";
+      }
+
+      &.active {
+        color: #16325c;
+
+        &:after {
+          background-color: #0070d2;
+        }
+      }
+    }
+  }
+}
+
+.tab-content {
+  padding: 1rem 0;
+  overflow: hidden;
 }
 
 .examples-legend {
@@ -223,11 +375,11 @@ div.component-demo {
 }
 
 .bd-footer {
-  padding: 3rem 0;
-  margin-top: 3rem;
-  font-size: 85%;
-  background-color: #f7f7f7;
-  text-align: left;
+  padding:          3rem 0;
+  margin-top:       3rem;
+  font-size:        85%;
+  background-color: $page-footer-bg;
+  text-align:       left;
 
   p {
     margin-bottom: 0;
@@ -235,61 +387,39 @@ div.component-demo {
 
   a {
     font-weight: 500;
-    color: #55595c;
+    color: $page-footer-link-color;
   }
 }
 
-ngxd-api-docs, ngxd-api-docs-class, ngxd-api-docs-config {
+nthd-api-docs, nthd-api-docs-class, nthd-api-docs-config {
   display: block;
 
   &:not(:first-child) {
-    margin-top: 3rem;
-    border-top: 1px solid #999;
+    margin-top:  3rem;
+    border-top:  1px solid $api-docs-border-color;
     padding-top: 1rem;
   }
 }
 
-
-
 // override prism theme background color to inline it with bootstrap colors
 code[class*="language-"],
 pre[class*="language-"] {
-  background-color: #f5f5f5; // same as bootstrap card header
+  background-color: $language-syntax-bg;
 }
 
 span.token.tag {
   font-size: 1em;
-  padding: 0;
+  padding:   0;
 }
 
-ngxd-component-wrapper, ngxd-page-wrapper {
-  .jumbotron {
+nthd-component-wrapper, nthd-page-wrapper {
+  .banner {
     border-radius: 0;
   }
 }
 
-.root-nav {
-  $offset: 73px;
-  > .nav-tabs {
-    transform: translateY(-$offset);
-
-    .nav-link:not(.active) {
-      color: #f9f9f9;
-    }
-
-    .nav-link:not(.active):hover {
-      background-color: rgba(255,255,255, 0.15);
-      border-color: rgba(255,255,255, 0.15);
-    }
-  }
-
-  > .tab-content {
-    transform: translateY(-$offset / 2);
-  }
-}
-
 @mixin center-nav-tab-on-small-screens() {
-  .jumbotron > .container {
+  .banner > .container {
     margin-bottom: 2rem;
     h1 {
       text-align: center;
@@ -303,33 +433,10 @@ ngxd-component-wrapper, ngxd-page-wrapper {
   }
 }
 
-@media (max-width: 768px) and (orientation:portrait) {
+@media (max-width: 768px) and (orientation: portrait) {
   @include center-nav-tab-on-small-screens();
 }
 
-@media (max-width: 568px) and (max-height: 320px)  {
+@media (max-width: 568px) and (max-height: 320px) {
   @include center-nav-tab-on-small-screens();
-}
-
-// Right-To-Left layout for the Islamic Calendars
-ngb-datepicker.rtl {
-	direction: rtl;
-}
-
-ngb-datepicker.rtl ngb-datepicker-navigation-select select.custom-select {
-  background-position: left 0.25rem center;
-}
-
-ngb-datepicker.rtl .ngb-dp-navigation-chevron.right:before {
-  transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-  -ms-transform: rotate(-135deg);
-  margin: 0 0 0 0.5rem;
-}
-
-ngb-datepicker.rtl .ngb-dp-navigation-chevron::before {
-  transform: rotate(45deg);
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  margin: 0 0.5rem 0 0;
 }

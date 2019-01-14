@@ -1,55 +1,46 @@
-<div class="container" style="padding-left: 0; padding-right: 0;">
-  <header class="navbar navbar-light navbar-fixed-top navbar-expand-lg">
+<header>
+  <div class="navbar navbar-fixed-top navbar-expand flex-column flex-md-row">
+    <a [routerLink]="['/']" class="d-inline-flex align-self-center align-items-center"><img class="navbar-logo" src="img/logo.png"/><span>NG-TOGGLE</span></a>
 
-    <a class="navbar-brand" [routerLink]="['/']" (click)="navbarCollapsed = true">ngx-toggle</a>
-
-    <button class="navbar-toggler navbar-toggler-right" type="button" (click)="navbarCollapsed = !navbarCollapsed"
-            [attr.aria-expanded]="!navbarCollapsed" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="navbar-collapse" [ngbCollapse]="navbarCollapsed" id="navbarContent">
-      <ul class="navbar-nav mr-auto">
+    <div class="navbar-nav-scroll d-inline-flex flex-fill" id="navbarContent">
+      <ul class="navbar-nav flex-row">
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/getting-started']" (click)="navbarCollapsed = true">Getting Started</a>
+          <a class="nav-link" [routerLink]="['/docs']">Docs</a>
         </li>
         <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/demo']" (click)="navbarCollapsed = true">Demo</a>
+          <a class="nav-link" [routerLink]="['/support']">Support</a>
         </li>
       </ul>
 
-      <span class="github-buttons d-none d-lg-inline">
+      <span class="github-buttons d-none d-lg-inline ml-auto">
         <a class="github-button"
-           href="https://github.com/ngx-toggle/ngx-toggle"
+           href="https://github.com/nth-cloud/ng-toggle"
            target="_blank"
            data-size="large"
            data-show-count="true"
            data-count-aria-label="# stargazers on GitHub"
-           aria-label="Star ngx-toggle/ngx-toggle on GitHub">Star</a>
-        <a href="https://twitter.com/intent/tweet?button_hashtag=ngxtoggle"
+           aria-label="Star nth-cloud/ng-toggle on GitHub">Star</a>
+        <a href="https://twitter.com/intent/tweet?button_hashtag=ngtoggle"
            class="twitter-hashtag-button"
            data-size="large"
-           data-text="I&#39;m checking out ngx-toggle"
-           data-url="https://ngx-toggle.github.io"
-           data-show-count="true">Tweet #ngxtoggle</a>
+           data-text="I&#39;m checking out ng-toggle"
+           data-url="https://nth-cloud.github.io/ng-toggle"
+           data-show-count="true">Tweet #ngmentions</a>
       </span>
     </div>
-  </header>
-</div>
+  </div>
+</header>
 
-<div>
+<main>
   <router-outlet></router-outlet>
-</div>
+</main>
 
 <footer class="bd-footer text-muted">
   <div class="container">
-    <p>Designed and built by the <a href="https://github.com/ngx-toggle/ngx-toggle/contributors" target="_blank">ngx-toggle
+    <p>Designed and built by the <a href="https://github.com/nth-cloud/ng-toggle/contributors" target="_blank">ng-toggle
       team</a>.</p>
-    <p>Code licensed under <a href="https://raw.githubusercontent.com/ngx-toggle/ngx-toggle/master/LICENSE"
+    <p>Code licensed under <a href="https://raw.githubusercontent.com/nth-cloud/ng-toggle/master/LICENSE"
                               target="_blank">MIT license conditions.</a></p>
-    <p>
-      Documentation licensed under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.
-      Design and content of the documentation site heavily inspired by the <a href="https://ng-bootstrap.github.io/"
-                                                                              target="_blank">Ng-Bootstrap team and design</a>.</p>
+    <p>Documentation licensed under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
   </div>
 </footer>

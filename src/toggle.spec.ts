@@ -2,8 +2,14 @@ import {Component} from '@angular/core';
 import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
-import {NgxToggleModule} from './index';
+import {NgToggleModule} from './index';
 import {createGenericTestComponent} from './test/common';
+
+@Component({selector: 'test-cmp', template: ''})
+class TestComponent {
+  model;
+  disabled;
+}
 
 const createTestComponent = (html: string) =>
     createGenericTestComponent(html, TestComponent) as ComponentFixture<TestComponent>;
@@ -15,17 +21,17 @@ function getInput(nativeEl: HTMLElement): HTMLInputElement {
 describe('ngxToggle', () => {
   beforeEach(() => {
     TestBed.configureTestingModule(
-        {declarations: [TestComponent], imports: [NgxToggleModule, FormsModule, ReactiveFormsModule]});
+        {declarations: [TestComponent], imports: [NgToggleModule, FormsModule, ReactiveFormsModule]});
   });
 
   it('should toggle value on click', fakeAsync(() => {
        const fixture = createTestComponent(`
-      <ngx-toggle [(value)]="model"></ngx-toggle>
+      <ng-toggle [(value)]="model"></ng-toggle>
     `);
 
        fixture.componentInstance.model = false;
        fixture.detectChanges();
-       fixture.nativeElement.querySelector('ngx-toggle').click();
+       fixture.nativeElement.querySelector('ng-toggle').click();
        fixture.detectChanges();
        tick();
        fixture.detectChanges();
@@ -33,7 +39,7 @@ describe('ngxToggle', () => {
 
        fixture.componentInstance.model = true;
        fixture.detectChanges();
-       fixture.nativeElement.querySelector('ngx-toggle').click();
+       fixture.nativeElement.querySelector('ng-toggle').click();
        fixture.detectChanges();
        tick();
        fixture.detectChanges();
@@ -42,12 +48,12 @@ describe('ngxToggle', () => {
 
   it('should toggle mark input as checked / unchecked based on model change', fakeAsync(() => {
        const fixture = createTestComponent(`
-      <ngx-toggle [(value)]="model"><input type="checkbox" [(ngModel)]="model" /></ngx-toggle>
+      <ng-toggle [(value)]="model"><input type="checkbox" [(ngModel)]="model" /></ng-toggle>
     `);
 
        fixture.componentInstance.model = false;
        fixture.detectChanges();
-       fixture.nativeElement.querySelector('ngx-toggle').click();
+       fixture.nativeElement.querySelector('ng-toggle').click();
        fixture.detectChanges();
        tick();
        fixture.detectChanges();
@@ -56,7 +62,7 @@ describe('ngxToggle', () => {
 
        fixture.componentInstance.model = true;
        fixture.detectChanges();
-       fixture.nativeElement.querySelector('ngx-toggle').click();
+       fixture.nativeElement.querySelector('ng-toggle').click();
        fixture.detectChanges();
        tick();
        fixture.detectChanges();
@@ -66,13 +72,13 @@ describe('ngxToggle', () => {
 
   it('should do nothing for disabled on click', fakeAsync(() => {
        const fixture = createTestComponent(`
-      <ngx-toggle [(value)]="model" [disabled]="disabled"></ngx-toggle>
+      <ng-toggle [(value)]="model" [disabled]="disabled"></ng-toggle>
     `);
 
        fixture.componentInstance.model = false;
        fixture.componentInstance.disabled = true;
        fixture.detectChanges();
-       fixture.nativeElement.querySelector('ngx-toggle').click();
+       fixture.nativeElement.querySelector('ng-toggle').click();
        fixture.detectChanges();
        tick();
        fixture.detectChanges();
@@ -81,7 +87,7 @@ describe('ngxToggle', () => {
        fixture.componentInstance.model = true;
        fixture.componentInstance.disabled = true;
        fixture.detectChanges();
-       fixture.nativeElement.querySelector('ngx-toggle').click();
+       fixture.nativeElement.querySelector('ng-toggle').click();
        fixture.detectChanges();
        tick();
        fixture.detectChanges();
@@ -90,13 +96,13 @@ describe('ngxToggle', () => {
 
   it('should toggle do nothing to input when disabled', fakeAsync(() => {
        const fixture = createTestComponent(`
-      <ngx-toggle [(value)]="model" [disabled]="disabled"><input type="checkbox" [(ngModel)]="model" [disabled]="disabled" /></ngx-toggle>
+      <ng-toggle [(value)]="model" [disabled]="disabled"><input type="checkbox" [(ngModel)]="model" [disabled]="disabled" /></ng-toggle>
     `);
 
        fixture.componentInstance.model = false;
        fixture.componentInstance.disabled = true;
        fixture.detectChanges();
-       fixture.nativeElement.querySelector('ngx-toggle').click();
+       fixture.nativeElement.querySelector('ng-toggle').click();
        fixture.detectChanges();
        tick();
        fixture.detectChanges();
@@ -106,7 +112,7 @@ describe('ngxToggle', () => {
        fixture.componentInstance.model = true;
        fixture.componentInstance.disabled = true;
        fixture.detectChanges();
-       fixture.nativeElement.querySelector('ngx-toggle').click();
+       fixture.nativeElement.querySelector('ng-toggle').click();
        fixture.detectChanges();
        tick();
        fixture.detectChanges();
@@ -114,9 +120,3 @@ describe('ngxToggle', () => {
        expect(getInput(fixture.nativeElement).checked).toBeTruthy();
      }));
 });
-
-@Component({selector: 'test-cmp', template: ''})
-class TestComponent {
-  model;
-  disabled;
-}

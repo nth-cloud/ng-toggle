@@ -4,115 +4,49 @@ import {
   AfterViewInit,
   Component,
   ContentChildren,
-  Directive,
   ElementRef,
-  EventEmitter,
-  forwardRef,
+  EventEmitter, HostBinding,
   HostListener,
   Input,
   NgZone,
   OnChanges,
-  OnDestroy,
   Output,
   QueryList,
   SimpleChanges,
-  TemplateRef,
   ViewChild,
   ViewEncapsulation
 } from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {Subscription} from 'rxjs';
+import {NgToggleLabel} from './toggle-label';
 
 /**
- * The NgxToggleLabel directive allows you to customize the label for the "On" and "Off" states,
- * allowing for more robust and complex displays.
- * This directive must be used in conjunction with a ng-template.
- */
-@Directive({selector: 'ng-template[ngxToggleLabel]'})
-export class NgxToggleLabel {
-  /**
-   * Determines which state the label will be used.
-   */
-  @Input() forLabel: 'on'|'off';
-
-  constructor(public templateRef: TemplateRef<any>, private elRef: ElementRef) {}
-
-  get element(): ElementRef {
-    return this.elRef;
-  }
-}
-
-/**
- * The NgxToggle directive allows for standalone or checkbox-enabled switch toggling via a UI element.
+ * The Toggle directive allows for standalone or checkbox-enabled switch toggling via a UI element.
  * The toggle is styled using Bootstrap v4+ classes.
  */
 @Component({
-  selector: 'ngx-toggle',
+  selector: 'ng-toggle',
   template: `
-        <div #wrapper class="ngx-toggle-wrapper btn" [ngClass]="btnClasses">
-            <div #container class="ngx-toggle-container"
-                 [style.margin-left]="marginLeft"
-            >
-            <span #on class="ngx-toggle-on btn" [ngClass]="onClasses">
-                <ng-template [ngTemplateOutlet]="onLabel?.templateRef"></ng-template>
-                <ng-container *ngIf="!onLabel">{{onText}}</ng-container>
-            </span>
-                <span #handle class="ngx-toggle-handle btn" [ngClass]="handleClass">&nbsp;</span>
-                <span #off class="ngx-toggle-off btn" [ngClass]="offClasses">
-                <ng-template [ngTemplateOutlet]="offLabel?.templateRef"></ng-template>
-                <ng-container *ngIf="!offLabel">{{offText}}</ng-container>
-            </span>
-            </div>
-            <ng-content></ng-content>
-        </div>
+    <span #container class="ng-toggle-container" [style.marginLeft]="marginLeft">
+      <span #on class="ng-toggle-on btn btn-{{onColor}}" [class.btn-lg]="largeButton"
+            [class.btn-sm]="smallButton" [class.disabled]="disabled">
+          <ng-template [ngTemplateOutlet]="onLabel?.templateRef"></ng-template>
+          <ng-container *ngIf="!onLabel">{{onText}}</ng-container>
+      </span>
+      <span #handle class="ng-toggle-handle btn" [class.btn-lg]="largeButton"
+            [class.btn-sm]="smallButton" [class.disabled]="disabled"
+            [class.btn-light]="!handleDark" [class.btn-dark]="handleDark">&nbsp;</span>
+      <span #off class="ng-toggle-off btn btn-{{offColor}}" [class.btn-lg]="largeButton"
+            [class.btn-sm]="smallButton" [class.disabled]="disabled">
+        <ng-template [ngTemplateOutlet]="offLabel?.templateRef"></ng-template>
+        <ng-container *ngIf="!offLabel">{{offText}}</ng-container>
+      </span>
+    </span>
+    <ng-content></ng-content>
     `,
-  styles: [
-    ':host {position: relative; display: inline-block;}',
-    `.ngx-toggle-container, .ngx-toggle-on, .ngx-toggle-off, .ngx-toggle-handle {
-            display: -webkit-box !important;
-            display: -webkit-flex !important;
-            display: -ms-flexbox !important;
-            display: flex !important;
-        }`,
-    `.ngx-toggle-wrapper {
-            position:       relative;
-            display:        block;
-            direction:      ltr;
-            cursor:         pointer;
-            overflow:       hidden;
-            padding:        0;
-            text-align:     left;
-            z-index:        0;
-            user-select:    none;
-            vertical-align: middle;
-            transition:     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-            box-sizing:     content-box;
-        }`,
-    '.ngx-toggle-wrapper.disabled,.ngx-toggle-wrapper.disabled .btn{cursor: default;}',
-    '.ngx-toggle-wrapper input{position: absolute; z-index: -1; visibility: hidden; width: 1px; height: 1px;}',
-    '.ngx-toggle-container{align-items: stretch!important; top: 0; border-radius: 0; transform: translateZ(0);}',
-    '.ngx-toggle-wrapper.ngx-toggle-animate .ngx-toggle-container {transition: margin-left 0.5s;}',
-    '.ngx-toggle-on,.ngx-toggle-off {align-items: center!important; text-align: center; z-index: 1; border-radius: 0;}',
-    `.ngx-toggle-on, .ngx-toggle-off, .ngx-toggle-handle {
-            box-sizing:  border-box;
-            cursor:      pointer;
-            user-select: none;
-        }`,
-    `.ngx-toggle-handle {
-            text-align:    center;
-            margin-top:    -1px;
-            margin-bottom: -1px;
-            z-index:       100;
-            width:         1em;
-            padding-left:  0;
-            padding-right: 0;
-            align-self:    stretch !important;
-        }`
-  ],
+  styleUrls: ['./toggle.scss'],
   preserveWhitespaces: false,
   encapsulation: ViewEncapsulation.None
 })
-export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChecked, OnChanges {
+export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewChecked, OnChanges {
   /**
    * Display text when toggled in the "On" position
    * @type {string}
@@ -142,7 +76,10 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
    * Whether the toggle is disabled or not
    * @type {boolean}
    */
-  @Input() disabled: boolean = false;
+  @Input()
+  @HostBinding('class.disabled')
+  @HostBinding('class.ng-toggle-disabled')
+  disabled: boolean = false;
 
   /**
    * @param {boolean} value
@@ -163,17 +100,18 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
    */
   @Output() valueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  @HostBinding('class.btn') btnClass: boolean = true;
+
   width: number = 0;
   handleWidth: number = 0;
 
-  @ViewChild('wrapper') wrapperElement: ElementRef;
   @ViewChild('container') containerElement: ElementRef;
   @ViewChild('on') onElement: ElementRef;
   @ViewChild('off') offElement: ElementRef;
   @ViewChild('handle') handleElement: ElementRef;
-  @ContentChildren(NgxToggleLabel) labelElements: QueryList<NgxToggleLabel>;
-  onLabel: NgxToggleLabel;
-  offLabel: NgxToggleLabel;
+  @ContentChildren(NgToggleLabel) labelElements: QueryList<NgToggleLabel>;
+  onLabel: NgToggleLabel;
+  offLabel: NgToggleLabel;
 
   private _animate: boolean = true;
   private _innerAnimate: boolean = true;
@@ -185,7 +123,7 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
   private _initialized: boolean = false;
   private _hidden: boolean = false;
 
-  constructor(private ngZone: NgZone, private elRef: ElementRef) {}
+  constructor(private ngZone: NgZone, private element: ElementRef) {}
 
   ngAfterViewInit(): void {
     this.calculateWidth();
@@ -193,18 +131,20 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
   }
 
   ngAfterViewChecked(): void {
-    let hidden = this.elRef.nativeElement.offsetParent === null;
-    if (this._initialized && this._hidden && !hidden) {
+    const hidden = this.element.nativeElement.offsetParent === null;
+    if (this._hidden !== hidden) {
+      this._initialized = false;
       this.calculateWidth();
+      this._initialized = true;
     }
     this._hidden = hidden;
   }
 
   ngAfterContentInit(): void {
-    let onElement: NgxToggleLabel =
-        this.labelElements.find((item: NgxToggleLabel) => item.forLabel.toLowerCase() === 'on');
-    let offElement: NgxToggleLabel =
-        this.labelElements.find((item: NgxToggleLabel) => item.forLabel.toLowerCase() === 'off');
+    const onElement: NgToggleLabel =
+        this.labelElements.find((item: NgToggleLabel) => item.forLabel.toLowerCase() === 'on');
+    const offElement: NgToggleLabel =
+        this.labelElements.find((item: NgToggleLabel) => item.forLabel.toLowerCase() === 'off');
 
     if (onElement) {
       this.onLabel = onElement;
@@ -218,78 +158,51 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes['onText'] || changes['offText'] || changes['size']) {
+    if ('onText' in changes || 'offText' in changes || 'size' in changes) {
       this._initialized = false;
       this.calculateWidth(this._initialized);
       this._initialized = true;
     }
   }
 
-  get btnClasses(): any {
-    let btnClasses = {
-      'disabled': this.disabled,
-      'ngx-toggle-lg': this.size === 'lg',
-      'ngx-toggle-sm': this.size === 'sm',
-      'btn-lg': this.size === 'lg',
-      'btn-sm': this.size === 'sm',
-      'ngx-toggled-on': this.innerState === true,
-      'ngx-toggled-off': this.innerState === false,
-      'ngx-toggle-indeterminate': this.indeterminate,
-      'ngx-toggle-animate': this.animate,
-      'ngx-toggle-disabled': this.disabled
-    };
-    btnClasses[this.activeClass] = this.value;
-    btnClasses[this.inactiveClass] = !this.value;
-    if (this.activeClass === this.inactiveClass) {
-      btnClasses[this.activeClass] = true;
-    }
-
-    return btnClasses;
+  @HostBinding('class.btn-lg')
+  @HostBinding('class.ng-toggle-lg')
+  get largeButton(): boolean {
+    return this.size === 'lg';
   }
 
-  get handleClass(): any {
-    let handleClass = 'btn-light';
-    let classes = {'disabled': this.disabled, 'btn-lg': this.size === 'lg', 'btn-sm': this.size === 'sm'};
-    if ((this.value && this.onColor === 'light') || (!this.value && this.offColor === 'light')) {
-      handleClass = 'btn-dark';
-    }
-    classes[handleClass] = true;
-
-    return classes;
+  @HostBinding('class.btn-sm')
+  @HostBinding('class.ng-toggle-sm')
+  get smallButton(): boolean {
+    return this.size === 'sm';
   }
 
-  get onClasses(): any {
-    let classes = {'disabled': this.disabled, 'btn-lg': this.size === 'lg', 'btn-sm': this.size === 'sm'};
-    classes['btn-' + this.onColor] = true;
-
-    return classes;
+  get handleDark(): boolean {
+    return (this.value && this.onColor === 'light') || (!this.value && this.offColor === 'light');
   }
 
-  get offClasses(): any {
-    let classes = {'disabled': this.disabled, 'btn-lg': this.size === 'lg', 'btn-sm': this.size === 'sm'};
-    classes['btn-' + this.offColor] = true;
-
-    return classes;
-  }
-
+  @HostBinding('class.ng-toggle-indeterminate')
   get indeterminate(): boolean {
     return this._innerState === null || typeof this._innerState === 'undefined';
   }
 
-  get activeClass(): string {
-    return 'btn-' + this.onColor;
+  @HostBinding('class.ng-toggled-on')
+  get toggledOn(): boolean {
+    return this.innerState === true;
   }
 
-  get inactiveClass(): string {
-    return 'btn-' + this.offColor;
+  @HostBinding('class.ng-toggled-off')
+  get toggledOff(): boolean {
+    return this.innerState === false;
   }
 
   get innerState(): boolean {
     return this._innerState;
   }
 
+  @HostBinding('class.ng-toggle-animate')
   get animate(): boolean {
-    return this._animate;
+    return this._animate && this._initialized;
   }
 
   get marginLeft(): string {
@@ -304,6 +217,13 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
     }
 
     return margin + 'px';
+  }
+
+  @HostListener('window:resize')
+  handleResize() {
+    this._initialized = false;
+    this.calculateWidth(true);
+    this._initialized = true;
   }
 
   @HostListener('click')
@@ -416,10 +336,10 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
       this._animate = false;
     }
 
-    let initialized = this._initialized;
+    const initialized = this._initialized;
     if (!initialized) {
       this.container$.style.width = 'auto';
-      this.wrapper$.style.width = 'auto';
+      this.element$.style.width = 'auto';
     }
     this.on$.style.width = 'auto';
     this.off$.style.width = 'auto';
@@ -434,7 +354,7 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
 
       if (!initialized) {
         this.container$.style.width = ((this.width * 2) + this.handleWidth) + 'px';
-        this.wrapper$.style.width = (this.width + this.handleWidth) + 'px';
+        this.element$.style.width = (this.width + this.handleWidth) + 'px';
       }
 
       this.ngZone.run(() => {
@@ -456,8 +376,8 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
     }
   }
 
-  private get wrapper$(): HTMLElement {
-    return this.wrapperElement.nativeElement;
+  private get element$(): HTMLElement {
+    return this.element.nativeElement;
   }
 
   private get on$(): HTMLElement {
@@ -474,57 +394,5 @@ export class NgxToggle implements AfterViewInit, AfterContentInit, AfterViewChec
 
   private get container$(): HTMLElement {
     return this.containerElement.nativeElement;
-  }
-}
-
-@Directive({
-  selector: 'ngx-toggle',
-  host: {'(change)': 'onChange($event)', '(touch)': 'onTouched()'},
-  providers: [{provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NgxToggleAccessor), multi: true}]
-})
-export class NgxToggleAccessor implements ControlValueAccessor, OnDestroy {
-  private _onChange: (_: any) => void;
-  private _onTouched: () => void;
-  private _subscription: Subscription;
-
-  constructor(private _host: NgxToggle) {
-    this._subscription = this._host.valueChange.subscribe(value => this.onChange(value));
-  }
-
-  ngOnDestroy(): void {
-    if (this._subscription) {
-      this._subscription.unsubscribe();
-      this._subscription = null;
-    }
-  }
-
-  onChange(_: any) {
-    if (this._onChange) {
-      this._onChange(this._host.value);
-    }
-  }
-
-  onTouched() {
-    if (this._onTouched) {
-      this._onTouched();
-    }
-  }
-
-  registerOnChange(fn: any): void {
-    this._onChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    this._onTouched = fn;
-  }
-
-  setDisabledState?(isDisabled: boolean): void {
-    this._host.disabled = isDisabled;
-  }
-
-  writeValue(obj: any): void {
-    if (typeof obj === 'boolean' || obj === null) {
-      this._host.value = obj;
-    }
   }
 }

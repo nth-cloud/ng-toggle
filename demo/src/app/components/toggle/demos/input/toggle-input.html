@@ -1,5 +1,5 @@
 <div>
-    <ngx-toggle
+    <ng-toggle
             onColor="{{model.onColor}}"
             onText="{{model.onText}}"
             offColor="{{model.offColor}}"
@@ -9,7 +9,7 @@
             [(ngModel)]="model.value"
     >
         <input type="checkbox" [disabled]="model.disabled" [(ngModel)]="model.value" />
-    </ngx-toggle>
+    </ng-toggle>
 </div>
 <pre class="my-2">{{model | json}}</pre>
 <div class="row mb-2">
