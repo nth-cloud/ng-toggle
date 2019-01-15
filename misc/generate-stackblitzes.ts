@@ -161,7 +161,7 @@ function getVersions() {
     coreJs: getVersion('core-js'),
     reflectMetadata: getVersion(
         'reflect-metadata', JSON.parse(fs.readFileSync('node_modules/@angular/compiler-cli/package.json').toString())),
-    bootstrap: getVersion('bootstrap')
+    bootstrap: getVersion('bootstrap').replace('^', '')
   };
 }
 
