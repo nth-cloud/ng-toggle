@@ -2,138 +2,168 @@
 <html lang="en">
 <body>
   <form id="mainForm" method="post" action="http://plnkr.co/edit/?p=preview">
-    <input type="hidden" name="description" value="Example usage of the toggle widget from https://nth-cloud.github.io/ngx-toggle">
+    <input type="hidden" name="description" value="Example usage of the toggle widget from https://nth-cloud.github.io/ng-toggle">
     <input type="hidden" name="tags[0]" value="Angular">
     <input type="hidden" name="tags[1]" value="Bootstrap">
-    <input type="hidden" name="tags[2]" value="ngx-toggle">
-    <input type="hidden" name="tags[3]" value="Toggle">  
+    <input type="hidden" name="tags[2]" value="ng-toggle">
+    <input type="hidden" name="tags[3]" value="Toggle">
+  
+    <input type="hidden" name="files[.angular-cli.json]" value="{
+  &#x22;apps&#x22;: [{
+    &#x22;styles&#x22;: [
+      &#x22;styles.css&#x22;
+    ]
+  }]
+}
+">
     <input type="hidden" name="files[index.html]" value="&#x3C;!DOCTYPE html&#x3E;
 &#x3C;html&#x3E;
 
   &#x3C;head&#x3E;
-  &#x3C;base href=&#x22;.&#x22; /&#x3E;
-    &#x3C;title&#x3E;ngx-toggle demo&#x3C;/title&#x3E;
-    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/^4.1.3/css/bootstrap.min.css&#x22; /&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/core-js@^2.4.1/client/shim.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.10/dist/zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/zone.js@^0.8.10/dist/long-stack-trace-zone.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/reflect-metadata@^0.1.8/Reflect.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;https://unpkg.com/systemjs@^0.19.40/dist/system.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script src=&#x22;config.js&#x22;&#x3E;&#x3C;/script&#x3E;
-    &#x3C;script&#x3E;
-    System.import(&#x27;app&#x27;).catch(console.error.bind(console));
-&#x3C;/script&#x3E;
+    &#x3C;title&#x3E;ng-toggle demo&#x3C;/title&#x3E;
+    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/^4.2.1/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.css&#x22; /&#x3E;
   &#x3C;/head&#x3E;
 
   &#x3C;body&#x3E;
-  &#x3C;my-app&#x3E;loading...&#x3C;/my-app&#x3E;
+    &#x3C;my-app&#x3E;loading...&#x3C;/my-app&#x3E;
   &#x3C;/body&#x3E;
 
 &#x3C;/html&#x3E;">
-    <input type="hidden" name="files[config.js]" value="var ver = {
-    ng: &#x27;^6.1.10&#x27;
-  };
-  
-  System.config({
-  //use typescript for compilation
-  transpiler: &#x27;typescript&#x27;,
-  //typescript compiler options
-  typescriptOptions: {
-    emitDecoratorMetadata: true
-  },
-  meta: {
-    &#x27;typescript&#x27;: {
-      &#x22;exports&#x22;: &#x22;ts&#x22;
-    }
-  },  
-  paths: {
-    &#x27;npm:&#x27;: &#x27;https://unpkg.com/&#x27;
-  },
-  map: {
+    <input type="hidden" name="files[src/main.ts]" value="import &#x27;./polyfills&#x27;;
 
-    &#x27;app&#x27;: &#x27;./src&#x27;,
+import { platformBrowserDynamic } from &#x27;@angular/platform-browser-dynamic&#x27;;
 
-    &#x27;@angular/core&#x27;: &#x27;npm:@angular/core@&#x27; + ver.ng + &#x27;/bundles/core.umd.js&#x27;,
-    &#x27;@angular/common&#x27;: &#x27;npm:@angular/common@&#x27; + ver.ng + &#x27;/bundles/common.umd.js&#x27;,
-    &#x27;@angular/common/http&#x27;: &#x27;npm:@angular/common@&#x27; + ver.ng + &#x27;/bundles/common-http.umd.js&#x27;,
-    &#x27;@angular/compiler&#x27;: &#x27;npm:@angular/compiler@&#x27; + ver.ng + &#x27;/bundles/compiler.umd.js&#x27;,
-    &#x27;@angular/platform-browser&#x27;: &#x27;npm:@angular/platform-browser@&#x27; + ver.ng + &#x27;/bundles/platform-browser.umd.js&#x27;,
-    &#x27;@angular/platform-browser-dynamic&#x27;: &#x27;npm:@angular/platform-browser-dynamic@&#x27; + ver.ng + &#x27;/bundles/platform-browser-dynamic.umd.js&#x27;,
-    &#x27;@angular/http&#x27;: &#x27;npm:@angular/http@&#x27; + ver.ng + &#x27;/bundles/http.umd.js&#x27;,
-    &#x27;@angular/router&#x27;: &#x27;npm:@angular/router@&#x27; + ver.ng + &#x27;/bundles/router.umd.js&#x27;,
-    &#x27;@angular/forms&#x27;: &#x27;npm:@angular/forms@&#x27; + ver.ng + &#x27;/bundles/forms.umd.js&#x27;,
+import { AppModule } from &#x27;./app/app.module&#x27;;
 
-    &#x27;rxjs&#x27;: &#x27;npm:rxjs@^6.3.3&#x27;,
-    &#x27;tslib&#x27;: &#x27;npm:tslib/tslib.js&#x27;,
-    &#x27;typescript&#x27;: &#x27;npm:typescript@~2.7.2/lib/typescript.js&#x27;,
-
-    &#x27;ngx-toggle&#x27;: &#x27;npm:ngx-toggle@2.0.1/bundles/ngx-toggle.js&#x27;
-  },
-  packages: {
-    app: {
-      main: &#x27;./main.ts&#x27;,
-      defaultExtension: &#x27;ts&#x27;
-    },
-    rxjs: {
-      main: &#x27;index.js&#x27;,
-      defaultExtension: &#x27;js&#x27;
-    },
-    &#x27;rxjs/operators&#x27;: {
-      main: &#x27;index.js&#x27;,
-      defaultExtension: &#x27;js&#x27;
-    }
+platformBrowserDynamic().bootstrapModule(AppModule).then(ref =&#x3E; {
+  // Ensure Angular destroys itself on hot reloads.
+  if (window[&#x27;ngRef&#x27;]) {
+    window[&#x27;ngRef&#x27;].destroy();
   }
-});
-">
-    <input type="hidden" name="files[src/main.ts]" value="import {platformBrowserDynamic} from &#x27;@angular/platform-browser-dynamic&#x27;;
-import {AppModule} from &#x27;./app&#x27;;
+  window[&#x27;ngRef&#x27;] = ref;
 
-platformBrowserDynamic().bootstrapModule(AppModule);
+  // Otherwise, log the boot error
+}).catch(err =&#x3E; console.error(err));
 ">
-    <input type="hidden" name="files[src/app.ts]" value="
-import { Component, NgModule } from &#x27;@angular/core&#x27;;
+    <input type="hidden" name="files[src/polyfills.ts]" value="/**
+ * This file includes polyfills needed by Angular and is loaded before the app.
+ * You can add your own extra polyfills to this file.
+ *
+ * This file is divided into 2 sections:
+ *   1. Browser polyfills. These are applied before loading ZoneJS and are sorted by browsers.
+ *   2. Application imports. Files imported after ZoneJS that should be loaded before your main
+ *      file.
+ *
+ * The current setup is for so-called &#x22;evergreen&#x22; browsers; the last versions of browsers that
+ * automatically update themselves. This includes Safari &#x3E;= 10, Chrome &#x3E;= 55 (including Opera),
+ * Edge &#x3E;= 13 on the desktop, and iOS 10 and Chrome on mobile.
+ *
+ * Learn more in https://angular.io/docs/ts/latest/guide/browser-support.html
+ */
+
+/***************************************************************************************************
+ * BROWSER POLYFILLS
+ */
+
+/** IE9, IE10 and IE11 requires all of the following polyfills. **/
+// import &#x27;core-js/es6/symbol&#x27;;
+// import &#x27;core-js/es6/object&#x27;;
+// import &#x27;core-js/es6/function&#x27;;
+// import &#x27;core-js/es6/parse-int&#x27;;
+// import &#x27;core-js/es6/parse-float&#x27;;
+// import &#x27;core-js/es6/number&#x27;;
+// import &#x27;core-js/es6/math&#x27;;
+// import &#x27;core-js/es6/string&#x27;;
+// import &#x27;core-js/es6/date&#x27;;
+// import &#x27;core-js/es6/array&#x27;;
+// import &#x27;core-js/es6/regexp&#x27;;
+// import &#x27;core-js/es6/map&#x27;;
+// import &#x27;core-js/es6/weak-map&#x27;;
+// import &#x27;core-js/es6/set&#x27;;
+
+/** IE10 and IE11 requires the following for NgClass support on SVG elements */
+// import &#x27;classlist.js&#x27;;  // Run &#x60;npm install --save classlist.js&#x60;.
+
+/** IE10 and IE11 requires the following for the Reflect API. */
+// import &#x27;core-js/es6/reflect&#x27;;
+
+
+/** Evergreen browsers require these. **/
+// Used for reflect-metadata in JIT. If you use AOT (and only Angular decorators), you can remove.
+import &#x27;core-js/es7/reflect&#x27;;
+
+
+/**
+ * Required to support Web Animations &#x60;@angular/platform-browser/animations&#x60;.
+ * Needed for: All but Chrome, Firefox and Opera. http://caniuse.com/#feat=web-animation
+ **/
+// import &#x27;web-animations-js&#x27;;  // Run &#x60;npm install --save web-animations-js&#x60;.
+
+
+
+/***************************************************************************************************
+ * Zone JS is required by default for Angular itself.
+ */
+import &#x27;zone.js/dist/zone&#x27;;  // Included with Angular CLI.
+
+
+
+/***************************************************************************************************
+ * APPLICATION IMPORTS
+ */
+">
+    <input type="hidden" name="files[src/app.module.ts]" value="
+import { NgModule } from &#x27;@angular/core&#x27;;
 import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
 import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
 import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
-import { NgxToggleModule } from &#x27;ngx-toggle&#x27;;
-import { NgtsdToggleCustom-label } from &#x27;./toggle-custom-label&#x27;;
+import { ToggleModule } from &#x27;@nth-cloud/ng-toggle&#x27;;
+import { AppComponent } from &#x27;./app.component&#x27;;
+import { NthdToggleCustomLabel, NthdToggleCustomLabel } from &#x27;./toggle-custom-label&#x27;;
+
+@NgModule({
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, ToggleModule],
+  declarations: [AppComponent, NthdToggleCustomLabel, NthdToggleCustomLabel],
+  entryComponents: [NthdToggleCustomLabel],
+  bootstrap: [AppComponent]
+})
+export class AppModule {}
+">
+    <input type="hidden" name="files[src/app.component.ts]" value="import { Component } from &#x27;@angular/core&#x27;;
 
 @Component({
   selector: &#x27;my-app&#x27;,
-  template: &#x60;
-    &#x3C;div class=&#x22;container-fluid&#x22;&#x3E;
-    
-    &#x3C;hr&#x3E;
-    &#x3C;p&#x3E;
-      This is a demo plnkr forked from the &#x3C;strong&#x3E;ngx-toggle&#x3C;/strong&#x3E; project: Angular powered Bootstrap.
-      Visit &#x3C;a href=&#x22;https://nth-cloud.github.io/ngx-toggle/&#x22; target=&#x22;_blank&#x22;&#x3E;https://nth-cloud.github.io/ngx-toggle&#x3C;/a&#x3E; for more widgets and demos.
-    &#x3C;/p&#x3E;
-    &#x3C;hr&#x3E;
-
-    &#x3C;ngtsd-toggle-custom-label&#x3E;&#x3C;/ngtsd-toggle-custom-label&#x3E;
-  &#x3C;/div&#x3E;
-  &#x60;
+  templateUrl: &#x27;./app.component.html&#x27;
 })
-export class App {
-}   
-
-@NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgxToggleModule], 
-  declarations: [App, NgtsdToggleCustom-label],
-  bootstrap: [App]
-}) 
-export class AppModule {}
+export class AppComponent {
+}
 ">
-    <input type="hidden" name="files[src/toggle-custom-label.ts]" value="import { Component } from &#x27;@angular/core&#x27;;
+    <input type="hidden" name="files[src/app.component.html]" value="
+&#x3C;div class=&#x22;container-fluid&#x22;&#x3E;
+
+  &#x3C;hr&#x3E;
+
+  &#x3C;p&#x3E;
+    This is a demo example forked from the &#x3C;strong&#x3E;ng-bootstrap&#x3C;/strong&#x3E; project: Angular powered Bootstrap.
+    Visit &#x3C;a href=&#x22;https://nth-cloud.github.io/ng-toggle/&#x22; target=&#x22;_blank&#x22;&#x3E;https://nth-cloud.github.io/ng-toggle&#x3C;/a&#x3E; for more widgets and demos.
+  &#x3C;/p&#x3E;
+
+  &#x3C;hr&#x3E;
+
+  &#x3C;nthd-toggle-custom-label&#x3E;&#x3C;/nthd-toggle-custom-label&#x3E;
+&#x3C;/div&#x3E;
+">
+    <input type="hidden" name="files[app/toggle-custom-label.ts]" value="import { Component } from &#x27;@angular/core&#x27;;
 
 @Component({
-  selector: &#x27;ngxd-toggle-custom-label&#x27;,
-  templateUrl: &#x27;src/toggle-custom-label.html&#x27;,
+  selector: &#x27;nthd-toggle-custom-label&#x27;,
+  templateUrl: &#x27;./toggle-custom-label.html&#x27;,
   styles: [
       &#x27;@import url(&#x22;//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css&#x22;);&#x27;
   ]
 })
-export class NgxdToggleCustomLabel {
+export class NthdToggleCustomLabel {
   model: any = {
     onColor: &#x27;primary&#x27;,
     offColor: &#x27;secondary&#x27;,
@@ -144,8 +174,8 @@ export class NgxdToggleCustomLabel {
   };
 }
 ">
-    <input type="hidden" name="files[src/toggle-custom-label.html]" value="&#x3C;div&#x3E;
-    &#x3C;ngx-toggle
+    <input type="hidden" name="files[app/toggle-custom-label.html]" value="&#x3C;div&#x3E;
+    &#x3C;ng-toggle
         onColor=&#x22;{{model.onColor}}&#x22;
         onText=&#x22;{{model.onText}}&#x22;
         offColor=&#x22;{{model.offColor}}&#x22;
@@ -154,12 +184,14 @@ export class NgxdToggleCustomLabel {
         [size]=&#x22;model.size&#x22;
         [(ngModel)]=&#x22;model.value&#x22;
     &#x3E;
-        &#x3C;ng-template ngxToggleLabel forLabel=&#x22;on&#x22;&#x3E;&#x3C;span class=&#x22;fa fa-play&#x22;&#x3E;&#x3C;/span&#x3E;&#x26;nbsp;It&#x27;s On!&#x3C;br /&#x3E;Like Donkey Kong!&#x3C;/ng-template&#x3E;
-        &#x3C;ng-template ngxToggleLabel forLabel=&#x22;off&#x22;&#x3E;&#x3C;span class=&#x22;fa fa-stop&#x22;&#x3E;&#x3C;/span&#x3E;&#x26;nbsp;And... We&#x27;re Down.&#x3C;/ng-template&#x3E;
-    &#x3C;/ngx-toggle&#x3E;
+        &#x3C;ng-template toggleLabel forLabel=&#x22;on&#x22;&#x3E;&#x3C;span class=&#x22;fa fa-play&#x22;&#x3E;&#x3C;/span&#x3E;&#x26;nbsp;It&#x27;s On!&#x3C;br /&#x3E;Like Donkey Kong!&#x3C;/ng-template&#x3E;
+        &#x3C;ng-template toggleLabel forLabel=&#x22;off&#x22;&#x3E;&#x3C;span class=&#x22;fa fa-stop&#x22;&#x3E;&#x3C;/span&#x3E;&#x26;nbsp;And... We&#x27;re Down.&#x3C;/ng-template&#x3E;
+    &#x3C;/ng-toggle&#x3E;
 &#x3C;/div&#x3E;
 &#x3C;pre class=&#x22;my-2&#x22;&#x3E;{{model | json}}&#x3C;/pre&#x3E;
 ">
+    
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;7.0.0&#x22;,&#x22;@nth-cloud/ng-toggle&#x22;:&#x22;2.1.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.6.1&#x22;,&#x22;rxjs&#x22;:&#x22;^6.3.0&#x22;,&#x22;zone.js&#x22;:&#x22;~0.8.26&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>
