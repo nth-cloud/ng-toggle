@@ -15,7 +15,6 @@ const declarations = [
   NgToggleLabel,
 ];
 
-@NgModule(
-    {imports: [CommonModule], exports: declarations, declarations: declarations})
+@NgModule({imports: [CommonModule], exports: declarations, declarations: declarations})
 export class NgToggleModule {
 }
