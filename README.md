@@ -8,8 +8,6 @@
 [![Sauce Test Status](https://saucelabs.com/buildstatus/trickeyone)](https://saucelabs.com/u/trickeyone)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/trickeyone.svg)](https://saucelabs.com/u/trickeyone)
 
-[![NPM](https://nodei.co/npm/ngx-toggle.png?compact=true)](https://www.npmjs.com/package/ngx-toggle)
-
 Angular Bootstrap-styled Toggle component that can be used as a standalone toggle or can convert checkboxes into UI toggles.
 
 ## Demo
