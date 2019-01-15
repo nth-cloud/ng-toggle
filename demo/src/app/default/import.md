@@ -1,1 +1,1 @@
-import {MentionsModule} from '@nth-cloud/ng-toggle';
+import {NgToggleModule} from '@nth-cloud/ng-toggle';

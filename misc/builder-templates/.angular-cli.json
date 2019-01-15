@@ -1,7 +1,3 @@
 {
-  "apps": [{
-    "styles": [
-      "styles.css"
-    ]
-  }]
+  "apps": [{}]
 }

@@ -293,28 +293,19 @@ div.component-demo {
       flex-grow: 1;
     }
 
-    .plunker, .stackblitz {
+    .stackblitz {
       display: flex;
       align-items: center;
       align-self: center;
       opacity:    0.3;
       transition: opacity .5s;
       margin-left: 1rem;
-    }
 
-    .plunker {
-      .plunkr-icon {
-        height: 1.2rem;
-        margin-left: -0.5rem;
-      }
-    }
-    .stackblitz {
       .stackblitz-icon {
         height: 1.2rem;
         margin-left: -0.5rem;
       }
-    }
-    .plunker, .stackblitz {
+
       &:hover {
         opacity: 1;
       }

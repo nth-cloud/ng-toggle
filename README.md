@@ -1,4 +1,4 @@
-# NG v2+ Toggle
+# NG-TOGGLE - Native Angular components & directives for Bootstrap-styled Toggle Switch 
 
 [![npm version](https://badge.fury.io/js/%40nth-cloud%2Fng-toggle.svg)](https://badge.fury.io/js/%40nth-cloud%2Fng-toggle)
 [![Build Status](https://travis-ci.org/nth-cloud/ng-toggle.svg?branch=master)](https://travis-ci.org/nth-cloud/ng-toggle)
@@ -10,7 +10,7 @@
 
 [![NPM](https://nodei.co/npm/ngx-toggle.png?compact=true)](https://www.npmjs.com/package/ngx-toggle)
 
-Angular v2+ Bootstrap-styled Toggle that can be used as a standalone toggle or can convert checkboxes into UI toggles.
+Angular Bootstrap-styled Toggle component that can be used as a standalone toggle or can convert checkboxes into UI toggles.
 
 ## Demo
 
@@ -21,27 +21,28 @@ View it in action at https://nth-cloud.github.io/ng-toggle
 * [Bootstrap 4](https://www.getbootstrap.com) (tested with 4.1.3)
 
 ## Installation
-After installing the above dependencies, install `ngx-toggle` via:
+After installing the above dependencies, install `ng-toggle` via:
 ```shell
-npm install --save ngx-toggle
+npm install --save @nth-cloud/ng-toggle
 ```
 
 Import the main module into your project:
 ```js
-import {NgxToggleModule} from "ngx-toggle";
+import {NgToggleModule} from '@nth-cloud/ng-toggle';
 ```
 
 Import the module into your application:
 ```js
-import {NgxToggleModule} from "ngx-toggle";
+import {NgToggleModule} from '@nth-cloud/ng-toggle';
 
 @NgModule({
-    ...
-    imports: [NgxToggleModule, ...],
-    ...
+  declarations: [AppComponent, ...],
+  imports: [NgToggleModule, ...],
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
+
 ```
 
 If you are using SystemJS, you should adjust your configuration to point to the UMD bundle.
@@ -49,7 +50,7 @@ If you are using SystemJS, you should adjust your configuration to point to the 
 In your systemJS config file, `map` needs to tell the System loader where to look for `ngx-toggle`:
 ```js
 map: {
-   '@nth-cloud/ng-toggle': 'node_modules/ngx-toggle/dist/bundles/ngx-toggle.js' 
+  '@nth-cloud/ng-toggle': 'npm:@nth-cloud/ng-toggle/dist/bundles/ng-toggle.js',
 }
 ```
 

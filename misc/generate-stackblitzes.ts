@@ -118,12 +118,12 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { ToggleModule } from '@nth-cloud/ng-toggle';
+import { NgToggleModule } from '@nth-cloud/ng-toggle';
 import { AppComponent } from './app.component';
 import { ${demoImports} } from '${demoImport}';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, ToggleModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgToggleModule],
   declarations: [AppComponent, ${demoImports}]${entryCmptClasses ? `,\n  entryComponents: [${entryCmptClasses}],` : ','}
   bootstrap: [AppComponent]
 })
@@ -144,7 +144,7 @@ function generateDependencies() {
     '@angular/platform-browser-dynamic': versions.angular,
     '@angular/router': versions.angular,
     '@angular/forms': versions.angular,
-    '@nth-cloud/ng-toggle': versions.ngBootstrap,
+    '@nth-cloud/ng-toggle': versions.ngToggle,
     'core-js': versions.coreJs,
     'rxjs': versions.rxjs,
     'zone.js': versions.zoneJs,
@@ -156,7 +156,7 @@ function getVersions() {
     angular: getVersion('@angular/core'),
     typescript: getVersion('typescript'),
     rxjs: getVersion('rxjs'),
-    ngBootstrap: ngToggle,
+    ngToggle,
     zoneJs: getVersion('zone.js'),
     coreJs: getVersion('core-js'),
     reflectMetadata: getVersion(
@@ -206,7 +206,7 @@ const base = `demo/src/public/app/components`;
 
 // removing folder
 fs.ensureDirSync(base);
-// fs.emptyDirSync(base);
+fs.emptyDirSync(base);
 
 // re-creating all stackblitzes
 getDemoComponentNames().forEach(componentName => {

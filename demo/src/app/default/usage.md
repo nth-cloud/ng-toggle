@@ -1,8 +1,8 @@
-import {MentionsModule} from '@nth-cloud/ng-toggle';
+import {NgToggleModule} from '@nth-cloud/ng-toggle';
 
 @NgModule({
   declarations: [AppComponent, ...],
-  imports: [MentionsModule, ...],
+  imports: [NgToggleModule, ...],
   bootstrap: [AppComponent]
 })
 export class AppModule {

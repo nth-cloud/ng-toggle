@@ -5,7 +5,7 @@ import {Directive, ElementRef, Input, TemplateRef} from '@angular/core';
  * allowing for more robust and complex displays.
  * This directive must be used in conjunction with a ng-template.
  */
-@Directive({selector: 'ng-template[toggleLabel]'})
+@Directive({selector: 'ng-template[ngToggleLabel]'})
 export class NgToggleLabel {
   /**
    * Determines which state the label will be used.

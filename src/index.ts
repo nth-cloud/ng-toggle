@@ -1,5 +1,5 @@
 import {CommonModule} from '@angular/common';
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import {NgModule} from '@angular/core';
 
 import {NgToggle} from './toggle';
 import {NgToggleAccessor} from './toggle-accessor';
@@ -16,6 +16,6 @@ const declarations = [
 ];
 
 @NgModule(
-    {imports: [CommonModule], exports: declarations, declarations: declarations, schemas: [CUSTOM_ELEMENTS_SCHEMA]})
+    {imports: [CommonModule], exports: declarations, declarations: declarations})
 export class NgToggleModule {
 }
