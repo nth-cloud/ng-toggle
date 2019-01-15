@@ -17,7 +17,7 @@
 
   &#x3C;head&#x3E;
     &#x3C;title&#x3E;ng-toggle demo&#x3C;/title&#x3E;
-    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css&#x22; /&#x3E;
+    &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://maxcdn.bootstrapcdn.com/bootstrap/^4.2.1/css/bootstrap.min.css&#x22; /&#x3E;
     &#x3C;link rel=&#x22;stylesheet&#x22; href=&#x22;https://cdnjs.cloudflare.com/ajax/libs/prism/1.15.0/themes/prism.css&#x22; /&#x3E;
   &#x3C;/head&#x3E;
 
@@ -114,12 +114,12 @@ import { NgModule } from &#x27;@angular/core&#x27;;
 import { BrowserModule } from &#x27;@angular/platform-browser&#x27;;
 import { FormsModule, ReactiveFormsModule } from &#x27;@angular/forms&#x27;;
 import { HttpClientModule } from &#x27;@angular/common/http&#x27;;
-import { NgxToggleModule } from &#x27;ngx-toggle&#x27;;
+import { NgToggleModule } from &#x27;@nth-cloud/ng-toggle&#x27;;
 import { AppComponent } from &#x27;./app.component&#x27;;
 import { NthdToggleCustomLabel, NthdToggleCustomLabel } from &#x27;./toggle-custom-label&#x27;;
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgxToggleModule],
+  imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgToggleModule],
   declarations: [AppComponent, NthdToggleCustomLabel, NthdToggleCustomLabel],
   entryComponents: [NthdToggleCustomLabel],
   bootstrap: [AppComponent]
@@ -171,7 +171,7 @@ export class NthdToggleCustomLabel {
 }
 ">
     <input type="hidden" name="files[app/toggle-custom-label.html]" value="&#x3C;div&#x3E;
-    &#x3C;ngx-toggle
+    &#x3C;ng-toggle
         onColor=&#x22;{{model.onColor}}&#x22;
         onText=&#x22;{{model.onText}}&#x22;
         offColor=&#x22;{{model.offColor}}&#x22;
@@ -180,14 +180,14 @@ export class NthdToggleCustomLabel {
         [size]=&#x22;model.size&#x22;
         [(ngModel)]=&#x22;model.value&#x22;
     &#x3E;
-        &#x3C;ng-template ngxToggleLabel forLabel=&#x22;on&#x22;&#x3E;&#x3C;span class=&#x22;fa fa-play&#x22;&#x3E;&#x3C;/span&#x3E;&#x26;nbsp;It&#x27;s On!&#x3C;br /&#x3E;Like Donkey Kong!&#x3C;/ng-template&#x3E;
-        &#x3C;ng-template ngxToggleLabel forLabel=&#x22;off&#x22;&#x3E;&#x3C;span class=&#x22;fa fa-stop&#x22;&#x3E;&#x3C;/span&#x3E;&#x26;nbsp;And... We&#x27;re Down.&#x3C;/ng-template&#x3E;
-    &#x3C;/ngx-toggle&#x3E;
+        &#x3C;ng-template ngToggleLabel forLabel=&#x22;on&#x22;&#x3E;&#x3C;span class=&#x22;fa fa-play&#x22;&#x3E;&#x3C;/span&#x3E;&#x26;nbsp;It&#x27;s On!&#x3C;br /&#x3E;Like Donkey Kong!&#x3C;/ng-template&#x3E;
+        &#x3C;ng-template ngToggleLabel forLabel=&#x22;off&#x22;&#x3E;&#x3C;span class=&#x22;fa fa-stop&#x22;&#x3E;&#x3C;/span&#x3E;&#x26;nbsp;And... We&#x27;re Down.&#x3C;/ng-template&#x3E;
+    &#x3C;/ng-toggle&#x3E;
 &#x3C;/div&#x3E;
 &#x3C;pre class=&#x22;my-2&#x22;&#x3E;{{model | json}}&#x3C;/pre&#x3E;
 ">
 
-    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;7.0.0&#x22;,&#x22;bootstrap&#x22;:&#x22;4.2.1&#x22;,&#x22;ngx-toggle&#x22;:&#x22;2.0.1&#x22;,&#x22;core-js&#x22;:&#x22;2.6.1&#x22;,&#x22;rxjs&#x22;:&#x22;6.3.0&#x22;,&#x22;zone.js&#x22;:&#x22;0.8.26&#x22;,&#x22;popper.js&#x22;:&#x22;1.14.6&#x22;,&#x22;jquery&#x22;:&#x22;3.0.0&#x22;}">
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/common&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/compiler&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/router&#x22;:&#x22;7.0.0&#x22;,&#x22;@angular/forms&#x22;:&#x22;7.0.0&#x22;,&#x22;@nth-cloud/ng-toggle&#x22;:&#x22;3.0.0&#x22;,&#x22;core-js&#x22;:&#x22;^2.6.1&#x22;,&#x22;rxjs&#x22;:&#x22;^6.3.0&#x22;,&#x22;zone.js&#x22;:&#x22;~0.8.26&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>
