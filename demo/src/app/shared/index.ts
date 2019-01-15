@@ -9,9 +9,9 @@ import {PageWrapper} from './page-wrapper/page-wrapper.component';
 import {Analytics} from './analytics/analytics';
 import {NthdCodeComponent} from './code/code.component';
 import {CodeHighlightService} from './code/code-highlight.service';
-import {NthdTab, NthdTabContent, NthdTabTitle, NthdTabVerbose} from "./tabs/tab.component";
-import {NthdTabs} from "./tabs/tabs.component";
-import {NthdInternalOutlet} from "./tabs/outlet";
+import {NthdTab, NthdTabContent, NthdTabTitle, NthdTabVerbose} from './tabs/tab.component';
+import {NthdTabs} from './tabs/tabs.component';
+import {NthdInternalOutlet} from './tabs/outlet';
 
 @NgModule({
   imports: [CommonModule, RouterModule],

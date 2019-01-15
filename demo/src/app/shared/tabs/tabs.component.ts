@@ -1,5 +1,5 @@
-import {AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList} from "@angular/core";
-import {NthdTab} from "./tab.component";
+import {AfterContentInit, Component, ContentChildren, EventEmitter, Input, Output, QueryList} from '@angular/core';
+import {NthdTab} from './tab.component';
 
 export class NthdTabEvent {
   constructor(public readonly activeId: any, public readonly nextId: any) {}

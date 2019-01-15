@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, TemplateRef} from "@angular/core";
+import {Component, Input, OnChanges, TemplateRef} from '@angular/core';
 
 @Component({
   selector: '[nthdInternalOutlet]',

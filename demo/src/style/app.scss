@@ -14,6 +14,11 @@ $doc-nav-active-bg: #8a5933;
 $doc-nav-active-border-color: darken(#8a5933, 5%);
 $doc-nav-active-color: #eee;
 $doc-nav-hover-color: rgba(51, 94, 138, 0.1);
+$hr-bg: #d8dde6;
+$nav-link-color: #54698d;
+$nav-link-hover-bg: #cfdbe6;
+$nav-link-active-color: #16325c;
+$nav-link-active-bg: #0070d2;
 
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
@@ -31,7 +36,7 @@ body {
 hr {
   display:    block;
   margin:     2rem 0;
-  border-top: solid 1px #d8dde6;
+  border-top: solid 1px $hr-bg;
   height:     1px;
   clear:      both;
 }
@@ -325,25 +330,29 @@ div.component-demo {
 
 .nav {
   margin:    0;
-  padding:   .5rem 1.25rem 0;
+  padding:   0;
   font-size: 80%;
-  border-bottom: 1px solid #d8dde6;
+  border-bottom: 1px solid $hr-bg;
 
   .nav-item {
     position: relative;
-    padding: 0 0.75rem;
     font-size: 0.75rem;
     line-height: 1.25;
     background: transparent;
     border: 0 none;
+    padding: 0;
 
     &,
     .nav-link {
-      color: #54698d;
+      color:          $nav-link-color;
       text-transform: uppercase;
       letter-spacing: 0.0625rem;
-      border: 0 none;
+      border:         0 none;
+      padding:        0 0.75rem;
+      line-height:    2.5rem;
+    }
 
+    .nav-link {
       &:after {
         position: absolute;
         display: block;
@@ -352,13 +361,20 @@ div.component-demo {
         bottom: 0;
         height: 2px;
         content: "";
+        transition: background-color 0.15s ease-in-out;
+      }
+
+      &:hover {
+        &:after {
+          background-color: $nav-link-hover-bg;
+        }
       }
 
       &.active {
-        color: #16325c;
+        color: $nav-link-active-color;
 
         &:after {
-          background-color: #0070d2;
+          background-color: $nav-link-active-bg;
         }
       }
     }

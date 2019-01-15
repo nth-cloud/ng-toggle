@@ -43,6 +43,7 @@
     "demo:docs": "ts-node --project misc/tsconfig.json misc/generate-docs.ts",
     "predemo:examples": "[[ ! -e demo/src/public/app/components ]] || rm -r demo/src/public/app/components",
     "demo:examples": "yarn demo:plunks && yarn demo:stackblitzes",
+    "demo:lint": "ng lint demo",
     "demo:build": "yarn demo:lint && yarn demo:docs && yarn demo:examples && ng build demo --prod",
     "demo:deploy": "yarn demo:build && gulp demo-push",
     "demo:plunks": "ts-node --project misc/tsconfig.json misc/generate-plunks.ts",

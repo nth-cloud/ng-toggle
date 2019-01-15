@@ -5,7 +5,8 @@ import {
   Component,
   ContentChildren,
   ElementRef,
-  EventEmitter, HostBinding,
+  EventEmitter,
+  HostBinding,
   HostListener,
   Input,
   NgZone,
@@ -76,10 +77,7 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
    * Whether the toggle is disabled or not
    * @type {boolean}
    */
-  @Input()
-  @HostBinding('class.disabled')
-  @HostBinding('class.ng-toggle-disabled')
-  disabled: boolean = false;
+  @Input() @HostBinding('class.disabled') @HostBinding('class.ng-toggle-disabled') disabled: boolean = false;
 
   /**
    * @param {boolean} value
@@ -132,7 +130,7 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
 
   ngAfterViewChecked(): void {
     const hidden = this.element.nativeElement.offsetParent === null;
-    if (this._hidden !== hidden) {
+    if ((!this._initialized || this.width === 0) && this._hidden !== hidden) {
       this._initialized = false;
       this.calculateWidth();
       this._initialized = true;
@@ -202,7 +200,7 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
 
   @HostBinding('class.ng-toggle-animate')
   get animate(): boolean {
-    return this._animate && this._initialized;
+    return this._animate;
   }
 
   get marginLeft(): string {
@@ -336,7 +334,7 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
       this._animate = false;
     }
 
-    const initialized = this._initialized;
+    const initialized = <boolean>this._initialized;
     if (!initialized) {
       this.container$.style.width = 'auto';
       this.element$.style.width = 'auto';

@@ -8,7 +8,7 @@ import {SupportComponent} from './support';
 import {AppComponent} from './app.component';
 import {routing} from './app.routing';
 import {NthdSharedModule} from './shared';
-import {NthdToggleModule} from "./components/toggle";
+import {NthdToggleModule} from './components/toggle';
 
 @NgModule({
     declarations: [

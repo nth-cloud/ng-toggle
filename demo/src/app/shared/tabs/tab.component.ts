@@ -1,4 +1,4 @@
-import {AfterContentInit, ContentChild, Directive, Input, Optional, TemplateRef} from "@angular/core";
+import {AfterContentInit, ContentChild, Directive, Input, Optional, TemplateRef} from '@angular/core';
 
 let nextId = 0;
 
