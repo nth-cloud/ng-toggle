@@ -16,7 +16,13 @@ View it in action at https://nth-cloud.github.io/ng-toggle
 
 ## Dependencies
 * [Angular](https://angular.io) (tested with 7.0.0)
-* [Bootstrap 4](https://www.getbootstrap.com) (tested with 4.1.3)
+* [Bootstrap 4](https://www.getbootstrap.com) (tested with 4.2.1)
+
+| ng-toggle | Angular | Bootstrap CSS |
+| --------- | ------- | ------------- |
+| 1.x.x     | 5.2.1   | 4.0.0         |
+| 2.x.x     | 6.1.0   | 4.0.0         |
+| 3.x.x     | 7.0.0   | 4.0.0         |
 
 ## Installation
 After installing the above dependencies, install `ng-toggle` via:
