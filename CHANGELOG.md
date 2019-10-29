@@ -1,3 +1,12 @@
+## [3.0.1](https://github.com/nth-cloud/ng-toggle/compare/2.0.1...3.0.1) (2019-10-29)
+
+
+### Features
+
+* added ability to cancel initial animation, closes [#14](https://github.com/nth-cloud/ng-toggle/issues/14) ([01fdf21](https://github.com/nth-cloud/ng-toggle/commit/01fdf21))
+
+
+<a name="3.0.0"></a>
 # [3.0.0](https://github.com/@nth-cloud/ng-toggle/compare/2.0.1...3.0.0) (2019-01-16)
 
 * Upgrade to Angular v7
