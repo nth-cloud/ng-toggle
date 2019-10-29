@@ -8,16 +8,16 @@
     "components",
     "toggle"
   ],
-  "author": "https://github.com/@nth-cloud/ng-toggle/graphs/contributors",
+  "author": "https://github.com/nth-cloud/ng-toggle/graphs/contributors",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/@nth-cloud/ng-toggle.git"
+    "url": "git+https://github.com/nth-cloud/ng-toggle.git"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/@nth-cloud/ng-toggle/issues"
+    "url": "https://github.com/nth-cloud/ng-toggle/issues"
   },
-  "homepage": "https://github.com/@nth-cloud/ng-toggle#readme",
+  "homepage": "https://github.com/nth-cloud/ng-toggle#readme",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
     "@angular/core": "^7.0.0",

@@ -4,14 +4,14 @@
   "description": "Angular powered Bootstrap Toggle",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/@nth-cloud/ng-toggle.git"
+    "url": "git+https://github.com/nth-cloud/ng-toggle.git"
   },
-  "author": "https://github.com/@nth-cloud/ng-toggle/graphs/contributors",
+  "author": "https://github.com/nth-cloud/ng-toggle/graphs/contributors",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/@nth-cloud/ng-toggle/issues"
+    "url": "https://github.com/nth-cloud/ng-toggle/issues"
   },
-  "homepage": "https://github.com/@nth-cloud/ng-toggle#readme",
+  "homepage": "https://github.com/nth-cloud/ng-toggle#readme",
   "engines": {
     "node": ">=8.9.0",
     "npm": ">=6.5.0",
