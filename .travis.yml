@@ -13,9 +13,8 @@ addons:
   chrome: stable
   sause_connect: true
 
-before_install:
-  - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
+service:
+  - xvfb
 
 install:
   - yarn
