@@ -78,6 +78,13 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
    * @type {boolean}
    */
   @Input() @HostBinding('class.disabled') @HostBinding('class.ng-toggle-disabled') disabled: boolean = false;
+  /**
+   * Enable/Disable the toggle initial animations. Can help prevent unwanted animation display.
+   */
+  @Input('disableInitialAnimation')
+  set outerAnimate(value: boolean) {
+    this._animate = !value;
+  }
 
   /**
    * @param {boolean} value
@@ -323,7 +330,7 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
       if (clearDragEnd) {
         this._dragEnd = null;
       }
-      if (this._innerAnimate) {
+      if (this._innerAnimate && !this._animate) {
         this._animate = true;
       }
     }
