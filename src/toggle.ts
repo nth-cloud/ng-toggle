@@ -134,7 +134,7 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
   ngAfterViewInit(): void {
     this.calculateWidth();
     this._initialized = true;
-    setTimeout(() => this._disableInitialAnimation = false);
+    this.ngZone.run(() => setTimeout(() => this._disableInitialAnimation = false));
   }
 
   ngAfterViewChecked(): void {
@@ -209,7 +209,7 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
 
   @HostBinding('class.ng-toggle-animate')
   get animate(): boolean {
-    return this._animate && (this._initialized && !this._disableInitialAnimation);
+    return this._animate && (!this._disableInitialAnimation || this._initialized && !this._disableInitialAnimation);
   }
 
   get marginLeft(): string {
