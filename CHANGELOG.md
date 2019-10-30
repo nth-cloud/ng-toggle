@@ -1,3 +1,12 @@
+## [3.0.3](https://github.com/nth-cloud/ng-toggle/compare/2.0.1...3.0.3) (2019-10-30)
+
+
+### Bug Fixes
+
+* Fixed tests failing after commit for [#14](https://github.com/nth-cloud/ng-toggle/issues/14) ([8c30211](https://github.com/nth-cloud/ng-toggle/commit/8c30211))
+
+
+<a name="3.0.2"></a>
 ## [3.0.2](https://github.com/nth-cloud/ng-toggle/compare/2.0.1...3.0.2) (2019-10-30)
 
 
@@ -11,7 +20,7 @@
 * added ability to cancel initial animation, closes [#14](https://github.com/nth-cloud/ng-toggle/issues/14) ([01fdf21](https://github.com/nth-cloud/ng-toggle/commit/01fdf21))
 
 
-
+<a name="3.0.1"></a>
 ## [3.0.1](https://github.com/nth-cloud/ng-toggle/compare/2.0.1...3.0.1) (2019-10-29)
 
 
