@@ -30,8 +30,8 @@ export class NthdTabVerbose extends NthdTab implements AfterContentInit {
   @Input() title: string | TemplateRef<any>;
   @Input() active: boolean = false;
 
-  @ContentChild(NthdTabTitle) titleTemplate: NthdTabTitle;
-  @ContentChild(NthdTabContent) contentTemplate: NthdTabContent;
+  @ContentChild(NthdTabTitle, { static: true }) titleTemplate: NthdTabTitle;
+  @ContentChild(NthdTabContent, { static: true}) contentTemplate: NthdTabContent;
 
   ngAfterContentInit(): void {
     if (this.titleTemplate) {

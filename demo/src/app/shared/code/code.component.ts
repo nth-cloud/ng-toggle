@@ -11,7 +11,7 @@ import {CodeHighlightService} from './code-highlight.service';
 })
 export class NthdCodeComponent implements AfterViewInit {
 
-    @ViewChild('code') codeEl: ElementRef;
+    @ViewChild('code', { static: true }) codeEl: ElementRef;
 
     @Input() code = '';
     @Input() lang = '';
