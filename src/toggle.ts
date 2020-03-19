@@ -50,32 +50,26 @@ import {NgToggleLabel} from './toggle-label';
 export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewChecked, OnChanges {
   /**
    * Display text when toggled in the "On" position
-   * @type {string}
    */
   @Input() onText: string = 'On';
   /**
    * Display text when toggled in the "Off" position
-   * @type {string}
    */
   @Input() offText: string = 'Off';
   /**
    * Bootstrap color scheme when toggled in the "On" position (i.e. "primary" translates to "btn-primary")
-   * @type {string}
    */
   @Input() onColor: string = 'primary';
   /**
    * Bootstrap color scheme when toggled in the "Off" position (i.e. "primary" translates to "btn-primary")
-   * @type {string}
    */
   @Input() offColor: string = 'secondary';
   /**
    * Button size to display the toggle
-   * @type {string}
    */
   @Input() size: 'sm'|'lg'|'' = '';
   /**
    * Whether the toggle is disabled or not
-   * @type {boolean}
    */
   @Input() @HostBinding('class.disabled') @HostBinding('class.ng-toggle-disabled') disabled: boolean = false;
   /**
@@ -86,9 +80,6 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
     this._disableInitialAnimation = value;
   }
 
-  /**
-   * @param {boolean} value
-   */
   @Input()
   set value(value: boolean) {
     this.setState(value);
@@ -101,7 +92,6 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
   /**
    * An event fired when the user causes a change.
    * The payload of the event is the currently selected value.
-   * @type {EventEmitter<boolean>}
    */
   @Output() valueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 

@@ -5,7 +5,7 @@
     "importHelpers": true
   },
   "angularCompilerOptions": {
-    "annotateForClosureCompiler": false,
+    "annotateForClosureCompiler": true,
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true,
