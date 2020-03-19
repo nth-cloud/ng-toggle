@@ -1,3 +1,18 @@
+# [4.0.0](https://github.com/nth-cloud/ng-toggle/compare/3.0.3...4.0.0) (2020-03-19)
+
+
+### Bug Fixes
+
+* formating ([4ace80b](https://github.com/nth-cloud/ng-toggle/commit/4ace80bb37b002d687dc2fa0bed6b9d3d03da5a1))
+* re-enabled annotateForClosureCompiler and removed @type/[@param](https://github.com/param) annotations causing build failure ([88833e9](https://github.com/nth-cloud/ng-toggle/commit/88833e9a2c8b74ec2db5f2aa9d61d07b00b73d1c))
+
+
+### Features
+
+* Upgrade to angular 8 ([93f0876](https://github.com/nth-cloud/ng-toggle/commit/93f087631388a9c13150293135e4521e6d9827f1))
+
+
+
 ## [3.0.3](https://github.com/nth-cloud/ng-toggle/compare/2.0.1...3.0.3) (2019-10-30)
 
 
