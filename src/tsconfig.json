@@ -5,12 +5,12 @@
     "importHelpers": true
   },
   "angularCompilerOptions": {
-    "annotateForClosureCompiler": true,
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  },
+  ,    "enableIvy": false
+},
   "include": [
     "./**/*.ts"
   ]
