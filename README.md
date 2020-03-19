@@ -15,7 +15,7 @@ Angular Bootstrap-styled Toggle component that can be used as a standalone toggl
 View it in action at https://nth-cloud.github.io/ng-toggle
 
 ## Dependencies
-* [Angular](https://angular.io) (tested with 8.0.0)
+* [Angular](https://angular.io) (tested with 9.0.0)
 * [Bootstrap 4](https://www.getbootstrap.com) (tested with 4.4.1)
 
 | ng-toggle | Angular | Bootstrap CSS |
@@ -24,6 +24,7 @@ View it in action at https://nth-cloud.github.io/ng-toggle
 | 2.x.x     | 6.1.0   | 4.0.0         |
 | 3.x.x     | 7.0.0   | 4.0.0         |
 | 4.x.x     | 8.0.0   | 4.0.0         |
+| 5.x.x     | 9.0.0   | 4.0.0         |
 
 ## Installation
 After installing the above dependencies, install `ng-toggle` via:
