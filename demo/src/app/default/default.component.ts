@@ -15,8 +15,8 @@ types(prism);
 export class DefaultComponent {
     public version: string = environment.version;
 
-    readonly installNPM: string = prism.highlight(require('!!raw-loader!./install-npm.md'), prism.languages.clike);
-    readonly bundle: string = prism.highlight(require('!!raw-loader!./bundle.md'), prism.languages.javascript);
-    readonly importUsage: string = prism.highlight(require('!!raw-loader!./import.md'), prism.languages.typescript);
-    readonly usage: string = prism.highlight(require('!!raw-loader!./usage.md'), prism.languages.typescript);
+    readonly installNPM: string = prism.highlight(require('!!raw-loader!./install-npm.md').default, prism.languages.clike, 'md');
+    readonly bundle: string = prism.highlight(require('!!raw-loader!./bundle.md').default, prism.languages.javascript, 'js');
+    readonly importUsage: string = prism.highlight(require('!!raw-loader!./import.md').default, prism.languages.typescript, 'ts');
+    readonly usage: string = prism.highlight(require('!!raw-loader!./usage.md').default, prism.languages.typescript, 'ts');
 }

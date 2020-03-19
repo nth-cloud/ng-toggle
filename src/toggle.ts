@@ -110,10 +110,10 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
   width: number = 0;
   handleWidth: number = 0;
 
-  @ViewChild('container') containerElement: ElementRef;
-  @ViewChild('on') onElement: ElementRef;
-  @ViewChild('off') offElement: ElementRef;
-  @ViewChild('handle') handleElement: ElementRef;
+  @ViewChild('container', {static: true}) containerElement: ElementRef;
+  @ViewChild('on', {static: true}) onElement: ElementRef;
+  @ViewChild('off', {static: true}) offElement: ElementRef;
+  @ViewChild('handle', {static: true}) handleElement: ElementRef;
   @ContentChildren(NgToggleLabel) labelElements: QueryList<NgToggleLabel>;
   onLabel: NgToggleLabel;
   offLabel: NgToggleLabel;
