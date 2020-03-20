@@ -11,7 +11,7 @@ env:
 
 addons:
   chrome: stable
-  sause_connect: true
+  sauce_connect: true
 
 service:
   - xvfb
