@@ -96,6 +96,7 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
   @Output() valueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @HostBinding('class.btn') btnClass: boolean = true;
+  @HostBinding('attr.tabindex') tabindex: number = 0;
 
   width: number = 0;
   handleWidth: number = 0;
@@ -274,15 +275,21 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
     }
     switch (event.key) {
       case 'Left':
+      case 'ArrowLeft':
         event.preventDefault();
         event.stopImmediatePropagation();
         this.setState(false);
         break;
       case 'Right':
+      case 'ArrowRight':
         event.preventDefault();
         event.stopImmediatePropagation();
         this.setState(true);
         break;
+      case ' ':
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        this.setState(!this.value);
     }
   }
 
