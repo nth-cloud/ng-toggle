@@ -22,6 +22,7 @@ import {NgToggleLabel} from './toggle-label';
 /**
  * The Toggle directive allows for standalone or checkbox-enabled switch toggling via a UI element.
  * The toggle is styled using Bootstrap v4+ classes.
+ * Accessibility implemented according to https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/checkbox_role
  */
 @Component({
   selector: 'ng-toggle',
@@ -96,7 +97,8 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
   @Output() valueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @HostBinding('class.btn') btnClass: boolean = true;
-  @HostBinding('attr.tabindex') tabindex: number = 0;
+  @Input('tabindex') @HostBinding('attr.tabindex') tabindex: number = 0;
+  @Input('role') @HostBinding('attr.role') role = 'checkbox';
 
   width: number = 0;
   handleWidth: number = 0;
@@ -196,6 +198,14 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
 
   get innerState(): boolean {
     return this._innerState;
+  }
+
+  @HostBinding('attr.aria-checked')
+  get ariaCheckedValue(): string {
+    if (this.indeterminate) {
+      return 'mixed';
+    }
+    return this.value ? 'true' : 'false';
   }
 
   @HostBinding('class.ng-toggle-animate')
