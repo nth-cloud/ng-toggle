@@ -22,7 +22,8 @@ import {NgToggleLabel} from './toggle-label';
 /**
  * The Toggle directive allows for standalone or checkbox-enabled switch toggling via a UI element.
  * The toggle is styled using Bootstrap v4+ classes.
- * Accessibility implemented according to https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/checkbox_role
+ * Accessibility implemented according to
+ * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/checkbox_role
  */
 @Component({
   selector: 'ng-toggle',

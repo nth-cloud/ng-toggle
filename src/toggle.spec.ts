@@ -46,6 +46,30 @@ describe('ngxToggle', () => {
        expect(fixture.componentInstance.model).toBeFalsy();
      }));
 
+  it('should toggle value on spacebar key press', fakeAsync(() => {
+       const fixture = createTestComponent(`
+     <ng-toggle [(value)]="model"></ng-toggle>
+   `);
+
+       const spaceKeyPress = new KeyboardEvent('keydown', {key: ' '});
+
+       fixture.componentInstance.model = false;
+       fixture.detectChanges();
+       fixture.nativeElement.querySelector('ng-toggle').dispatchEvent(spaceKeyPress);
+       fixture.detectChanges();
+       tick();
+       fixture.detectChanges();
+       expect(fixture.componentInstance.model).toBeTruthy();
+
+       fixture.componentInstance.model = true;
+       fixture.detectChanges();
+       fixture.nativeElement.querySelector('ng-toggle').dispatchEvent(spaceKeyPress);
+       fixture.detectChanges();
+       tick();
+       fixture.detectChanges();
+       expect(fixture.componentInstance.model).toBeFalsy();
+     }));
+
   it('should toggle mark input as checked / unchecked based on model change', fakeAsync(() => {
        const fixture = createTestComponent(`
       <ng-toggle [(value)]="model"><input type="checkbox" [(ngModel)]="model" /></ng-toggle>
@@ -88,6 +112,32 @@ describe('ngxToggle', () => {
        fixture.componentInstance.disabled = true;
        fixture.detectChanges();
        fixture.nativeElement.querySelector('ng-toggle').click();
+       fixture.detectChanges();
+       tick();
+       fixture.detectChanges();
+       expect(fixture.componentInstance.model).toBeTruthy();
+     }));
+
+  it('should do nothing for disabled on spacebar key press', fakeAsync(() => {
+      const fixture = createTestComponent(`
+     <ng-toggle [(value)]="model" [disabled]="disabled"></ng-toggle>
+   `);
+
+       const spaceKeyPress = new KeyboardEvent('keydown', {key: ' '});
+
+       fixture.componentInstance.model = false;
+       fixture.componentInstance.disabled = true;
+       fixture.detectChanges();
+       fixture.nativeElement.querySelector('ng-toggle').dispatchEvent(spaceKeyPress);
+       fixture.detectChanges();
+       tick();
+       fixture.detectChanges();
+       expect(fixture.componentInstance.model).toBeFalsy();
+
+       fixture.componentInstance.model = true;
+       fixture.componentInstance.disabled = true;
+       fixture.detectChanges();
+       fixture.nativeElement.querySelector('ng-toggle').dispatchEvent(spaceKeyPress);
        fixture.detectChanges();
        tick();
        fixture.detectChanges();
