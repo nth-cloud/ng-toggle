@@ -132,11 +132,11 @@ describe('ngxToggle', () => {
      }));
 
   it('should do nothing for disabled on spacebar key press', fakeAsync(() => {
-      const fixture = createTestComponent(`
+       const fixture = createTestComponent(`
      <ng-toggle [(value)]="model" [disabled]="disabled"></ng-toggle>
    `);
 
-       const spaceKeyPress = new KeyboardEvent('keydown', {key: ' '});
+       const spaceKeyPress = createSpaceBarKeyPress();
 
        fixture.componentInstance.model = false;
        fixture.componentInstance.disabled = true;
