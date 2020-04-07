@@ -3,7 +3,7 @@ import {ComponentFixture, fakeAsync, TestBed, tick} from '@angular/core/testing'
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import {NgToggleModule} from './index';
-import {createGenericTestComponent} from './test/common';
+import {createGenericTestComponent, isBrowser} from './test/common';
 
 @Component({selector: 'test-cmp', template: ''})
 class TestComponent {
@@ -16,6 +16,19 @@ const createTestComponent = (html: string) =>
 
 function getInput(nativeEl: HTMLElement): HTMLInputElement {
   return <HTMLInputElement>nativeEl.querySelector('input');
+}
+
+function createSpaceBarKeyPress(): KeyboardEvent {
+  let event;
+  if (isBrowser(['ie10', 'ie11'])) {
+    event = document.createEvent('KeyboardEvent') as KeyboardEvent;
+    event.initKeyboardEvent('keydown', true, true, window, 32, 0, 0, 0, 0);
+  } else {
+    event = new KeyboardEvent('keydown', {key: ' '});
+  }
+  Object.defineProperties(event, {which: {get: () => 32}});
+  Object.defineProperties(event, {keyCode: {get: () => 32}});
+  return event;
 }
 
 describe('ngxToggle', () => {
@@ -51,7 +64,7 @@ describe('ngxToggle', () => {
      <ng-toggle [(value)]="model"></ng-toggle>
    `);
 
-       const spaceKeyPress = new KeyboardEvent('keydown', {key: ' '});
+       const spaceKeyPress = createSpaceBarKeyPress();
 
        fixture.componentInstance.model = false;
        fixture.detectChanges();
