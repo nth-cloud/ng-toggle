@@ -22,12 +22,10 @@ function createSpaceBarKeyPress(): KeyboardEvent {
   let event;
   if (isBrowser(['ie10', 'ie11'])) {
     event = document.createEvent('KeyboardEvent') as KeyboardEvent;
-    event.initKeyboardEvent('keydown', true, true, window, 32, 0, 0, 0, 0);
+    event.initKeyboardEvent('keydown', true, true, window, 'Spacebar', 0, 0, 0, 0);
   } else {
     event = new KeyboardEvent('keydown', {key: ' '});
   }
-  Object.defineProperties(event, {which: {get: () => 32}});
-  Object.defineProperties(event, {keyCode: {get: () => 32}});
   return event;
 }
 

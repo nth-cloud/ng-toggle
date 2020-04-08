@@ -297,6 +297,7 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
         event.stopImmediatePropagation();
         this.setState(true);
         break;
+      case 'Spacebar':
       case ' ':
         event.preventDefault();
         event.stopImmediatePropagation();
