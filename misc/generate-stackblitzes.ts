@@ -124,8 +124,7 @@ import { ${demoImports} } from '${demoImport}';
 
 @NgModule({
   imports: [BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, NgToggleModule],
-  declarations: [AppComponent, ${demoImports}]${
-      entryCmptClasses ? `,\n  entryComponents: [${entryCmptClasses}],` : ','}
+  declarations: [AppComponent, ${demoImports}]${entryCmptClasses ? `,\n  entryComponents: [${entryCmptClasses}],` : ','}
   bootstrap: [AppComponent]
 })
 export class AppModule {}
