@@ -22,6 +22,8 @@ import {NgToggleLabel} from './toggle-label';
 /**
  * The Toggle directive allows for standalone or checkbox-enabled switch toggling via a UI element.
  * The toggle is styled using Bootstrap v4+ classes.
+ * Accessibility implemented according to
+ * https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/checkbox_role
  */
 @Component({
   selector: 'ng-toggle',
@@ -96,6 +98,8 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
   @Output() valueChange: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   @HostBinding('class.btn') btnClass: boolean = true;
+  @Input('tabindex') @HostBinding('attr.tabindex') tabindex: number = 0;
+  @Input('role') @HostBinding('attr.role') role = 'checkbox';
 
   width: number = 0;
   handleWidth: number = 0;
@@ -197,6 +201,14 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
     return this._innerState;
   }
 
+  @HostBinding('attr.aria-checked')
+  get ariaCheckedValue(): string {
+    if (this.indeterminate) {
+      return 'mixed';
+    }
+    return this.value ? 'true' : 'false';
+  }
+
   @HostBinding('class.ng-toggle-animate')
   get animate(): boolean {
     return this._animate && (!this._disableInitialAnimation || this._initialized && !this._disableInitialAnimation);
@@ -274,15 +286,22 @@ export class NgToggle implements AfterViewInit, AfterContentInit, AfterViewCheck
     }
     switch (event.key) {
       case 'Left':
+      case 'ArrowLeft':
         event.preventDefault();
         event.stopImmediatePropagation();
         this.setState(false);
         break;
       case 'Right':
+      case 'ArrowRight':
         event.preventDefault();
         event.stopImmediatePropagation();
         this.setState(true);
         break;
+      case 'Spacebar':
+      case ' ':
+        event.preventDefault();
+        event.stopImmediatePropagation();
+        this.setState(!this.value);
     }
   }
 
