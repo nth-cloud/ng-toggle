@@ -1,7 +1,7 @@
 const gulp = require('gulp');
-const ghPages = require('gulp-gh-pages');
 const clangFormat = require('clang-format');
 const gulpFormat = require('gulp-clang-format');
+const ghPages = require('gh-pages');
 
 gulp.task('changelog', () => {
   const conventionalChangelog = require('gulp-conventional-changelog');
@@ -23,6 +23,8 @@ gulp.task('check-format', () => {
       });
 });
 
-gulp.task('demo-push', () => {
-  return gulp.src('demo/dist/**/*').pipe(ghPages({branch: 'gh-pages'}));
+gulp.task('demo-push', (done) => {
+  ghPages.publish('demo/dist', {
+    message: 'Update ' + new Date().toISOString()
+  }, done);
 });
