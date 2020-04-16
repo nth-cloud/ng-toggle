@@ -1,3 +1,19 @@
+## [5.0.1](https://github.com/nth-cloud/ng-toggle/compare/5.0.0...5.0.1) (2020-04-16)
+
+
+### Features
+
+* Added accessibility (allow tab focus and enabled keyboard events) ([83a99fd](https://github.com/nth-cloud/ng-toggle/commit/83a99fddf053774125e6c6a466469d9e2b863eff))
+
+
+## [5.0.0](https://github.com/nth-cloud/ng-toggle/compare/4.0.0...5.0.0) (2020-03-18)
+
+
+### Features
+
+* Upgrade to angular 9 ([93cedc0](https://github.com/nth-cloud/ng-toggle/commit/93cedc0fe38a065ac217bb94af1ac0b62fc2b808))
+
+
 # [4.0.0](https://github.com/nth-cloud/ng-toggle/compare/3.0.3...4.0.0) (2020-03-19)
 
 
