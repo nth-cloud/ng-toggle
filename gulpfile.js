@@ -24,7 +24,5 @@ gulp.task('check-format', () => {
 });
 
 gulp.task('demo-push', (done) => {
-  ghPages.publish('demo/dist', {
-    message: 'Update ' + new Date().toISOString()
-  }, done);
+  ghPages.publish('demo/dist', {message: 'Update ' + new Date().toISOString()}, done);
 });

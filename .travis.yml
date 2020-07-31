@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "10"
+  - "12"
 
 env:
   global:
@@ -11,7 +11,6 @@ env:
 
 addons:
   chrome: stable
-  sauce_connect: true
 
 service:
   - xvfb
@@ -23,10 +22,16 @@ cache: yarn
 
 before_script:
   - mkdir -p $LOGS_DIR
+  - ./scripts/sauce_connect_setup.sh
 
 script:
   - yarn ci && yarn api-doc:test
   - yarn global add codecov && codecov --disable=gcov -f coverage/lcov.info -F unit
+  - ./scripts/sauce_connect_block.sh
   - yarn saucelabs
+  - yarn saucelabs:ie
+
+after_script:
+  - ./scripts/sauce_connect_teardown.sh
 
 sudo: false

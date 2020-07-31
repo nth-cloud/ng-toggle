@@ -1,5 +1,5 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "../tsconfig.base.json",
   "compilerOptions": {
     "inlineSources": true,
     "importHelpers": true
@@ -8,10 +8,13 @@
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
-  ,    "enableIvy": false
-},
+    "strictInjectionParameters": true,
+    "enableIvy": false
+  },
   "include": [
     "./**/*.ts"
+  ],
+  "typeRoots": [
+    "../node_modules/@types"
   ]
 }

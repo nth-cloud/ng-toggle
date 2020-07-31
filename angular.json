@@ -30,6 +30,23 @@
               "src/test/**"
             ],
             "karmaConfig": "src/karma.conf.js"
+          },
+          "configurations": {
+            "ie": {
+              "tsConfig": "src/tsconfig-ie.spec.json"
+            },
+            "saucelabs": {
+              "sourceMap": false,
+              "progress": false,
+              "karmaConfig": "src/karma.sauce.conf.js"
+            },
+            "saucelabs-ie": {
+              "sourceMap": false,
+              "progress": false,
+              "tsConfig": "src/tsconfig-ie.spec.json",
+              "karmaConfig": "src/karma.sauce.conf.js",
+              "browsers": "IE10,IE11"
+            }
           }
         },
         "lint": {
@@ -133,6 +150,7 @@
     }
   },
   "cli": {
-    "packageManager": "yarn"
+    "packageManager": "yarn",
+    "analytics": false
   }
 }

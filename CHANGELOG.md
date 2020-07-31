@@ -1,3 +1,12 @@
+# [6.0.0](https://github.com/nth-cloud/ng-toggle/compare/5.0.1...6.0.0) (2020-07-31)
+
+
+### Features
+
+* upgrading to angular v10 ([5eb30fd](https://github.com/nth-cloud/ng-toggle/commit/5eb30fdbed2d10c6cfdad0ba2c7adcf40e5b5fdd))
+
+
+
 ## [5.0.1](https://github.com/nth-cloud/ng-toggle/compare/5.0.0...5.0.1) (2020-04-16)
 
 
