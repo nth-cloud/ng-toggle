@@ -1,11 +1,10 @@
 language: node_js
 node_js:
-  - "12"
+  - 12
+  - 14
 
 env:
   global:
-    - SAUCE_USERNAME=trickeyone
-    - SAUCE_ACCESS_KEY=369325da35ad-bf6a-6a54-d2e8-e3efc892
     - BROWSER_PROVIDER_READY_FILE=/tmp/sauce-connect-ready
     - LOGS_DIR=/tmp/logs
 
