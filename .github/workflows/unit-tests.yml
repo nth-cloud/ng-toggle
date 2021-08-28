@@ -1,0 +1,46 @@
+
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  tests:
+    name: Unit Tests
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        node: [12, 14, 16]
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v0.0.0
+      
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v2.4.0
+        with:
+          node-version: "${{ matrix.node }}"
+    
+      - name: Setup Yarn
+        uses: sergioramos/yarn-actions@v6
+        with:
+          no-lockfile: true
+          version: true
+      
+      - name: Install Dependencies
+        run: yarn
+      
+      - name: Run Tests
+        run: yarn ci && yarn api-doc:test
