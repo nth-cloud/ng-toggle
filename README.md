@@ -1,10 +1,10 @@
 # NG-TOGGLE - Native Angular components & directives for Bootstrap-styled Toggle Switch 
 
+[![CodeQL](https://github.com/nth-cloud/ng-toggle/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/nth-cloud/ng-toggle/actions/workflows/codeql-analysis.yml)
 [![npm version](https://badge.fury.io/js/%40nth-cloud%2Fng-toggle.svg)](https://badge.fury.io/js/%40nth-cloud%2Fng-toggle)
 [![Build Status](https://travis-ci.org/nth-cloud/ng-toggle.svg?branch=master)](https://travis-ci.org/nth-cloud/ng-toggle)
 [![codecov](https://codecov.io/gh/nth-cloud/ng-toggle/branch/master/graph/badge.svg)](https://codecov.io/gh/nth-cloud/ng-toggle)
 [![dependency Status](https://david-dm.org/nth-cloud/ng-toggle.svg?branch=master)](https://david-dm.org/nth-cloud/ng-toggle)
-[![devDependency Status](https://david-dm.org/nth-cloud/ng-toggle/dev-status.svg?branch=master)](https://david-dm.org/nth-cloud/ng-toggle#info=devDependencies)
 [![Sauce Test Status](https://saucelabs.com/buildstatus/trickeyone)](https://saucelabs.com/u/trickeyone)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/trickeyone.svg)](https://saucelabs.com/u/trickeyone)
 
