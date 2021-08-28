@@ -1,5 +1,7 @@
 
-process.env.SAUCE_ACCESS_KEY = process.env.SAUCE_ACCESS_KEY.split('').reverse().join('');
+if (typeof process.env.SAUCE_ACCESS_KEY !== 'undefined') {
+  process.env.SAUCE_ACCESS_KEY = process.env.SAUCE_ACCESS_KEY.split('').reverse().join('');
+}
 
 const BROWSERS = {
   'CHROME': {
