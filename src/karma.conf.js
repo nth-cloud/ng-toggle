@@ -1,5 +1,5 @@
-const reporters = process.env.TRAVIS ? ['dots'] : ['progress'];
-const browsers = process.env.TRAVIS ? ['ChromeHeadlessNoSandbox'] : ['Chrome'];
+const reporters = process.env.TRAVIS || process.env.GITHUB_WORKFLOW ? ['dots'] : ['progress'];
+const browsers = process.env.TRAVIS || process.env.GITHUB_WORKFLOW ? ['ChromeHeadlessNoSandbox'] : ['Chrome'];
 const env = process.env.TRAVIS ? 'prod' : 'dev';
 
 module.exports = function (config) {

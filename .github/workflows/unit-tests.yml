@@ -17,7 +17,7 @@ jobs:
   tests:
     name: Unit Tests
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         node: [12, 14, 16]
@@ -26,23 +26,23 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup Chrome
-        uses: browser-actions/setup-chrome@v0.0.0
+        uses: browser-actions/setup-chrome@latest
         with:
           chrome-version: stable
-      
+
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.4.0
         with:
           node-version: "${{ matrix.node }}"
-    
+
       - name: Setup Yarn
         uses: sergioramos/yarn-actions@v6
         with:
           no-lockfile: true
           version: true
-      
+
       - name: Install Dependencies
         run: yarn
-      
+
       - name: Run Tests
         run: yarn ci && yarn api-doc:test
