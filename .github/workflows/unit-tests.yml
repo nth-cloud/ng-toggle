@@ -27,6 +27,8 @@ jobs:
 
       - name: Setup Chrome
         uses: browser-actions/setup-chrome@v0.0.0
+        with:
+          chrome-version: stable
       
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.4.0
