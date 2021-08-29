@@ -26,6 +26,8 @@
   "scripts": {
     "preinstall": "node misc/preinstall.js",
     "commitmsg": "node misc/validate-commit.js",
+    "version": "yarn changelog && git add CHANGELOG.md",
+    "postversion": "yarn build:lib && yarn demo:build",
     "build": "yarn build:lib && yarn demo:build",
     "test": "yarn lint && yarn test:lib",
     "tdd": "ng test ng-toggle --source-map false",
