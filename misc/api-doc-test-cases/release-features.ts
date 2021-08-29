@@ -1,3 +1,4 @@
+/* eslint-disable */
 import {Component, Directive, Injectable, Input, Output} from '@angular/core';
 
 /**
