@@ -80,7 +80,7 @@ jobs:
         timeout-minutes: 2
 
       - name: Wait for Sauce Connect
-        uses: ifaxity/wait-on-action
+        uses: ifaxity/wait-on-action@latest
         with:
           file: "${{ env.BROWSER_PROVIDER_READY_FILE }}"
         timeout-minutes: 2
