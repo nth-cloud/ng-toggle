@@ -78,6 +78,7 @@ jobs:
           mkdir -p $LOGS_DIR
           ./scripts/sauce_connect_setup.sh
           ./scripts/sauce_connect_block.sh
+        timeout-minutes: 2
 
 #      - name: Saucelabs Connect
 #        uses: saucelabs/sauce-connect-action@v1
