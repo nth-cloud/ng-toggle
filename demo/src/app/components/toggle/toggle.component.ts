@@ -5,8 +5,8 @@ import {DEMO_SNIPPETS} from './demos';
   selector: 'nthd-toggle',
   template: `
       <nthd-component-wrapper component="Toggle">
-          <nthd-api-docs directive="NgToggle"></nthd-api-docs>
-          <nthd-api-docs directive="NgToggleLabel"></nthd-api-docs>
+          <nthd-api-docs directive="NgToggleComponent"></nthd-api-docs>
+          <nthd-api-docs directive="NgToggleLabelDirective"></nthd-api-docs>
           <nthd-example-box title="Basic" [snippets]="snippets" component="toggle" demo="basic" id="basic">
               <nthd-toggle-basic></nthd-toggle-basic>
           </nthd-example-box>

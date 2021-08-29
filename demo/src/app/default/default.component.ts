@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {environment} from '../../environments/environment';
 
 const prism = require('prismjs');
+// eslint-disable-next-line @typescript-eslint/naming-convention
 const types = (Prism: any) => {
     require('prismjs/components/prism-clike');
     require('prismjs/components/prism-typescript');
