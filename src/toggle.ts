@@ -34,9 +34,9 @@ import {NgToggleLabelDirective} from './toggle-label';
           <ng-template [ngTemplateOutlet]="onLabel?.templateRef"></ng-template>
           <ng-container *ngIf="!onLabel">{{onText}}</ng-container>
       </span>
-      <span #handle class="ng-toggle-handle btn" [class.btn-lg]="largeButton"
+      <span #handle class="ng-toggle-handle btn {{handleButtonClass}}" [class.btn-lg]="largeButton"
             [class.btn-sm]="smallButton" [class.disabled]="disabled"
-            [class.btn-light]="!handleDark" [class.btn-dark]="handleDark">&nbsp;</span>
+            >&nbsp;</span>
       <span #off class="ng-toggle-off btn btn-{{offColor}}" [class.btn-lg]="largeButton"
             [class.btn-sm]="smallButton" [class.disabled]="disabled">
         <ng-template [ngTemplateOutlet]="offLabel?.templateRef"></ng-template>
@@ -66,6 +66,18 @@ export class NgToggleComponent implements AfterViewInit, AfterContentInit, After
    * Bootstrap color scheme when toggled in the "Off" position (i.e. "primary" translates to "btn-primary")
    */
   @Input() offColor = 'secondary';
+  /**
+   * Bootstrap color scheme for handle (i.e. "light" translated to "btn-light")
+   */
+  @Input() handleColor: string = null;
+  /**
+   * Bootstrap color scheme for handle when toggled in the "On" position (i.e. "light" translated to "btn-light")
+   */
+  @Input() handleOnColor: string = null;
+  /**
+   * Bootstrap color scheme for handle when toggled in the "Off" position (i.e. "light" translated to "btn-light")
+   */
+  @Input() handleOffColor: string = null;
   /**
    * Button size to display the toggle
    */
@@ -177,6 +189,22 @@ export class NgToggleComponent implements AfterViewInit, AfterContentInit, After
   @HostBinding('class.ng-toggle-sm')
   get smallButton(): boolean {
       return this.size === 'sm';
+  }
+
+  get handleButtonClass(): string {
+      if ((
+        (null === this.handleOnColor && null === this.handleOffColor) || this.indeterminate) &&
+        null !== this.handleColor) {
+          return `btn-${this.handleColor}`;
+      } else if (null === this.handleOnColor && null === this.handleOffColor) {
+          return this.handleDark ? 'btn-dark' : 'btn-light';
+      } else if (null !== this.handleOnColor && this.value) {
+          return `btn-${this.handleOnColor}`;
+      } else if (null !== this.handleOffColor && !this.value && !this.indeterminate) {
+          return `btn-${this.handleOffColor}`;
+      }
+
+      return 'btn-light';
   }
 
   get handleDark(): boolean {
