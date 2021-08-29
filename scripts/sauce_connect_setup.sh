@@ -9,13 +9,8 @@ cd `dirname $0`
 # This script requires your .travis.yml to include the following two private env variables:
 # SAUCE_USERNAME
 # SAUCE_ACCESS_KEY
-# Follow the steps at https://saucelabs.com/opensource/travis to set that up.
-#
-# Curl and run this script as part of your .travis.yml before_script section:
-# before_script:
-#   - curl https://gist.github.com/santiycr/5139565/raw/sauce_connect_setup.sh | bash
 
-CONNECT_URL="https://saucelabs.com/downloads/sc-4.6.4-linux.tar.gz"
+CONNECT_URL="https://saucelabs.com/downloads/sc-4.6.3-linux.tar.gz"
 CONNECT_DIR="/tmp/sauce-connect-$RANDOM"
 CONNECT_DOWNLOAD="sc-latest-linux.tar.gz"
 

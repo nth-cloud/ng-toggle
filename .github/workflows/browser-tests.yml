@@ -33,20 +33,35 @@ jobs:
         with:
           node-version: "${{ matrix.node }}"
 
-      - name: Setup Yarn
-        uses: sergioramos/yarn-actions@v6
+      - id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Setup Cache
+        uses: actions/cache@v1
         with:
-          no-lockfile: true
-          version: true
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            yarn-
 
       - name: Install Dependencies
-        run: yarn
+        run: yarn --frozen-lockfile
 
       - name: Run Tests
         run: |
           yarn ci
           yarn api-doc:test
-          yarn global add codecov && codecov --disable=gcov -f coverage/lcov.info -F unit
+
+      - name: Register CodeCov
+        uses: codecov/codecov-action@v1
+        with:
+          file: coverage/lcov.info
+          flags: unit
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: test-videos
+          path: test-videos
+        if: ${{ always() }}
 
   browsers:
     name: Browser Tests
@@ -59,44 +74,55 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-#      - name: Saucelabs Connect
-#        run: |
-#          mkdir -p $LOGS_DIR
-#          ./scripts/sauce_connect_setup.sh
-#        timeout-minutes: 2
-#
-#      - name: Wait for Sauce Connect
-#        uses: ifaxity/wait-on-action@v1
-#        with:
-#          resource: "file:${{ env.BROWSER_PROVIDER_READY_FILE }}"
-#        timeout-minutes: 2
-
       - name: Saucelabs Connect
-        uses: saucelabs/sauce-connect-action@v1
+        run: |
+          mkdir -p $LOGS_DIR
+          ./scripts/sauce_connect_setup.sh
+        timeout-minutes: 2
+
+      - name: Wait for Sauce Connect
+        uses: ifaxity/wait-on-action@v1
         with:
-          username: "${{ secrets.SAUCE_USERNAME }}"
-          accessKey: "${{ secrets.SAUCE_ACCESS_KEY }}"
-          tunnelIdentifier: "${{ github.run_id }}"
-          scVersion: 4.6.2
+          resource: "file:${{ env.BROWSER_PROVIDER_READY_FILE }}"
+        timeout-minutes: 2
+
+#      - name: Saucelabs Connect
+#        uses: saucelabs/sauce-connect-action@v1
+#        with:
+#          username: "${{ secrets.SAUCE_USERNAME }}"
+#          accessKey: "${{ secrets.SAUCE_ACCESS_KEY }}"
+#          tunnelIdentifier: "${{ github.run_id }}"
+#          scVersion: 4.6.2
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.4.0
         with:
-          node-version: 16
+          node-version: "14.x"
 
-      - name: Setup Yarn
-        uses: sergioramos/yarn-actions@v6
+      - id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+      - name: Setup Cache
+        uses: actions/cache@v1
         with:
-          no-lockfile: true
-          version: true
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            yarn-
 
       - name: Install Dependencies
-        run: yarn
+        run: yarn --frozen-lockfile
 
       - name: Run Browser Tests
         run: |
           yarn saucelabs
           yarn saucelabs:ie
 
-#      - name: Saucelabs Disconnect
-#        run: ./scripts/sauce_connect_teardown.sh
+      - uses: actions/upload-artifact@v2
+        with:
+          name: test-videos
+          path: test-videos
+        if: ${{ always() }}
+
+      - name: Saucelabs Disconnect
+        run: ./scripts/sauce_connect_teardown.sh
+        if: ${{ always() }}
