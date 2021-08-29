@@ -1,4 +1,5 @@
-const reporters = process.env.TRAVIS || process.env.GITHUB_WORKFLOW ? ['dots'] : ['progress'];
+
+const reporters = process.env.TRAVIS || process.env.GITHUB_WORKFLOW ? ['dots', 'coverage'] : ['progress', 'coverage'];
 const browsers = process.env.TRAVIS || process.env.GITHUB_WORKFLOW ? ['ChromeHeadlessNoSandbox'] : ['Chrome'];
 const env = process.env.TRAVIS ? 'prod' : 'dev';
 
@@ -10,15 +11,15 @@ module.exports = function (config) {
             require('karma-jasmine'),
             require('karma-chrome-launcher'),
             require('karma-firefox-launcher'),
-            require('karma-coverage-istanbul-reporter'),
+            require('karma-coverage'),
             require('@angular-devkit/build-angular/plugins/karma')
         ],
         client: {
             clearContent: false
         },
-        coverageIstanbulReports: {
+        coverageReporter: {
             dir: require('path').join(__dirname, '..', 'coverage'),
-            reports: ['html', 'json', 'lcovonly'],
+            reporters: [{type: 'html'}, {type: 'json'}, {type: 'lcovonly'}],
             fixWebpackSourcePaths: true
         },
         customLaunchers: {

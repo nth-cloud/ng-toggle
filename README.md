@@ -1,11 +1,11 @@
-# NG-TOGGLE - Native Angular components & directives for Bootstrap-styled Toggle Switch 
+# NG-TOGGLE 
+### Native Angular components & directives for Bootstrap-styled Toggle Switch 
 
 [![CodeQL](https://github.com/nth-cloud/ng-toggle/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/nth-cloud/ng-toggle/actions/workflows/codeql-analysis.yml)
 [![npm version](https://badge.fury.io/js/%40nth-cloud%2Fng-toggle.svg)](https://badge.fury.io/js/%40nth-cloud%2Fng-toggle)
 [![Build Status](https://travis-ci.org/nth-cloud/ng-toggle.svg?branch=master)](https://travis-ci.org/nth-cloud/ng-toggle)
 [![codecov](https://codecov.io/gh/nth-cloud/ng-toggle/branch/master/graph/badge.svg)](https://codecov.io/gh/nth-cloud/ng-toggle)
 [![dependency Status](https://david-dm.org/nth-cloud/ng-toggle.svg?branch=master)](https://david-dm.org/nth-cloud/ng-toggle)
-[![Sauce Test Status](https://saucelabs.com/buildstatus/trickeyone)](https://saucelabs.com/u/trickeyone)
 [![Sauce Test Status](https://saucelabs.com/browser-matrix/trickeyone.svg)](https://saucelabs.com/u/trickeyone)
 
 Angular Bootstrap-styled Toggle component that can be used as a standalone toggle or can convert checkboxes into UI toggles.
@@ -15,7 +15,7 @@ Angular Bootstrap-styled Toggle component that can be used as a standalone toggl
 View it in action at https://nth-cloud.github.io/ng-toggle
 
 ## Dependencies
-* [Angular](https://angular.io) (tested with 10.0.0)
+* [Angular](https://angular.io) (tested with 11.0.0)
 * [Bootstrap 4](https://www.getbootstrap.com) (tested with 4.5.0)
 
 | ng-toggle | Angular | Bootstrap CSS |
@@ -26,6 +26,7 @@ View it in action at https://nth-cloud.github.io/ng-toggle
 | 4.x.x     | 8.0.0   | 4.0.0         |
 | 5.x.x     | 9.0.0   | 4.0.0         |
 | 6.x.x     | 10.0.0  | 4.0.0         |
+| 7.x.x     | 11.0.0  | 4.0.0         |
 
 ## Installation
 After installing the above dependencies, install `ng-toggle` via:

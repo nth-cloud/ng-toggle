@@ -14,15 +14,6 @@ gulp.task('changelog', () => {
       .pipe(gulp.dest('./'));
 });
 
-gulp.task('check-format', () => {
-  return gulp.src(['gulpfile.js', 'misc/*.ts', 'src/**/*.ts', 'e2e-app/**/*.ts'])
-      .pipe(gulpFormat.checkFormat('file', clangFormat))
-      .on('warning', function() {
-        console.log('See https://github.com/nth-cloud/ng-toggle/blob/master/DEVELOPER.md#clang-format');
-        process.exit(1);
-      });
-});
-
 gulp.task('demo-push', (done) => {
   ghPages.publish('demo/dist', {message: 'Update ' + new Date().toISOString()}, done);
 });

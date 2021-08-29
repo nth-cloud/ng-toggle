@@ -1,20 +1,20 @@
 import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
 
-import {NgToggle} from './toggle';
-import {NgToggleAccessor} from './toggle-accessor';
-import {NgToggleLabel} from './toggle-label';
+import {NgToggleComponent} from './toggle';
+import {NgToggleAccessorDirective} from './toggle-accessor';
+import {NgToggleLabelDirective} from './toggle-label';
 
-export {NgToggle} from './toggle';
-export {NgToggleAccessor} from './toggle-accessor';
-export {NgToggleLabel} from './toggle-label';
+export {NgToggleComponent} from './toggle';
+export {NgToggleAccessorDirective} from './toggle-accessor';
+export {NgToggleLabelDirective} from './toggle-label';
 
 const declarations = [
-  NgToggle,
-  NgToggleAccessor,
-  NgToggleLabel,
+    NgToggleComponent,
+    NgToggleAccessorDirective,
+    NgToggleLabelDirective,
 ];
 
-@NgModule({imports: [CommonModule], exports: declarations, declarations: declarations})
+@NgModule({imports: [CommonModule], exports: declarations, declarations})
 export class NgToggleModule {
 }

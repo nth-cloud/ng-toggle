@@ -1,6 +1,6 @@
 {
   "name": "@nth-cloud/ng-toggle",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "Angular powered Bootstrap Toggle",
   "keywords": [
     "angular",
@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/nth-cloud/ng-toggle#readme",
   "peerDependencies": {
-    "@angular/common": "^10.0.0",
-    "@angular/core": "^10.0.0",
-    "@angular/forms": "^10.0.0"
+    "@angular/common": "^11.0.0",
+    "@angular/core": "^11.0.0",
+    "@angular/forms": "^11.0.0"
   }
 }

@@ -6,7 +6,7 @@ import {Directive, ElementRef, Input, TemplateRef} from '@angular/core';
  * This directive must be used in conjunction with a ng-template.
  */
 @Directive({selector: 'ng-template[ngToggleLabel]'})
-export class NgToggleLabel {
+export class NgToggleLabelDirective {
   /**
    * Determines which state the label will be used.
    */
@@ -15,6 +15,6 @@ export class NgToggleLabel {
   constructor(public templateRef: TemplateRef<any>, private elRef: ElementRef) {}
 
   get element(): ElementRef {
-    return this.elRef;
+      return this.elRef;
   }
 }
