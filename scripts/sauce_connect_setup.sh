@@ -31,13 +31,11 @@ mkdir sauce-connect
 tar --extract --file=$CONNECT_DOWNLOAD --strip-components=1 --directory=sauce-connect > /dev/null
 rm $CONNECT_DOWNLOAD
 
-# SAUCE_ACCESS_KEY=`echo $SAUCE_ACCESS_KEY | rev`
-
 ARGS=""
 
-# Set tunnel-id only on Travis, to make local testing easier.
-if [ ! -z "$TRAVIS_JOB_NUMBER" ]; then
-  ARGS="$ARGS --tunnel-identifier $TRAVIS_JOB_NUMBER"
+# Set tunnel-id only on Github, to make local testing easier.
+if [ ! -z "$GITHUB_RUN_ID" ]; then
+  ARGS="$ARGS --tunnel-identifier $GITHUB_RUN_ID"
 fi
 if [ ! -z "$BROWSER_PROVIDER_READY_FILE" ]; then
   ARGS="$ARGS --readyfile $BROWSER_PROVIDER_READY_FILE"
@@ -53,3 +51,5 @@ if [ ! -z "$BROWSER_PROVIDER_READY_FILE" ]; then
 fi
 sauce-connect/bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY $ARGS \
   --logfile $CONNECT_LOG 2> $CONNECT_STDERR 1> $CONNECT_STDOUT &
+
+echo "Sauce Connect launched"

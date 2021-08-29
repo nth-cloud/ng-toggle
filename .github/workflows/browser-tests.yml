@@ -77,7 +77,12 @@ jobs:
         run: |
           mkdir -p $LOGS_DIR
           ./scripts/sauce_connect_setup.sh
-          ./scripts/sauce_connect_block.sh
+        timeout-minutes: 2
+
+      - name: Wait for Sauce Connect
+        uses: ifaxity/wait-on-action
+        with:
+          file: "${{ env.BROWSER_PROVIDER_READY_FILE }}"
         timeout-minutes: 2
 
 #      - name: Saucelabs Connect
@@ -90,9 +95,6 @@ jobs:
 #          doctor: true
 
       - name: Run Browser Tests
-        env:
-          TRAVIS_BUILD_NUMBER: "${{ github.run_number }}"
-          TRAVIS_BUILD_ID: "${{ github.run_id }}"
         run: |
           yarn saucelabs
           yarn saucelabs:ie
