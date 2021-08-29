@@ -1,3 +1,12 @@
+## [7.0.1](https://github.com/nth-cloud/ng-toggle/compare/7.0.0...7.0.1) (2021-08-29)
+
+
+### Features
+
+* I did a thing ([e0ae030](https://github.com/nth-cloud/ng-toggle/commit/e0ae030596943477a95f9c42e0522dbeb01c3a9f))
+
+
+
 # [7.0.0](https://github.com/nth-cloud/ng-toggle/compare/5.0.1...7.0.0) (2021-08-29)
 
 
