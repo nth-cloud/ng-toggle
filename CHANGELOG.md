@@ -1,3 +1,7 @@
+## [8.0.1](https://github.com/nth-cloud/ng-toggle/compare/8.0.0...8.0.1) (2021-08-29)
+
+
+
 # [8.0.0](https://github.com/nth-cloud/ng-toggle/compare/7.0.0...8.0.0) (2021-08-29)
 
 
