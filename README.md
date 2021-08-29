@@ -19,7 +19,7 @@ View it in action at https://nth-cloud.github.io/ng-toggle
 * [Bootstrap 4](https://www.getbootstrap.com) (tested with 4.5.0)
 
 | ng-toggle | Angular | Bootstrap CSS | Active Support |
-| --------- | ------- | ------------- |: --------- :|
+| --------- | ------- | ------------- |:---------:|
 | 1.x.x     | 5.2.1   | 4.0.0         | :x: |
 | 2.x.x     | 6.1.0   | 4.0.0         | :x: |
 | 3.x.x     | 7.0.0   | 4.0.0         | :x: |
