@@ -59,7 +59,13 @@
         "no-shadow": "error",
         "no-underscore-dangle": "off",
         "no-unused-expressions": "error",
-        "quotes": [2, "single", { "avoidEscape": true }],
+        "quotes": [
+          2,
+          "single",
+          {
+            "avoidEscape": true
+          }
+        ],
         "semi": "off",
         "prefer-arrow/prefer-arrow-functions": [
           "warn",
@@ -72,7 +78,9 @@
         ],
         "prefer-arrow-callback": [
           "error",
-          { "allowNamedFunctions": true }
+          {
+            "allowNamedFunctions": true
+          }
         ],
         "@angular-eslint/directive-selector": "off",
         "@angular-eslint/component-selector": "off",

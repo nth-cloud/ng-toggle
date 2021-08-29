@@ -15,18 +15,19 @@ Angular Bootstrap-styled Toggle component that can be used as a standalone toggl
 View it in action at https://nth-cloud.github.io/ng-toggle
 
 ## Dependencies
-* [Angular](https://angular.io) (tested with 11.0.0)
+* [Angular](https://angular.io) (tested with 12.0.0)
 * [Bootstrap 4](https://www.getbootstrap.com) (tested with 4.5.0)
 
-| ng-toggle | Angular | Bootstrap CSS |
-| --------- | ------- | ------------- |
-| 1.x.x     | 5.2.1   | 4.0.0         |
-| 2.x.x     | 6.1.0   | 4.0.0         |
-| 3.x.x     | 7.0.0   | 4.0.0         |
-| 4.x.x     | 8.0.0   | 4.0.0         |
-| 5.x.x     | 9.0.0   | 4.0.0         |
-| 6.x.x     | 10.0.0  | 4.0.0         |
-| 7.x.x     | 11.0.0  | 4.0.0         |
+| ng-toggle | Angular | Bootstrap CSS | Active Support |
+| --------- | ------- | ------------- |: --------- :|
+| 1.x.x     | 5.2.1   | 4.0.0         | :x: |
+| 2.x.x     | 6.1.0   | 4.0.0         | :x: |
+| 3.x.x     | 7.0.0   | 4.0.0         | :x: |
+| 4.x.x     | 8.0.0   | 4.0.0         | :x: |
+| 5.x.x     | 9.0.0   | 4.0.0         | :x: |
+| 6.x.x     | 10.0.0  | 4.0.0         | :white_check_mark: |
+| 7.x.x     | 11.0.0  | 4.0.0         | :white_check_mark: |
+| 8.x.x     | 12.0.0  | 4.0.0         | :white_check_mark: |
 
 ## Installation
 After installing the above dependencies, install `ng-toggle` via:
@@ -64,15 +65,9 @@ map: {
 
 ## Supported browsers
 We support the same browsers and versions supported by both Bootstrap 4 and Angular, whichever is _more_ restrictive.
-See [this](https://github.com/angular/angular/blob/master/README.md) for up-to-date Angular browser support.
+See [Angular Browser Support](https://github.com/angular/angular/blob/master/README.md) and [Bootstrap browser support](https://getbootstrap.com/docs/4.0/getting-started/browsers-devices/#supported-browsers) for more details.
 
-* Chrome (45+)
-* Firefox (40+)
-* IE (10+)
-* Edge (20+)
-* Safari (10+)
-
-Also, check [Bootstrap 4's notes](https://getbootstrap.com/docs/4.0/getting-started/browsers-devices/#supported-browsers) on supported browsers.
+Our code is automatically tested on all supported browsers. 
 
 ### Big Thanks
 
