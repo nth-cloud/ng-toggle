@@ -1,11 +1,27 @@
 import { Component } from '@angular/core';
 
+interface KitchenSinkModel {
+  handleColor: string|null;
+  handleOnColor: string|null;
+  handleOffColor: string|null;
+  onColor: string;
+  offColor: string;
+  onText: string;
+  offText: string;
+  disabled: boolean;
+  size: 'sm' | 'lg' | '';
+  value: boolean;
+}
+
 @Component({
   selector: 'nthd-toggle-kitchen-sink',
   templateUrl: './toggle-kitchen-sink.html'
 })
 export class NthdToggleKitchenSink {
-  model: any = {
+  model: KitchenSinkModel = {
+    handleColor: null,
+    handleOnColor: null,
+    handleOffColor: null,
     onColor: 'primary',
     offColor: 'secondary',
     onText: 'On',
@@ -27,5 +43,23 @@ export class NthdToggleKitchenSink {
     event.preventDefault();
     event.stopPropagation();
     this.model.offColor = color;
+  }
+
+  setHandleColor(event: MouseEvent, color: string) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.model.handleColor = color;
+  }
+
+  setHandleOnColor(event: MouseEvent, color: string) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.model.handleOnColor = color;
+  }
+
+  setHandleOffColor(event: MouseEvent, color: string) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.model.handleOffColor = color;
   }
 }

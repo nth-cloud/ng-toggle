@@ -1,9 +1,12 @@
 <div>
     <ng-toggle
-        onColor="{{model.onColor}}"
-        onText="{{model.onText}}"
-        offColor="{{model.offColor}}"
-        offText="{{model.offText}}"
+        [onColor]="model.onColor"
+        [onText]="model.onText"
+        [offColor]="model.offColor"
+        [offText]="model.offText"
+        [handleColor]="model.handleColor"
+        [handleOnColor]="model.handleOnColor"
+        [handleOffColor]="model.handleOffColor"
         [disabled]="model.disabled"
         [size]="model.size"
         [(ngModel)]="model.value"
@@ -42,9 +45,30 @@
     </div>
 </div>
 <div class="row mb-2">
+    <div class="col-3">Handle Color:</div>
+    <div class="col-9">
+        <button *ngFor="let color of colors" class="mr-1 mb-1 btn btn-{{color}}" [class.active]="model.onColor === color" (click)="setHandleColor($event, color)">{{color | titlecase}}</button>
+        <button class="mr-1 mb-1 btn btn-outline-secondary" [class.active]="model.onColor === null" (click)="setHandleColor($event, null)">Unset</button>
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-3">Handle On Color:</div>
+    <div class="col-9">
+        <button *ngFor="let color of colors" class="mr-1 mb-1 btn btn-{{color}}" [class.active]="model.onColor === color" (click)="setHandleOnColor($event, color)">{{color | titlecase}}</button>
+        <button class="mr-1 mb-1 btn btn-outline-secondary" [class.active]="model.onColor === null" (click)="setHandleOnColor($event, null)">Unset</button>
+    </div>
+</div>
+<div class="row mb-2">
+    <div class="col-3">Handle Off Color:</div>
+    <div class="col-9">
+        <button *ngFor="let color of colors" class="mr-1 mb-1 btn btn-{{color}}" [class.active]="model.onColor === color" (click)="setHandleOffColor($event, color)">{{color | titlecase}}</button>
+        <button class="mr-1 mb-1 btn btn-outline-secondary" [class.active]="model.onColor === null" (click)="setHandleOffColor($event, null)">Unset</button>
+    </div>
+</div>
+<div class="row mb-2">
     <div class="col-3">On Color:</div>
     <div class="col-9">
-        <button *ngFor="let color of colors" class="mr-1 mb-1 btn btn-{{color}}" [ngClass]="{'active': model.onColor === color}" (click)="setOnColor($event, color)">{{color | titlecase}}</button>
+        <button *ngFor="let color of colors" class="mr-1 mb-1 btn btn-{{color}}" [class.active]="model.onColor === color" (click)="setOnColor($event, color)">{{color | titlecase}}</button>
     </div>
 </div>
 <div class="row mb-2">

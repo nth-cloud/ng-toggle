@@ -447,3 +447,7 @@ nthd-component-wrapper, nthd-page-wrapper {
 @media (max-width: 568px) and (max-height: 320px) {
   @include center-nav-tab-on-small-screens();
 }
+
+ng-toggle.btn {
+  border-color: $border-color;
+}
