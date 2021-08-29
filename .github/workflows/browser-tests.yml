@@ -73,10 +73,11 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
-      - name: Suacelabs Connect
+      - name: Saucelabs Connect
         run: |
           mkdir -p $LOGS_DIR
           ./scripts/sauce_connect_setup.sh
+          ./scripts/sauce_connect_block.sh
 
 #      - name: Saucelabs Connect
 #        uses: saucelabs/sauce-connect-action@v1
@@ -92,7 +93,6 @@ jobs:
           TRAVIS_BUILD_NUMBER: "${{ github.run_number }}"
           TRAVIS_BUILD_ID: "${{ github.run_id }}"
         run: |
-          ./scripts/sauce_connect_block.sh
           yarn saucelabs
           yarn saucelabs:ie
 

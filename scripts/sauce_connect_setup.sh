@@ -31,7 +31,7 @@ mkdir sauce-connect
 tar --extract --file=$CONNECT_DOWNLOAD --strip-components=1 --directory=sauce-connect > /dev/null
 rm $CONNECT_DOWNLOAD
 
-SAUCE_ACCESS_KEY=`echo $SAUCE_ACCESS_KEY | rev`
+# SAUCE_ACCESS_KEY=`echo $SAUCE_ACCESS_KEY | rev`
 
 ARGS=""
 
@@ -48,5 +48,8 @@ echo "Starting Sauce Connect in the background, logging into:"
 echo "  $CONNECT_LOG"
 echo "  $CONNECT_STDOUT"
 echo "  $CONNECT_STDERR"
+if [ ! -z "$BROWSER_PROVIDER_READY_FILE" ]; then
+  echo "Ready File: $BROWSER_PROVIDER_READY_FILE"
+fi
 sauce-connect/bin/sc -u $SAUCE_USERNAME -k $SAUCE_ACCESS_KEY $ARGS \
   --logfile $CONNECT_LOG 2> $CONNECT_STDERR 1> $CONNECT_STDOUT &

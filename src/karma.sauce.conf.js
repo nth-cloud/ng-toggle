@@ -63,7 +63,7 @@ module.exports = function (config) {
     },
 
     sauceLabs: {
-      build: `GITHUB #${process.env.GITHUB_RUN_ID} (${process.env.GITHUB_JOB})`,
+      build: `GITHUB #${process.env.GITHUB_RUN_NUMBER} (${process.env.GITHUB_JOB})`,
       tunnelIdentifier: process.env.GITHUB_RUN_ID,
       testName: 'ng-toggle',
       retryLimit: 3,
