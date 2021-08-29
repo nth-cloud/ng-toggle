@@ -1,3 +1,12 @@
+# [8.0.0](https://github.com/nth-cloud/ng-toggle/compare/7.0.0...8.0.0) (2021-08-29)
+
+
+### Features
+
+* upgrading to Angular v12, closes [#30](https://github.com/nth-cloud/ng-toggle/issues/30) ([1846b1e](https://github.com/nth-cloud/ng-toggle/commit/1846b1e3d1345653b14ff188fa600380e0e3fb92))
+
+
+
 # [7.0.0](https://github.com/nth-cloud/ng-toggle/compare/5.0.1...7.0.0) (2021-08-29)
 
 
