@@ -1,6 +1,8 @@
 # NG-TOGGLE 
 ### Native Angular components & directives for Bootstrap-styled Toggle Switch 
 
+# foo bar
+
 [![CodeQL](https://github.com/nth-cloud/ng-toggle/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/nth-cloud/ng-toggle/actions/workflows/codeql-analysis.yml)
 [![npm version](https://badge.fury.io/js/%40nth-cloud%2Fng-toggle.svg)](https://badge.fury.io/js/%40nth-cloud%2Fng-toggle)
 [![Build Status](https://travis-ci.org/nth-cloud/ng-toggle.svg?branch=master)](https://travis-ci.org/nth-cloud/ng-toggle)
