@@ -52,6 +52,10 @@ jobs:
     name: Browser Tests
     runs-on: ubuntu-latest
 
+    env:
+      BROWSER_PROVIDER_READY_FILE: /tmp/sauce-connect-ready
+      LOGS_DIR: /tmp/logs
+
     steps:
       - uses: actions/checkout@v2
 
@@ -69,19 +73,28 @@ jobs:
       - name: Install Dependencies
         run: yarn
 
-      - name: Saucelabs Connect
-        uses: saucelabs/sauce-connect-action@v1
-        with:
-          username: "${{ secrets.SAUCE_USERNAME }}"
-          accessKey: "${{ secrets.SAUCE_ACCESS_KEY }}"
-          tunnelIdentifier: "${{ github.run_id }}"
-          scVersion: 4.6.4
-          doctor: true
+      - name: Suacelabs Connect
+        run: |
+          mkdir -p $LOGS_DIR
+          ./scripts/sauce_connect_setup.sh
+
+#      - name: Saucelabs Connect
+#        uses: saucelabs/sauce-connect-action@v1
+#        with:
+#          username: "${{ secrets.SAUCE_USERNAME }}"
+#          accessKey: "${{ secrets.SAUCE_ACCESS_KEY }}"
+#          tunnelIdentifier: "${{ github.run_id }}"
+#          scVersion: 4.6.4
+#          doctor: true
 
       - name: Run Browser Tests
         env:
           TRAVIS_BUILD_NUMBER: "${{ github.run_number }}"
           TRAVIS_BUILD_ID: "${{ github.run_id }}"
         run: |
+          ./scripts/sauce_connect_block.sh
           yarn saucelabs
           yarn saucelabs:ie
+
+      - name: Saucelabs Disconnect
+        run: ./scripts/sauce_connect_teardown.sh
