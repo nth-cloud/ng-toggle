@@ -63,8 +63,8 @@ module.exports = function (config) {
     },
 
     sauceLabs: {
-      build: `TRAVIS #${process.env.TRAVIS_BUILD_NUMBER} (${process.env.TRAVIS_BUILD_ID})`,
-      tunnelIdentifier: process.env.TRAVIS_JOB_NUMBER,
+      build: `GITHUB #${process.env.GITHUB_RUN_ID} (${process.env.GITHUB_JOB})`,
+      tunnelIdentifier: process.env.GITHUB_RUN_ID,
       testName: 'ng-toggle',
       retryLimit: 3,
       startConnect: false,
