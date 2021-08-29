@@ -10,6 +10,8 @@
 
 Angular Bootstrap-styled Toggle component that can be used as a standalone toggle or can convert checkboxes into UI toggles.
 
+# Foo Bar
+
 ## Demo
 
 View it in action at https://nth-cloud.github.io/ng-toggle
