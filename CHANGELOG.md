@@ -1,3 +1,12 @@
+## [7.0.1](https://github.com/nth-cloud/ng-toggle/compare/7.0.0...7.0.1) (2021-08-29)
+
+
+### Features
+
+* foo bar ([312b50e](https://github.com/nth-cloud/ng-toggle/commit/312b50e98557b5d44cef35a254acdd89fbfe046e))
+
+
+
 # [7.0.0](https://github.com/nth-cloud/ng-toggle/compare/5.0.1...7.0.0) (2021-08-29)
 
 
