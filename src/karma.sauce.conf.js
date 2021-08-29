@@ -22,12 +22,6 @@ const BROWSERS = {
     platform: 'Windows 10',
     version: '18.17763'
   },
-  'IE10': {
-    base: 'SauceLabs',
-    browserName: 'internet explorer',
-    platform: 'Windows 8',
-    version: '10'
-  },
   'IE11': {
     base: 'SauceLabs',
     browserName: 'internet explorer',
@@ -63,7 +57,7 @@ module.exports = function (config) {
     },
 
     sauceLabs: {
-      build: `GITHUB #${process.env.GITHUB_RUN_NUMBER} (${process.env.GITHUB_JOB})`,
+      build: `GITHUB run ${process.env.GITHUB_WORKFLOW} #${process.env.GITHUB_RUN_NUMBER}`,
       tunnelIdentifier: process.env.GITHUB_RUN_ID,
       testName: 'ng-toggle',
       retryLimit: 3,
