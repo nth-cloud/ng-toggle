@@ -1,6 +1,4 @@
 const gulp = require('gulp');
-const clangFormat = require('clang-format');
-const gulpFormat = require('gulp-clang-format');
 const ghPages = require('gh-pages');
 
 gulp.task('changelog', () => {
