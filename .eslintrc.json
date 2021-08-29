@@ -53,7 +53,7 @@
         "dot-notation": "off",
         "id-blacklist": "off",
         "id-match": "off",
-        "indent": "error",
+        "indent": "off",
         "no-empty-function": "off",
         "no-redeclare": "error",
         "no-shadow": "error",
