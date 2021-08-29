@@ -74,25 +74,25 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Saucelabs Connect
-        run: |
-          mkdir -p $LOGS_DIR
-          ./scripts/sauce_connect_setup.sh
-        timeout-minutes: 2
-
-      - name: Wait for Sauce Connect
-        uses: ifaxity/wait-on-action@v1
-        with:
-          resource: "file:${{ env.BROWSER_PROVIDER_READY_FILE }}"
-        timeout-minutes: 2
-
 #      - name: Saucelabs Connect
-#        uses: saucelabs/sauce-connect-action@v1
+#        run: |
+#          mkdir -p $LOGS_DIR
+#          ./scripts/sauce_connect_setup.sh
+#        timeout-minutes: 2
+#
+#      - name: Wait for Sauce Connect
+#        uses: ifaxity/wait-on-action@v1
 #        with:
-#          username: "${{ secrets.SAUCE_USERNAME }}"
-#          accessKey: "${{ secrets.SAUCE_ACCESS_KEY }}"
-#          tunnelIdentifier: "${{ github.run_id }}"
-#          scVersion: 4.6.2
+#          resource: "file:${{ env.BROWSER_PROVIDER_READY_FILE }}"
+#        timeout-minutes: 2
+
+      - name: Saucelabs Connect
+        uses: saucelabs/sauce-connect-action@v1
+        with:
+          username: "${{ secrets.SAUCE_USERNAME }}"
+          accessKey: "${{ secrets.SAUCE_ACCESS_KEY }}"
+          tunnelIdentifier: "${{ github.run_id }}"
+          scVersion: 4.6.3
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.4.0
@@ -123,6 +123,6 @@ jobs:
           path: test-videos
         if: ${{ always() }}
 
-      - name: Saucelabs Disconnect
-        run: ./scripts/sauce_connect_teardown.sh
-        if: ${{ always() }}
+#      - name: Saucelabs Disconnect
+#        run: ./scripts/sauce_connect_teardown.sh
+#        if: ${{ always() }}
