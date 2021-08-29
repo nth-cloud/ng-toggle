@@ -1,3 +1,12 @@
+## [7.0.1](https://github.com/nth-cloud/ng-toggle/compare/7.0.0...7.0.1) (2021-08-29)
+
+
+### Features
+
+* added ability to specify handle colors, closes [#28](https://github.com/nth-cloud/ng-toggle/issues/28) ([8980753](https://github.com/nth-cloud/ng-toggle/commit/8980753ea05adb37dc596d5cf430c95114105108))
+
+
+
 # [7.0.0](https://github.com/nth-cloud/ng-toggle/compare/5.0.1...7.0.0) (2021-08-29)
 
 
