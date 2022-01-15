@@ -106,7 +106,7 @@
     "karma-firefox-launcher": "^2.0",
     "karma-jasmine": "~4.0.0",
     "karma-sauce-launcher": "^4.1.5",
-    "marked": "^3.0.2",
+    "marked": "^4.0.10",
     "ng-packagr": "^12.2.1",
     "ngx-build-plus": "^12.0",
     "prismjs": "^1.15.0",
