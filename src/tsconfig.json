@@ -6,11 +6,11 @@
     "importHelpers": true
   },
   "angularCompilerOptions": {
+    "compilationMode": "partial",
     "skipTemplateCodegen": true,
     "strictMetadataEmit": true,
     "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "enableIvy": false
+    "strictInjectionParameters": true
   },
   "include": [
     "./**/*.ts"
