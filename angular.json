@@ -149,7 +149,7 @@
     }
   },
   "cli": {
-    "packageManager": "yarn",
+    "packageManager": "npm",
     "analytics": false
   }
 }
