@@ -152,12 +152,28 @@ export class AppComponent {
 ">
     <input type="hidden" name="files[app/toggle-kitchen-sink.ts]" value="import { Component } from &#x27;@angular/core&#x27;;
 
+interface KitchenSinkModel {
+  handleColor: string|null;
+  handleOnColor: string|null;
+  handleOffColor: string|null;
+  onColor: string;
+  offColor: string;
+  onText: string;
+  offText: string;
+  disabled: boolean;
+  size: &#x27;sm&#x27; | &#x27;lg&#x27; | &#x27;&#x27;;
+  value: boolean;
+}
+
 @Component({
   selector: &#x27;nthd-toggle-kitchen-sink&#x27;,
   templateUrl: &#x27;./toggle-kitchen-sink.html&#x27;
 })
 export class NthdToggleKitchenSink {
-  model: any = {
+  model: KitchenSinkModel = {
+    handleColor: null,
+    handleOnColor: null,
+    handleOffColor: null,
     onColor: &#x27;primary&#x27;,
     offColor: &#x27;secondary&#x27;,
     onText: &#x27;On&#x27;,
@@ -180,14 +196,35 @@ export class NthdToggleKitchenSink {
     event.stopPropagation();
     this.model.offColor = color;
   }
+
+  setHandleColor(event: MouseEvent, color: string) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.model.handleColor = color;
+  }
+
+  setHandleOnColor(event: MouseEvent, color: string) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.model.handleOnColor = color;
+  }
+
+  setHandleOffColor(event: MouseEvent, color: string) {
+    event.preventDefault();
+    event.stopPropagation();
+    this.model.handleOffColor = color;
+  }
 }
 ">
     <input type="hidden" name="files[app/toggle-kitchen-sink.html]" value="&#x3C;div&#x3E;
     &#x3C;ng-toggle
-        onColor=&#x22;{{model.onColor}}&#x22;
-        onText=&#x22;{{model.onText}}&#x22;
-        offColor=&#x22;{{model.offColor}}&#x22;
-        offText=&#x22;{{model.offText}}&#x22;
+        [onColor]=&#x22;model.onColor&#x22;
+        [onText]=&#x22;model.onText&#x22;
+        [offColor]=&#x22;model.offColor&#x22;
+        [offText]=&#x22;model.offText&#x22;
+        [handleColor]=&#x22;model.handleColor&#x22;
+        [handleOnColor]=&#x22;model.handleOnColor&#x22;
+        [handleOffColor]=&#x22;model.handleOffColor&#x22;
         [disabled]=&#x22;model.disabled&#x22;
         [size]=&#x22;model.size&#x22;
         [(ngModel)]=&#x22;model.value&#x22;
@@ -226,9 +263,30 @@ export class NthdToggleKitchenSink {
     &#x3C;/div&#x3E;
 &#x3C;/div&#x3E;
 &#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
+    &#x3C;div class=&#x22;col-3&#x22;&#x3E;Handle Color:&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
+        &#x3C;button *ngFor=&#x22;let color of colors&#x22; class=&#x22;mr-1 mb-1 btn btn-{{color}}&#x22; [class.active]=&#x22;model.onColor === color&#x22; (click)=&#x22;setHandleColor($event, color)&#x22;&#x3E;{{color | titlecase}}&#x3C;/button&#x3E;
+        &#x3C;button class=&#x22;mr-1 mb-1 btn btn-outline-secondary&#x22; [class.active]=&#x22;model.onColor === null&#x22; (click)=&#x22;setHandleColor($event, null)&#x22;&#x3E;Unset&#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
+    &#x3C;div class=&#x22;col-3&#x22;&#x3E;Handle On Color:&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
+        &#x3C;button *ngFor=&#x22;let color of colors&#x22; class=&#x22;mr-1 mb-1 btn btn-{{color}}&#x22; [class.active]=&#x22;model.onColor === color&#x22; (click)=&#x22;setHandleOnColor($event, color)&#x22;&#x3E;{{color | titlecase}}&#x3C;/button&#x3E;
+        &#x3C;button class=&#x22;mr-1 mb-1 btn btn-outline-secondary&#x22; [class.active]=&#x22;model.onColor === null&#x22; (click)=&#x22;setHandleOnColor($event, null)&#x22;&#x3E;Unset&#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
+    &#x3C;div class=&#x22;col-3&#x22;&#x3E;Handle Off Color:&#x3C;/div&#x3E;
+    &#x3C;div class=&#x22;col-9&#x22;&#x3E;
+        &#x3C;button *ngFor=&#x22;let color of colors&#x22; class=&#x22;mr-1 mb-1 btn btn-{{color}}&#x22; [class.active]=&#x22;model.onColor === color&#x22; (click)=&#x22;setHandleOffColor($event, color)&#x22;&#x3E;{{color | titlecase}}&#x3C;/button&#x3E;
+        &#x3C;button class=&#x22;mr-1 mb-1 btn btn-outline-secondary&#x22; [class.active]=&#x22;model.onColor === null&#x22; (click)=&#x22;setHandleOffColor($event, null)&#x22;&#x3E;Unset&#x3C;/button&#x3E;
+    &#x3C;/div&#x3E;
+&#x3C;/div&#x3E;
+&#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
     &#x3C;div class=&#x22;col-3&#x22;&#x3E;On Color:&#x3C;/div&#x3E;
     &#x3C;div class=&#x22;col-9&#x22;&#x3E;
-        &#x3C;button *ngFor=&#x22;let color of colors&#x22; class=&#x22;mr-1 mb-1 btn btn-{{color}}&#x22; [ngClass]=&#x22;{&#x27;active&#x27;: model.onColor === color}&#x22; (click)=&#x22;setOnColor($event, color)&#x22;&#x3E;{{color | titlecase}}&#x3C;/button&#x3E;
+        &#x3C;button *ngFor=&#x22;let color of colors&#x22; class=&#x22;mr-1 mb-1 btn btn-{{color}}&#x22; [class.active]=&#x22;model.onColor === color&#x22; (click)=&#x22;setOnColor($event, color)&#x22;&#x3E;{{color | titlecase}}&#x3C;/button&#x3E;
     &#x3C;/div&#x3E;
 &#x3C;/div&#x3E;
 &#x3C;div class=&#x22;row mb-2&#x22;&#x3E;
@@ -251,7 +309,7 @@ export class NthdToggleKitchenSink {
 &#x3C;/div&#x3E;
 ">
 
-    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;^12.2.3&#x22;,&#x22;@angular/common&#x22;:&#x22;^12.2.3&#x22;,&#x22;@angular/compiler&#x22;:&#x22;^12.2.3&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;^12.2.3&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;^12.2.3&#x22;,&#x22;@angular/router&#x22;:&#x22;^12.2.3&#x22;,&#x22;@angular/forms&#x22;:&#x22;^12.2.3&#x22;,&#x22;@nth-cloud/ng-toggle&#x22;:&#x22;8.0.0&#x22;,&#x22;core-js&#x22;:&#x22;^3.6.4&#x22;,&#x22;rxjs&#x22;:&#x22;^7.0&#x22;,&#x22;zone.js&#x22;:&#x22;~0.11.4&#x22;}">
+    <input type="hidden" name="dependencies" value="{&#x22;@angular/core&#x22;:&#x22;^13.2.3&#x22;,&#x22;@angular/common&#x22;:&#x22;^13.2.3&#x22;,&#x22;@angular/compiler&#x22;:&#x22;^13.2.3&#x22;,&#x22;@angular/platform-browser&#x22;:&#x22;^13.2.3&#x22;,&#x22;@angular/platform-browser-dynamic&#x22;:&#x22;^13.2.3&#x22;,&#x22;@angular/router&#x22;:&#x22;^13.2.3&#x22;,&#x22;@angular/forms&#x22;:&#x22;^13.2.3&#x22;,&#x22;@nth-cloud/ng-toggle&#x22;:&#x22;9.0.0&#x22;,&#x22;core-js&#x22;:&#x22;^3.6.4&#x22;,&#x22;rxjs&#x22;:&#x22;^7.5.4&#x22;,&#x22;zone.js&#x22;:&#x22;~0.11.4&#x22;}">
   </form>
   <script>document.getElementById("mainForm").submit();</script>
 </body>
