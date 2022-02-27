@@ -1,7 +1,7 @@
 <div class="api-doc-component">
   <h2 class="title">
     <a
-      [routerLink]=""
+      [routerLink]="[]"
       fragment="{{apiDocs.className}}" nthFragment
       title="Anchor link to: {{apiDocs.className}}"
     >
@@ -19,9 +19,7 @@
     </a>
   </h2>
   <nthd-api-docs-badge [type]="apiDocs.type"></nthd-api-docs-badge>
-  <p class="lead">
-    {{apiDocs.description}}
-  </p>
+  <p class="lead" [innerHTML]="apiDocs.description"></p>
 
   <section>
     <h4>Selector <small><code>{{apiDocs.selector}}</code></small></h4>
@@ -36,7 +34,7 @@
         <tr *ngFor="let input of apiDocs.inputs">
           <td class="label-cell"><code>{{input.name}}</code></td>
           <td class="content-cell">
-            <p class="description">{{ input.description }}</p>
+            <p class="description" [innerHTML]="input.description"></p>
             <div class="meta">
               <div>
                 <i>Type: </i><code>{{ input.type }}</code>
@@ -60,7 +58,7 @@
         <tbody>
           <tr *ngFor="let output of apiDocs.outputs">
             <td class="label-cell"><code>{{output.name}}</code></td>
-            <td class="content-cell">{{output.description}}</td>
+            <td class="content-cell" [innerHTML]="output.description"></td>
           </tr>
         </tbody>
       </table>

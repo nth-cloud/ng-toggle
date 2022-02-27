@@ -170,7 +170,7 @@ function getVersion(name, givenPackageJson?: {dependencies, devDependencies}) {
     givenPackageJson = packageJson;
   }
 
-  const value = givenPackageJson.dependencies[name] || givenPackageJson.devDependencies[name];
+  const value = (givenPackageJson.dependencies || {})[name] || (givenPackageJson.devDependencies || {})[name];
 
   if (!value) {
     throw `couldn't find version for ${name} in package.json`;

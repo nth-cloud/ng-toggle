@@ -9,7 +9,7 @@ import {
   TypeChecker
 } from 'typescript';
 
-import * as marked from 'marked';
+import {marked} from 'marked';
 
 function displayPartsToHtml(displayParts: any): string {
   return marked(displayPartsToString(displayParts), {gfm: true}).trim();

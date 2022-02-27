@@ -3,8 +3,6 @@
   "dest": "../dist",
   "lib": {
     "flatModuleFile": "ng-toggle",
-    "entryFile": "./index.ts",
-    "umdId": "nthm",
-    "amdId": "nthm"
+    "entryFile": "./index.ts"
   }
 }
