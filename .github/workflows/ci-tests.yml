@@ -32,20 +32,20 @@ jobs:
         with:
           node-version: "${{ matrix.node }}"
 
-      - id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
-      - name: Setup Cache
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-          key: yarn-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            yarn-
+#      - id: yarn-cache-dir-path
+#        run: echo "::set-output name=dir::$(yarn cache dir)"
+#      - name: Setup Cache
+#        uses: actions/cache@v1
+#        with:
+#          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+#          key: yarn-${{ hashFiles('yarn.lock') }}
+#          restore-keys: |
+#            yarn-
 
-      - name: Install Dependencies
-        run: yarn --frozen-lockfile
+#      - name: Install Dependencies
+#        run: yarn --frozen-lockfile
 
       - name: Run Tests
         run: |
-          yarn ci
-          yarn api-doc:test
+          npm ci
+          npm run api-doc:test
