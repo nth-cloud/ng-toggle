@@ -1,3 +1,12 @@
+# [9.0.0](https://github.com/nth-cloud/ng-toggle/compare/8.0.2...9.0.0) (2022-02-27)
+
+
+### Features
+
+* Upgrading to Angular v13 ([73948be](https://github.com/nth-cloud/ng-toggle/commit/73948be362bbf5d091e37620b901278910d66e4b))
+
+
+
 ## [8.0.2](https://github.com/nth-cloud/ng-toggle/compare/8.0.1...8.0.2) (2021-08-29)
 
 
