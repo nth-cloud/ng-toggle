@@ -1,11 +1,11 @@
-import {Routes, RouterModule} from '@angular/router';
+import { Routes, RouterModule, Route } from '@angular/router';
 import {ModuleWithProviders} from '@angular/core';
 import {DefaultComponent} from './default';
 import {SupportComponent} from './support';
 import {NthdToggleComponent} from './components/toggle';
 import {DEFAULT_TAB} from './shared/component-wrapper/component-wrapper.component';
 
-const DEFAULT_API_PATH = {path: '', pathMatch: 'full', redirectTo: DEFAULT_TAB};
+const DEFAULT_API_PATH: Route = {path: '', pathMatch: 'full', redirectTo: DEFAULT_TAB};
 
 const componentRoutes = [{
     path: 'docs',
@@ -25,4 +25,4 @@ const routes: Routes = [
   { path: '**', redirectTo: 'home' }
 ];
 
-export const routing: ModuleWithProviders<RouterModule> = RouterModule.forRoot(routes, { useHash: true, relativeLinkResolution: 'legacy' });
+export const routing: ModuleWithProviders<RouterModule> = RouterModule.forRoot(routes, { useHash: true });
