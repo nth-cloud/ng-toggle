@@ -1,6 +1,6 @@
 {
   "name": "@nth-cloud/ng-toggle",
-  "version": "11.0.0",
+  "version": "$NG_TOGGLE_VERSION",
   "description": "Angular powered Bootstrap Toggle",
   "keywords": [
     "angular",
@@ -22,5 +22,6 @@
     "@angular/common": "^15.0.0",
     "@angular/core": "^15.0.0",
     "@angular/forms": "^15.0.0"
-  }
+  },
+  "schematics": "./schematics/collection.json"
 }
