@@ -1,5 +1,5 @@
 {
-  "name": "ngx-toggle",
+  "name": "@nth-cloud/ng-toggle",
   "version": "10.0.0",
   "description": "Angular powered Bootstrap Toggle",
   "repository": {
