@@ -16,10 +16,10 @@ module.exports = function (config) {
 		client: {
 			clearContent: false,
 		},
-    preprocessors: {
-      'src/**/*.js': ['coverage'],
-      'src/**/*.ts': ['coverage'],
-    },
+		preprocessors: {
+			'src/**/*.js': ['coverage'],
+			'src/**/*.ts': ['coverage'],
+		},
 		coverageReporter: {
 			dir: require('path').join(__dirname, '..', 'coverage'),
 			reporters: [{ type: 'html' }, { type: 'json' }, { type: 'lcovonly', subdir: '.', file: 'lcov.info' }],
