@@ -6,6 +6,8 @@ on:
       - master
   pull_request_target:
     types: [opened, synchronize, reopened]
+  schedule:
+    - cron: '30 14 1 * *'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
