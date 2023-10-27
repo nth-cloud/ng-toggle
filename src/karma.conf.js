@@ -1,4 +1,4 @@
-const reporters = process.env.CI ? ['dots'] : ['progress'];
+const reporters = process.env.CI ? ['dots', 'coverage'] : ['progress', 'coverage'];
 const browsers = process.env.CI ? ['ChromeHeadlessNoSandbox'] : ['Chrome'];
 
 module.exports = function (config) {
@@ -16,9 +16,13 @@ module.exports = function (config) {
 		client: {
 			clearContent: false,
 		},
+    preprocessors: {
+      'src/**/*.js': ['coverage'],
+      'src/**/*.ts': ['coverage'],
+    },
 		coverageReporter: {
 			dir: require('path').join(__dirname, '..', 'coverage'),
-			reporters: [{ type: 'html' }, { type: 'json' }, { type: 'lcovonly' }],
+			reporters: [{ type: 'html' }, { type: 'json' }, { type: 'lcovonly', subdir: '.', file: 'lcov.info' }],
 			fixWebpackSourcePaths: true,
 		},
 		customLaunchers: {
