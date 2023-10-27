@@ -3,6 +3,7 @@
 /dist/
 /temp/
 /demo/dist/
+/schematics/dist/
 npm-debug.log
 .publish
 .sw*
