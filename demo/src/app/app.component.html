@@ -1,46 +1,103 @@
-<header>
-  <div class="navbar navbar-fixed-top navbar-expand flex-column flex-md-row">
-    <a [routerLink]="['/']" class="d-inline-flex align-self-center align-items-center"><img class="navbar-logo" src="img/logo.png"/><span>NG-TOGGLE</span></a>
+<header class="navbar navbar-fixed-top navbar-expand navbar-dark px-4 flex-column flex-md-row">
+  <a class="navbar-brand me-md-2 me-0" routerLink="/"aria-label="NG-TOGGLE" (click)="navbarCollapsed = true">
+    <img class="navbar-logo align-middle" src="img/logo.png" alt="ng-toggle logo" />
+    <span class="ms-2 d-xl-none d-lg-none d-md-none d-inline">ng-toggle</span>
+  </a>
 
-    <div class="navbar-nav-scroll d-inline-flex flex-fill" id="navbarContent">
-      <ul class="navbar-nav flex-row">
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/docs']">Docs</a>
-        </li>
-        <li class="nav-item" [routerLinkActive]="['active']">
-          <a class="nav-link" [routerLink]="['/support']">Support</a>
-        </li>
-      </ul>
-
-      <span class="github-buttons d-none d-lg-inline ml-auto">
-        <a class="github-button"
-           href="https://github.com/nth-cloud/ng-toggle"
-           target="_blank"
-           data-size="large"
-           data-show-count="true"
-           data-count-aria-label="# stargazers on GitHub"
-           aria-label="Star nth-cloud/ng-toggle on GitHub">Star</a>
-        <a href="https://twitter.com/intent/tweet?button_hashtag=ngtoggle"
-           class="twitter-hashtag-button"
-           data-size="large"
-           data-text="I&#39;m checking out ng-toggle"
-           data-url="https://nth-cloud.github.io/ng-toggle"
-           data-show-count="true">Tweet #ngtoggle</a>
-      </span>
-    </div>
+  <div class="navbar-nav-scroll">
+    <ul class="navbar-nav flex-row">
+      <li class="nav-item">
+        <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/home']" (click)="navbarCollapsed = true">Home</a>
+      </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [routerLinkActive]="['active']"
+          [routerLink]="['/getting-started']"
+          (click)="navbarCollapsed = true"
+        >Getting Started</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/docs']" (click)="navbarCollapsed = true">Docs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLinkActive]="['active']" [routerLink]="['/support']">Support</a>
+      </li>
+    </ul>
   </div>
+
+  <ul class="social-buttons navbar-nav flex-row d-none d-md-flex align-items-center ms-md-auto">
+    <li>
+      <a
+        href="https://www.npmjs.com/package/@nth-cloud/ng-toggle"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+        [title]="downloadCount + ' downloads over the last 30 days on Npm'"
+        class="d-flex flex-column align-items-center"
+      >
+        <!-- hide the text from a screen reader so that it uses title attribute for the announcement and navigation  -->
+        <span aria-hidden="true">{{ downloadCount }}</span>
+        <svg viewBox="0 0 780 250" width="40" height="13">
+          <path
+            d="M240,250h100v-50h100V0H240V250z M340,50h50v100h-50V50z M480,0v200h100V50h50v150h50V50h50v150h50V0H480z M0,200h100V50h50v150h50V0H0V200z"
+          ></path>
+        </svg>
+      </a>
+    </li>
+    <li class="ms-3">
+      <a
+        href="https://github.com/nth-cloud/ng-toggle"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+        class="bi bi-github"
+        style="font-size: 1.5rem"
+        title="Open nth-cloud/ng-toggle on GitHub on GitHub"
+      >
+      </a>
+    </li>
+    <li class="ms-3">
+      <a
+        href="https://twitter.com/intent/tweet?text=I&#39;m+checking+out+&#23;ng-toggle,+Angular+Toggle+UI+for+Bootstrap+CSS&url=https%3A%2F%2Fnth-cloud.github.io%2Fng-toggle%2F&hashtags=nth-cloud,ng-toggle,angular,bootstrap"
+        class="bi bi-twitter"
+        style="font-size: 1.5rem"
+        rel="nofollow noopener noreferrer"
+        target="_blank"
+        title="Tweet #ngtoggle"
+      ></a>
+    </li>
+  </ul>
+
+  <button
+    class="navbar-toggler navbar-toggler-right"
+    type="button"
+    (click)="navbarCollapsed = !navbarCollapsed"
+    [attr.aria-expanded]="!navbarCollapsed"
+    aria-controls="navbarContent"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
 </header>
 
 <main>
-  <router-outlet></router-outlet>
+	<router-outlet></router-outlet>
 </main>
 
-<footer class="bd-footer text-muted">
-  <div class="container">
-    <p>Designed and built by the <a href="https://github.com/nth-cloud/ng-toggle/contributors" target="_blank">ng-toggle
-      team</a>.</p>
-    <p>Code licensed under <a href="https://raw.githubusercontent.com/nth-cloud/ng-toggle/master/LICENSE"
-                              target="_blank">MIT license conditions.</a></p>
-    <p>Documentation licensed under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.</p>
-  </div>
+<footer class="footer bg-light">
+	<div class="container-fluid p-3 p-md-5">
+		<p>
+			Designed and built by the
+			<a href="https://github.com/nth-cloud/ng-toggle/contributors" target="_blank">ng-toggle team</a>.
+		</p>
+		<p>
+			Code licensed under
+			<a href="https://raw.githubusercontent.com/nth-cloud/ng-toggle/master/LICENSE" target="_blank"
+				>MIT license conditions.</a
+			>
+		</p>
+		<p>
+			Documentation licensed under <a href="https://creativecommons.org/licenses/by/3.0/" target="_blank">CC BY 3.0</a>.
+		</p>
+	</div>
 </footer>

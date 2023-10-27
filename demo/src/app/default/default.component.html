@@ -1,43 +1,26 @@
-<div class="banner">
+<main class="masthead py-3">
   <div class="container">
-    <div class="lead">
-      <img class="logo" src="img/logo.png"/>
-      <div class="heading">NG-TOGGLE</div>
-      <p>Native Angular components &amp; directives for Bootstrap-style Toggle Switch</p>
-      <p class="small">Currently at v{{version}}</p>
+    <div class="row align-items-center">
+      <div class="col-6 mx-auto col-md-6">
+        <img width="512" height="512" class="img-fluid mb-3 mb-md-0" src="img/logo.png" alt="ng-toggle logo" />
+      </div>
+      <div class="col-lg-6 text-center text-lg-start">
+        <h1>Bootstrap widgets</h1>
+        <h3 class="text-secondary mb-3">The angular way</h3>
+        <p class="lead">
+          Angular Toggle component built using Bootstrap&nbsp;5 CSS with APIs designed for the Angular ecosystem.
+        </p>
+        <p class="lead">
+          The only dependencies are <a href="https://angular.io">Angular</a> and
+          <a href="https://getbootstrap.com">Bootstrap 5</a>
+        </p>
+        <nthd-code class="mb-3" [snippet]="installation"></nthd-code>
+        <div class="d-flex flex-column align-items-lg-center flex-lg-row my-4">
+          <a class="btn btn-lg btn-outline-primary mb-3 mb-lg-0 me-lg-3" routerLink="/docs">Demo</a>
+          <a class="btn btn-lg btn-outline-secondary" routerLink="/getting-started">Get started now</a>
+        </div>
+        <p class="text-muted mb-4">Currently at v{{ version }}</p>
+      </div>
     </div>
   </div>
-</div>
-
-<section class="container">
-  <div class="heading">Getting Started</div>
-  <p>Install through <code>npm</code>:</p>
-  <prism [html]="installNPM"></prism>
-  <p>If you are using <strong>SystemJS</strong>, you should also adjust your configuration to point to our UMD bundle, similar to this:</p>
-  <prism [html]="bundle"></prism>
-  <p>Once installed you need to import our main module.</p>
-  <prism language="typescript" [html]="importUsage"></prism>
-  <p>The only remaining part is to list the imported module in your application modules that make use of the components in this library:</p>
-  <prism language="typescript" [html]="usage"></prism>
-
-  <div class="heading">Dependencies</div>
-  <p>
-    This repository contains a Angular Bootstrap-styled Toggle that can be used as a standalone toggle or can convert checkboxes into UI toggles.
-    As a result no dependency on jQuery or Bootstrap's JavaScript is required. The only required dependencies are:
-  </p>
-  <ul>
-    <li>
-      <a href="https://angular.io" target="_blank">Angular</a> (<em>requires</em> Angular version 9 or higher, tested with 14.3.0)
-    </li>
-    <li>
-      <a href="https://www.getbootstrap.com" target="_blank">Bootstrap CSS</a> (<em>requires</em> Bootstrap 4.0 or higher, tested with 4.6.2)
-    </li>
-  </ul>
-
-  <div class="heading">Supported browsers</div>
-  <p>We strive to support the same browsers and versions as supported by both Bootstrap 4 and Angular. Check browser support notes for
-    <a href="https://angular.io/docs/ts/latest/guide/browser-support.html" target="_blank">Angular</a> and
-    <a href="https://getbootstrap.com/docs/4.0/getting-started/browsers-devices/" target="_blank">Bootstrap</a>.
-  </p>
-  <p>Our code is automatically tested on all the supported browsers.</p>
-</section>
+</main>

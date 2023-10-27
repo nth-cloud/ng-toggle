@@ -1,23 +1,22 @@
-import {Component} from '@angular/core';
-import {environment} from '../../environments/environment';
+import { Component } from '@angular/core';
 
-const prism = require('prismjs');
-// eslint-disable-next-line @typescript-eslint/naming-convention
-const types = (Prism: any) => {
-    require('prismjs/components/prism-clike');
-    require('prismjs/components/prism-typescript');
-};
-types(prism);
+import { environment } from '../../environments/environment';
+import { Snippet } from "../services/snippet";
+import { NthdCodeComponent } from "../shared/code/code.component";
+import { RouterLink } from "@angular/router";
 
 @Component({
-    selector: 'nthd-default',
-    templateUrl: './default.component.html'
+  selector: 'nthd-default',
+  standalone: true,
+  imports: [ NthdCodeComponent, RouterLink ],
+  templateUrl: './default.component.html',
 })
 export class DefaultComponent {
-    public version: string = environment.version;
+  public version: string = environment.version;
 
-    readonly installNPM: string = prism.highlight(require('!!raw-loader!./install-npm.md').default, prism.languages.clike, 'md');
-    readonly bundle: string = prism.highlight(require('!!raw-loader!./bundle.md').default, prism.languages.javascript, 'js');
-    readonly importUsage: string = prism.highlight(require('!!raw-loader!./import.md').default, prism.languages.typescript, 'ts');
-    readonly usage: string = prism.highlight(require('!!raw-loader!./usage.md').default, prism.languages.typescript, 'ts');
+  installation = Snippet({
+    lang: 'ts',
+    code: `// Installation for Angular CLI
+ng add @nth-cloud/ng-toggle`,
+  });
 }

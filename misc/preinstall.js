@@ -1,5 +1,5 @@
 if (process.env.npm_execpath.indexOf('npm') === -1) {
-  throw new Error(`
+	throw new Error(`
 
   ####################################################
   #                                                  #

@@ -7,7 +7,7 @@ import {Injectable} from '@angular/core';
 export class MyConfig {
 
   /**
-   * Maximal value to be displayed
+   * Maximal value to be displayed in the progressbar.
    */
   max = 100;
 

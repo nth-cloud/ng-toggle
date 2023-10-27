@@ -1,0 +1,15 @@
+.angular
+.github
+.husky
+.vscode
+coverage
+test-reports
+demo/dist
+demo/src/public
+demo/src/api-docs.ts
+demo/src/docs.json
+dist
+misc/api-doc-test-cases
+node_modules
+CHANGELOG.md
+package.json

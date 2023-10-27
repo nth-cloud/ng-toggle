@@ -1,15 +1,15 @@
-import {ensureFileSync, writeFileSync} from 'fs-extra';
+import { ensureFileSync, writeFileSync } from 'fs-extra';
 import * as glob from 'glob';
 
-import {parseOutApiDocs} from './api-doc';
+import { parseOutApiDocs } from './api-doc';
 
 /**
- * Extracts documentation from all ng-bootstrap sources to a single TS file
+ * Extracts documentation from all ng-toggle sources to a single TS file
  * used by the demo application
  */
 
 const file = 'demo/src/api-docs.ts';
-const fileNames = glob.sync('src/**/*.ts', {ignore: ['src/**/*.spec.ts', 'src/util/**']});
+const fileNames = glob.sync('src/**/*.ts', { ignore: ['src/**/*.spec.ts', 'src/util/**'] });
 
 const json = JSON.stringify(parseOutApiDocs(fileNames), null, 2);
 

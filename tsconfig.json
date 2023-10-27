@@ -1,17 +1,31 @@
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
+	"compileOnSave": false,
+	"compilerOptions": {
+		"rootDir": "./",
     "baseUrl": "./",
-    "target": "es2020",
-    "lib": ["es2017", "dom"],
-    "module": "es2020",
-    "moduleResolution": "node",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "noEmitOnError": true,
-    "outDir": "temp",
+		"outDir": "temp",
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "sourceMap": true,
     "declaration": false,
-    "sourceMap": true
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "es2020",
+    "typeRoots": ["node_modules/@types"],
+    "types": ["@angular/localize", "node"],
+		"allowSyntheticDefaultImports": true,
+		"lib": ["es2020", "dom"],
+		"emitDecoratorMetadata": true,
+		"noEmitOnError": true,
+		"useDefineForClassFields": false
+	},
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictTemplates": true,
+    "fullTemplateTypeCheck": true
   }
 }

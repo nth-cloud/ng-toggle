@@ -1,18 +1,18 @@
 // styles in src/style directory are applied to the whole page
 
-$header-link-color: #d9d9d9;
-$header-border-color: #1a1a1a;
-$header-bg: #362c23;
-$banner-text-color: #ccc;
-$banner-lead-text-color: #fff;
-$page-footer-bg: #f7f7f7;
-$page-footer-link-color: #55595c;
-$api-docs-border-color: #999;
-$language-syntax-bg: #272822;
-$docs-nav-color: #999;
-$doc-nav-active-bg: #8a5933;
+$header-link-color:           #d9d9d9;
+$header-border-color:         #1a1a1a;
+$header-bg:                   #1b4d2f;
+$banner-text-color:           #ccc;
+$banner-lead-text-color:      #fff;
+$page-footer-bg:              #f7f7f7;
+$page-footer-link-color:      #55595c;
+$api-docs-border-color:       #999;
+$language-syntax-bg:          #272822;
+$docs-nav-color:              #999;
+$doc-nav-active-bg:           #8a5933;
 $doc-nav-active-border-color: darken(#8a5933, 5%);
-$doc-nav-active-color: #eee;
+$doc-nav-active-color:        #eee;
 $doc-nav-hover-color: rgba(51, 94, 138, 0.1);
 $hr-bg: #d8dde6;
 $nav-link-color: #54698d;
@@ -20,225 +20,270 @@ $nav-link-hover-bg: #cfdbe6;
 $nav-link-active-color: #16325c;
 $nav-link-active-bg: #0070d2;
 
-@import "~bootstrap/scss/functions";
-@import "~bootstrap/scss/variables";
-@import "~bootstrap/scss/mixins";
+@import 'node_modules/bootstrap/scss/functions';
+@import 'node_modules/bootstrap/scss/variables';
+@import 'node_modules/bootstrap/scss/variables-dark';
+@import 'node_modules/bootstrap/scss/maps';
+@import 'node_modules/bootstrap/scss/mixins';
+@import 'node_modules/bootstrap/scss/utilities';
 
-html {
-  font-size:   100%;
-  font-family: Helvetica, Arial, sans-serif;
-}
+@import 'node_modules/bootstrap/scss/root';
+@import 'node_modules/bootstrap/scss/reboot';
+@import 'node_modules/bootstrap/scss/type';
+@import 'node_modules/bootstrap/scss/images';
+@import 'node_modules/bootstrap/scss/containers';
+@import 'node_modules/bootstrap/scss/grid';
+@import 'node_modules/bootstrap/scss/buttons';
+@import 'node_modules/bootstrap/scss/alert';
+@import 'node_modules/bootstrap/scss/navbar';
 
-body {
-  font-size: 0.8125rem;
-}
-
-hr {
-  display:    block;
-  margin:     2rem 0;
-  border-top: solid 1px $hr-bg;
-  height:     1px;
-  clear:      both;
-}
-
-@import "~bootstrap/scss/utilities/flex";
-@import "~bootstrap/scss/navbar";
+@import 'node_modules/bootstrap/scss/helpers';
+@import 'node_modules/bootstrap/scss/utilities/api';
 
 nthd-app {
-  display:        flex;
-  flex-direction: column;
-  height:         100vh;
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
 }
 
-header {
-  background: $header-bg;
-  border-bottom: 1px solid $header-border-color;
-  position:      fixed;
-  top:           0;
-  width:         100%;
-  z-index:       10000;
-  box-shadow:    0 4px 10px 0 rgba(0, 0, 0, 0.5);
+header.navbar {
+  background: linear-gradient(135deg, $header-bg, lighten(desaturate(adjust-hue($header-bg, -8), 1%), 10%));
 
-  .navbar {
-    display:      flex;
-    margin-left:  auto;
-    margin-right: auto;
-    max-width:    64rem;
-    padding:      0.55rem 2rem 0.75rem;
-    a:not(.nav-link) {
-      font-size:    0.75rem;
-      line-height:  1.25;
-    }
-
-    a.nav-link {
-      color: rgba($header-link-color, 0.8) !important;
-    }
-
-    .navbar-logo {
-      height:       2.2em;
-      margin-right: 0.75em;
-    }
-
-    .navbar-nav-scroll {
-      margin-left: 1.5rem;
-    }
+  a:not(.nav-link) {
+    font-size: 0.75rem;
+    line-height: 1.25;
   }
 
-  a {
-    color: $header-link-color !important;
+  a.nav-link {
+    color: rgba($header-link-color, 0.8) !important;
   }
+
+  .navbar-logo {
+    height: 2.2em;
+    margin-right: 0.75em;
+  }
+
+	a {
+		color: $header-link-color !important;
+	}
 }
 
 main {
-  position:   relative;
-  display:    block;
-  margin-top: 54px;
-  flex:       1 0 auto;
+	position: relative;
+	display: block;
+	flex: 1 0 auto;
+}
 
-  .container {
-    max-width: 64rem;
-
-    &.container-md {
-      max-width:  48rem;
-      margin-top: 1.5rem;
-      padding:    2rem;
-    }
+.masthead-followup {
+  img {
+    width: 64px;
+    height: 64px;
   }
 }
 
-@include media-breakpoint-down(sm) {
-  header {
-    position: relative;
-    z-index: auto;
-
-    .navbar {
-      a:not(.nav-link) {
-        font-size: 1.2rem;
-      }
-
-      .nav-link {
-        font-size: 1rem;
-      }
-
-      .navbar-nav-scroll {
-        margin-left: auto;
-        margin-right: auto;
-      }
-    }
-  }
-
-  main {
-    margin-top: 0;
-  }
-}
-
-.banner {
-  background-color: #111;
-  padding:          1.5rem;
-  margin-bottom:    0.75rem;
-  text-align:       center;
-  color: $banner-text-color;
-
-  .lead {
-    margin-right:  auto;
-    margin-left:   auto;
-    width:         80%;
-    color: $banner-lead-text-color;
-
-    p {
-      font-size: 0.8125rem;
-      margin:    0 0 1em;
-    }
-    p:first-of-type {
-      margin-top: 0.75rem;
-    }
-    p:last-of-type {
-      margin-bottom: 0;
-    }
-  }
-
-  .logo {
-    height: 170px;
-  }
-}
-
-.heading {
-  font-size:   1.75rem;
-  font-weight: 300;
-  line-height: 1.25;
-}
-
-section {
-  .heading {
-    margin-top:    1.5rem;
-    margin-bottom: 1.5rem;
-
-    &:first-child {
-      margin-top: 0;
-    }
-  }
+.footer {
+  padding: 3rem 0;
+  font-size: 0.85rem;
+  text-align: left;
 
   p {
-    margin-bottom: 0.75rem;
-
+    margin-bottom: 0;
   }
 
-  prism + p {
-    margin-top: 1.5rem;
-  }
-}
-
-.github-buttons {
-  > * {
-    margin-left: 0.5rem;
-  }
-
-  header & {
-    margin:       0;
-    padding-left: 0;
-  }
-
-  nthd-default & {
-    text-align: center;
-    margin-top: 2rem;
+  a {
+    font-weight: 500;
+    color: #000;
+    text-decoration: underline;
   }
 }
 
-@media (min-width: 768px) {
-  .bd-sidebar {
-    padding-left: 1rem;
+.social-buttons {
+  font-size: x-small;
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
 
-    display:      inline-block;
-    position:     -webkit-sticky;
-    position:     sticky;
-    top:          1rem;
+  svg {
+    fill: currentColor;
   }
 }
 
-.bd-toc-link {
-  display: block;
-  padding: .25rem .75rem;
-  color:   #55595c;
+.sidebar-collapsed {
+  margin-left: calc(var(--bs-gutter-x) * -0.5);
+  margin-right: calc(var(--bs-gutter-x) * -0.5);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.bd-toc-link:focus,
-.bd-toc-link:hover {
-  color:           #0275d8;
-  text-decoration: none;
+.sidebar {
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 4rem);
+  margin-right: calc(var(--bs-gutter-x) * -0.5);
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1;
+
+  a {
+    text-decoration: none;
+  }
 }
 
-.active > .bd-toc-link {
-  font-weight: 500;
-  color:       #373a3c;
+header.title {
+  margin-left: calc(var(--bs-gutter-x) * -0.5);
+  margin-right: calc(var(--bs-gutter-x) * -0.5);
+  position: relative;
+
+  .content-tabset {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    .nav-link {
+      border-style: solid;
+      border-width: 3px 1px 1px;
+      border-radius: 3px 3px 0 0;
+    }
+
+    .nav-link:not(.active):hover {
+      border-color: transparent;
+    }
+
+    .active {
+      border-top-color: #28a745;
+    }
+
+    .navigation-dropdown {
+      cursor: pointer;
+
+      .nav-link {
+        padding-right: 0.3rem;
+        line-height: 1em;
+        border-color: transparent;
+        background: none;
+        color: #007bff;
+        &:hover {
+          color: #0056b3;
+        }
+      }
+
+      .dropdown-toggle:after {
+        display: none;
+      }
+
+      .dropdown-menu {
+        border-color: #d9d9d9;
+      }
+
+      svg {
+        width: 22px;
+        height: 22px;
+      }
+
+      &.show {
+        .nav-link {
+          color: #0056b3;
+        }
+      }
+    }
+  }
 }
 
-div.api-doc-component {
+.toc {
+  margin-left: 15px;
+  //   margin-right: -15px;
+  font-size: 1.1rem;
+
+  .toc-item {
+    .toc-link {
+      //       display: block;
+      //       padding: 0.25rem 1.5rem;
+      color: rgba(0, 0, 0, 0.65);
+
+      &.deprecated {
+        text-decoration: line-through !important;
+
+        &:first-child {
+          margin-top: 0.5rem;
+        }
+      }
+    }
+
+    .nav > li > a {
+      font-size: 0.85em;
+      display: inline-block;
+
+      &:hover,
+      &:focus {
+        text-decoration: none;
+        margin-left: -0.5rem;
+        padding: 0 0.5rem;
+        background-color: #f8f9fa;
+        border-radius: 3px;
+      }
+    }
+
+    .nav > li.active > a {
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.85);
+    }
+
+    &.active > .toc-link {
+      font-weight: 500;
+      color: rgba(0, 0, 0, 0.85);
+    }
+  }
+}
+
+.contextual-nav .nav {
+  position: sticky;
+  top: 0;
+
+  a {
+    color: inherit;
+    font-size: 90%;
+    padding: 0.25rem 1rem;
+  }
+
+  a:hover {
+    color: #0275d8;
+  }
+}
+
+.deprecated {
+  h3 {
+    text-decoration: line-through;
+  }
+
+  h5 {
+    display: inline-block;
+  }
+
+  td.label-cell code,
+  p.signature,
+  code.selector,
+  code.export-as {
+    text-decoration: line-through;
+  }
+
+  .description,
+  .meta,
+  .lead {
+    opacity: 0.5;
+  }
+}
+
+div.api-doc-component,
+.overview {
   margin-bottom: 3rem;
 
-  > h2, > h3 {
+  h2,
+  h3 {
     .github-link {
-      transition: opacity .5s;
-      opacity:    .3;
+      transition: opacity 0.5s;
+      opacity: 0.3;
+      margin-left: 0.5rem;
     }
 
     &:hover {
@@ -251,203 +296,174 @@ div.api-doc-component {
     }
   }
 
-  section {
+  section,
+  nthd-overview-section {
     margin-top: 3rem;
     h4 {
-      margin-top:    2rem;
+      margin-top: 2rem;
       margin-bottom: 1rem;
     }
 
     .meta {
-      font-size:     .8rem;
+      font-size: 0.8rem;
       margin-bottom: 1rem;
       > div {
-        margin-bottom: .5rem;
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+}
+
+nthd-page-header {
+  margin-top: 3rem;
+
+  h2 {
+    &:hover {
+      & > .title-fragment {
+        opacity: 1;
       }
     }
   }
 }
 
 a.title-fragment {
-  opacity:       0;
-  transition:    opacity 125ms ease;
-  line-height:   inherit;
-  position:      absolute;
-  margin-left:   -1.2em;
+  opacity: 0;
+  transition: opacity 125ms ease;
+  line-height: inherit;
+  position: absolute;
+  margin-left: -1.2em;
   padding-right: 0.5em;
 
   & > img {
-    width:  1em;
+    width: 1em;
     height: 1em;
   }
 }
 
+a.title-fragment:focus {
+  opacity: 1;
+}
+
 div.component-demo {
   margin-bottom: 3rem;
-  h2 {
+  > h2 {
     display: flex;
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
+    margin-bottom: 1rem;
 
     span {
       flex-grow: 1;
     }
 
-    .stackblitz {
+    .stackblitz,
+    .toggle-code {
       display: flex;
       align-items: center;
       align-self: center;
-      opacity:    0.3;
-      transition: opacity .5s;
-      margin-left: 1rem;
+    }
 
-      .stackblitz-icon {
-        height: 1.2rem;
-        margin-left: -0.5rem;
-      }
+    .toggle-code svg {
+      vertical-align: middle;
+      fill: #28a745;
+    }
 
-      &:hover {
+    .stackblitz .stackblitz-icon {
+      height: 1.2rem;
+      margin-left: -0.5rem;
+    }
+
+    &:hover {
+      & > .title-fragment {
         opacity: 1;
       }
     }
   }
 
   .tabset-code {
+    .nav {
+      padding: 0.5rem 1.25rem 0;
+      font-size: 80%;
+
+      .nav-link.active {
+        background-color: #f5f2f0;
+        border-bottom: 1px solid #f5f2f0;
+      }
+
+      .nav-link:not(.active) {
+        color: #999;
+        &:hover {
+          color: #666;
+        }
+      }
+    }
+
+    .nav.nav-pills {
+      border-right: 1px solid #dee2e6;
+      padding-left: 0.75rem;
+      padding-right: 0;
+
+      .nav-link.active {
+        color: #666;
+        background-color: #f5f5f5;
+        border: 1px solid #dee2e6;
+        border-right-color: #f5f5f5;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        margin-right: -1px;
+      }
+
+      & + .tab-content {
+        flex: 1;
+        overflow: hidden;
+      }
+    }
+
     pre {
       margin: 0;
+      max-height: 500px;
+      overflow: auto;
     }
   }
-}
-
-.nav {
-  margin:    0;
-  padding:   0;
-  font-size: 80%;
-  border-bottom: 1px solid $hr-bg;
-
-  .nav-item {
-    position: relative;
-    font-size: 0.75rem;
-    line-height: 1.25;
-    background: transparent;
-    border: 0 none;
-    padding: 0;
-
-    &,
-    .nav-link {
-      color:          $nav-link-color;
-      text-transform: uppercase;
-      letter-spacing: 0.0625rem;
-      border:         0 none;
-      padding:        0 0.75rem;
-      line-height:    2.5rem;
-    }
-
-    .nav-link {
-      &:after {
-        position: absolute;
-        display: block;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 2px;
-        content: "";
-        transition: background-color 0.15s ease-in-out;
-      }
-
-      &:hover {
-        &:after {
-          background-color: $nav-link-hover-bg;
-        }
-      }
-
-      &.active {
-        color: $nav-link-active-color;
-
-        &:after {
-          background-color: $nav-link-active-bg;
-        }
-      }
-    }
-  }
-}
-
-.tab-content {
-  padding: 1rem 0;
-  overflow: hidden;
 }
 
 .examples-legend {
   font-size: 80%;
 }
 
-.bd-footer {
-  padding:          3rem 0;
-  margin-top:       3rem;
-  font-size:        85%;
-  background-color: $page-footer-bg;
-  text-align:       left;
-
-  p {
-    margin-bottom: 0;
-  }
-
-  a {
-    font-weight: 500;
-    color: $page-footer-link-color;
-  }
-}
-
-nthd-api-docs, nthd-api-docs-class, nthd-api-docs-config {
+nthd-api-docs,
+nthd-api-docs-class,
+nthd-api-docs-config {
   display: block;
 
   &:not(:first-child) {
-    margin-top:  3rem;
-    border-top:  1px solid $api-docs-border-color;
+    margin-top: 3rem;
+    border-top: 1px solid #999;
     padding-top: 1rem;
   }
 }
 
-// override prism theme background color to inline it with bootstrap colors
-code[class*="language-"],
-pre[class*="language-"] {
-  background-color: $language-syntax-bg;
-}
-
-span.token.tag {
-  font-size: 1em;
-  padding:   0;
-}
-
-nthd-component-wrapper, nthd-page-wrapper {
-  .banner {
+.overview,
+nthd-default,
+nthd-page-wrapper {
+  .alert {
+    border-left-width: 5px;
     border-radius: 0;
   }
 }
 
-@mixin center-nav-tab-on-small-screens() {
-  .banner > .container {
-    margin-bottom: 2rem;
-    h1 {
-      text-align: center;
-    }
-  }
-
-  .root-nav {
-    ul {
-      justify-content: center !important;
-    }
-  }
+// override prism theme background color to inline it with bootstrap colors
+code[class*='language-'],
+pre[class*='language-'],
+ngb-alert {
+  background-color: #f5f5f5; // same as bootstrap card header
+  border-radius: 3px;
+  tab-size: 2;
 }
 
-@media (max-width: 768px) and (orientation: portrait) {
-  @include center-nav-tab-on-small-screens();
-}
-
-@media (max-width: 568px) and (max-height: 320px) {
-  @include center-nav-tab-on-small-screens();
+span.token.tag {
+  font-size: 1em;
+  padding: 0;
 }
 
 ng-toggle.btn {
-  border-color: $border-color;
+	border-color: $border-color;
 }

@@ -180,7 +180,7 @@
 
 ### Bug Fixes
 
-* Corrected ng-bootstrap Github URL ([691cffb](https://github.com/@nth-cloud/ng-toggle/commit/691cffb))
+* Corrected ng-toggle Github URL ([691cffb](https://github.com/@nth-cloud/ng-toggle/commit/691cffb))
 * disabling [@ngtools](https://github.com/ngtools)/webpack AOT compilation: No NgModule metadata issue ([9435e8c](https://github.com/@nth-cloud/ng-toggle/commit/9435e8c))
 * Fixed sauce key ([cbacda7](https://github.com/@nth-cloud/ng-toggle/commit/cbacda7))
 * Locking karma-sauce-launcher version to 1.1.0 (https://github.com/karma-runner/karma-sauce-launcher/issues/145) ([11c1190](https://github.com/@nth-cloud/ng-toggle/commit/11c1190))

@@ -10,12 +10,12 @@ existing issues (both open and closed) prior to opening any new issue and ensure
 You can fork a StackBlitz from one of our [demos](https://nth-cloud.github.io/ng-toggle/#/docs) and use it as a starting point.
 
 Please note that we can _not_ act on bug reports without a _minimal_ reproduction scenario in a StackBlitz. Here is why:
-https://github.com/ng-bootstrap/ng-bootstrap#you-think-youve-found-a-bug
+https://github.com/nth-cloud/ng-toggle#you-think-youve-found-a-bug
 
-### Versions of Angular, ng-bootstrap and Bootstrap:
+### Versions of Angular, ng-toggle and Bootstrap:
 
 Angular:
 
-ng-bootstrap:
+ng-toggle:
 
 Bootstrap:

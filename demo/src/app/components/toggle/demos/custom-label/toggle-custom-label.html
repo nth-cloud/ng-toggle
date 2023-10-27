@@ -1,15 +1,17 @@
 <div>
-    <ng-toggle
-        onColor="{{model.onColor}}"
-        onText="{{model.onText}}"
-        offColor="{{model.offColor}}"
-        offText="{{model.offText}}"
-        [disabled]="model.disabled"
-        [size]="model.size"
-        [(ngModel)]="model.value"
-    >
-        <ng-template ngToggleLabel forLabel="on"><span class="fa fa-play"></span>&nbsp;It's On!<br />Like Donkey Kong!</ng-template>
-        <ng-template ngToggleLabel forLabel="off"><span class="fa fa-stop"></span>&nbsp;And... We're Down.</ng-template>
-    </ng-toggle>
+	<ng-toggle
+		onColor="{{model.onColor}}"
+		onText="{{model.onText}}"
+		offColor="{{model.offColor}}"
+		offText="{{model.offText}}"
+		[disabled]="model.disabled"
+		[size]="model.size"
+		[(ngModel)]="model.value"
+	>
+		<ng-template ngToggleLabel forLabel="on"
+			><span class="fa fa-play"></span>&nbsp;It's On!<br />Like Donkey Kong!</ng-template
+		>
+		<ng-template ngToggleLabel forLabel="off"><span class="fa fa-stop"></span>&nbsp;And... We're Down.</ng-template>
+	</ng-toggle>
 </div>
 <pre class="my-2">{{model | json}}</pre>

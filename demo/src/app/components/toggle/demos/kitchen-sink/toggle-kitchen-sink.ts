@@ -1,21 +1,26 @@
 import { Component } from '@angular/core';
+import { FormsModule } from "@angular/forms";
+import { JsonPipe, NgFor, TitleCasePipe } from "@angular/common";
+import { NgToggleModule } from "@nth-cloud/ng-toggle";
 
 interface KitchenSinkModel {
-  handleColor: string|null;
-  handleOnColor: string|null;
-  handleOffColor: string|null;
-  onColor: string;
-  offColor: string;
-  onText: string;
-  offText: string;
+  handleColor: string | null;
+  handleOnColor: string | null;
+  handleOffColor: string | null;
+  onColor: string | null;
+  offColor: string | null;
+  onText: string | null;
+  offText: string | null;
   disabled: boolean;
   size: 'sm' | 'lg' | '';
-  value: boolean;
+  value: boolean | null;
 }
 
 @Component({
   selector: 'nthd-toggle-kitchen-sink',
-  templateUrl: './toggle-kitchen-sink.html'
+  standalone: true,
+  imports: [ NgToggleModule, FormsModule, JsonPipe, NgFor, TitleCasePipe ],
+  templateUrl: './toggle-kitchen-sink.html',
 })
 export class NthdToggleKitchenSink {
   model: KitchenSinkModel = {
@@ -28,36 +33,36 @@ export class NthdToggleKitchenSink {
     offText: 'Off',
     disabled: false,
     size: '',
-    value: null
+    value: null,
   };
 
-  colors: any = ['primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark'];
+  colors: any = [ 'primary', 'secondary', 'success', 'danger', 'warning', 'info', 'light', 'dark' ];
 
-  setOnColor(event: MouseEvent, color: string) {
+  public setOnColor(event: MouseEvent, color: string): void {
     event.preventDefault();
     event.stopPropagation();
     this.model.onColor = color;
   }
 
-  setOffColor(event: MouseEvent, color: string) {
+  public setOffColor(event: MouseEvent, color: string | null): void {
     event.preventDefault();
     event.stopPropagation();
     this.model.offColor = color;
   }
 
-  setHandleColor(event: MouseEvent, color: string) {
+  public setHandleColor(event: MouseEvent, color: string | null): void {
     event.preventDefault();
     event.stopPropagation();
     this.model.handleColor = color;
   }
 
-  setHandleOnColor(event: MouseEvent, color: string) {
+  public setHandleOnColor(event: MouseEvent, color: string | null): void {
     event.preventDefault();
     event.stopPropagation();
     this.model.handleOnColor = color;
   }
 
-  setHandleOffColor(event: MouseEvent, color: string) {
+  public setHandleOffColor(event: MouseEvent, color: string | null): void {
     event.preventDefault();
     event.stopPropagation();
     this.model.handleOffColor = color;

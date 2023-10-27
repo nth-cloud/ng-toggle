@@ -1,13 +1,13 @@
 <div>
-    <ng-toggle
-        onColor="{{model.onColor}}"
-        onText="{{model.onText}}"
-        offColor="{{model.offColor}}"
-        offText="{{model.offText}}"
-        [disabled]="model.disabled"
-        [size]="model.size"
-        [(ngModel)]="model.value"
-    >
-    </ng-toggle>
+	<ng-toggle
+		onColor="{{model.onColor}}"
+		onText="{{model.onText}}"
+		offColor="{{model.offColor}}"
+		offText="{{model.offText}}"
+		[disabled]="model.disabled"
+		[size]="model.size"
+		[(ngModel)]="model.value"
+	>
+	</ng-toggle>
 </div>
 <pre class="my-2">{{model | json}}</pre>

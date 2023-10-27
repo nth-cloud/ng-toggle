@@ -1,39 +1,72 @@
 ng-toggle {
-    position:       relative;
-    display:        inline-block;
-    direction:      ltr;
-    cursor:         pointer;
-    overflow:       hidden;
-    padding:        0 !important;
-    text-align:     left;
-    z-index:        0;
-    user-select:    none;
-    vertical-align: middle;
-    transition:     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-    box-sizing:     content-box;
+	position: relative;
+	display: inline-block;
+	direction: ltr;
+	cursor: pointer;
+	overflow: hidden;
+	padding: 0 !important;
+	text-align: left;
+	z-index: 0;
+	user-select: none;
+	vertical-align: middle;
+	transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	box-sizing: content-box;
 
-    &.disabled, &.disabled .btn{cursor: default;}
+	&.disabled,
+	&.disabled .btn {
+		cursor: default;
+	}
 
-    input{position: absolute; z-index: -1; visibility: hidden; width: 1px; height: 1px;}
+	input {
+		position: absolute;
+		z-index: -1;
+		visibility: hidden;
+		width: 1px;
+		height: 1px;
+	}
 
-    .ng-toggle-container, .ng-toggle-on, .ng-toggle-off, .ng-toggle-handle {display: flex !important;}
+	.ng-toggle-container,
+	.ng-toggle-on,
+	.ng-toggle-off,
+	.ng-toggle-handle {
+		display: flex !important;
+	}
 
-    .ng-toggle-container{align-items: stretch!important; top: 0; border-radius: 0; transform: translateZ(0);}
+	.ng-toggle-container {
+		align-items: stretch !important;
+		top: 0;
+		border-radius: 0;
+		transform: translateZ(0);
+	}
 
-    &.ng-toggle-animate .ng-toggle-container {transition: margin-left 0.5s;}
+	&.ng-toggle-animate .ng-toggle-container {
+		transition: margin-left 0.5s;
+	}
 
-    .ng-toggle-on,.ng-toggle-off {align-items: center!important; text-align: center; z-index: 1; border-radius: 0;}
+	.ng-toggle-on,
+	.ng-toggle-off {
+		align-items: center !important;
+		text-align: center;
+		z-index: 1;
+		border-radius: 0;
+	}
 
-    .ng-toggle-on, .ng-toggle-off, .ng-toggle-handle {box-sizing:  border-box;cursor:pointer;user-select: none;}
+	.ng-toggle-on,
+	.ng-toggle-off,
+	.ng-toggle-handle {
+		box-sizing: border-box;
+		cursor: pointer;
+		user-select: none;
+	}
 
-    .ng-toggle-handle {
-        text-align:    center;
-        margin-top:    -1px;
-        margin-bottom: -1px;
-        z-index:       100;
-        width:         1em;
-        padding-left:  0;
-        padding-right: 0;
-        align-self:    stretch !important;
-    }
+	.ng-toggle-handle {
+		text-align: center;
+		margin-top: -1px;
+		margin-bottom: -1px;
+		z-index: 100;
+		width: 1em;
+		padding-left: 0;
+		padding-right: 0;
+		align-self: stretch !important;
+	}
 }

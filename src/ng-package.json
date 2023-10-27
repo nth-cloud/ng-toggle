@@ -1,9 +1,8 @@
 {
-  "$schema": "../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../dist",
-  "deleteDestPath": false,
-  "lib": {
-    "flatModuleFile": "ng-toggle",
-    "entryFile": "./index.ts"
-  }
+	"$schema": "../node_modules/ng-packagr/ng-package.schema.json",
+	"dest": "../dist",
+	"lib": {
+		"flatModuleFile": "ng-toggle",
+		"entryFile": "./index.ts"
+	}
 }

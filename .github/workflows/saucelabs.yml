@@ -1,0 +1,38 @@
+name: SauceLabs
+
+on:
+  push:
+    branches:
+      - master
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  saucelabs:
+    runs-on: ubuntu-latest
+    name: SauceLabs
+    env:
+      SAUCE_USERNAME: ${{ secrets.SAUCE_USERNAME }}
+      SAUCE_ACCESS_KEY: ${{ secrets.SAUCE_ACCESS_KEY }}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+      - run: npm ci --legacy-peer-deps
+      - uses: saucelabs/sauce-connect-action@v2
+        with:
+          username: ${{ env.SAUCE_USERNAME }}
+          accessKey: ${{ env.SAUCE_ACCESS_KEY }}
+          tunnelIdentifier: ${{ github.run_id }}
+      - run: npm run saucelabs
+      - uses: actions/upload-artifact@v3
+        if: ${{ always() }}
+        with:
+          name: sauce-connect-log
+          path: /tmp/sauce-connect-action**/sauce-connect.log
