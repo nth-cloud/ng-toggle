@@ -1,3 +1,12 @@
+## [10.0.1](https://github.com/nth-cloud/ng-toggle/compare/10.0.0...10.0.1) (2023-10-27)
+
+
+### Features
+
+* Upgrading support to Angular v15 ([41291bc](https://github.com/nth-cloud/ng-toggle/commit/41291bc3522430e37be8d2a0ddb0409f1345c83f))
+
+
+
 ## [9.0.1](https://github.com/nth-cloud/ng-toggle/compare/9.0.0...9.0.1) (2022-02-27)
 
 
