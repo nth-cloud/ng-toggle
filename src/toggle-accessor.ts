@@ -5,7 +5,7 @@ import { NgToggleComponent } from './toggle';
 
 @Directive({
 	selector: 'ng-toggle',
-  standalone: true,
+	standalone: true,
 	providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => NgToggleAccessorDirective), multi: true }],
 })
 export class NgToggleAccessorDirective implements ControlValueAccessor, OnDestroy {

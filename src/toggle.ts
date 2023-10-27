@@ -17,7 +17,7 @@ import {
 	ViewChild,
 	ViewEncapsulation,
 } from '@angular/core';
-import { NgIf, NgTemplateOutlet } from "@angular/common";
+import { NgIf, NgTemplateOutlet } from '@angular/common';
 import { NgToggleLabelDirective } from './toggle-label';
 
 /**
@@ -28,8 +28,8 @@ import { NgToggleLabelDirective } from './toggle-label';
  */
 @Component({
 	selector: 'ng-toggle',
-  standalone: true,
-  imports: [NgTemplateOutlet, NgIf],
+	standalone: true,
+	imports: [NgTemplateOutlet, NgIf],
 	template: `
 		<span #container class="ng-toggle-container" [style.margin-left]="marginLeft">
 			<span
@@ -266,7 +266,7 @@ export class NgToggleComponent implements AfterViewInit, AfterContentInit, After
 
 	get marginLeft(): string {
 		let margin = 0;
-    /* eslint-disable no-empty */
+		/* eslint-disable no-empty */
 		if (!this._initialized) {
 		} else if (this.indeterminate || this._innerState === null || typeof this._innerState === 'undefined') {
 			margin = -(this.width / 2);

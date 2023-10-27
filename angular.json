@@ -11,7 +11,7 @@
 				"build": {
 					"builder": "@angular-devkit/build-angular:ng-packagr",
 					"options": {
-            "tsConfig": "src/tsconfig.json",
+						"tsConfig": "src/tsconfig.json",
 						"project": "src/ng-package.json"
 					},
 					"configurations": {
@@ -54,7 +54,7 @@
 				"build": {
 					"builder": "@angular-devkit/build-angular:browser",
 					"options": {
-            "allowedCommonJsDependencies": ["prismjs"],
+						"allowedCommonJsDependencies": ["prismjs"],
 						"outputPath": "demo/dist",
 						"index": "demo/src/public/index.html",
 						"main": "demo/src/main.ts",
@@ -74,12 +74,12 @@
 						],
 						"styles": [
 							"node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+							"node_modules/bootstrap-icons/font/bootstrap-icons.css",
 							"node_modules/prismjs/themes/prism.css",
 							"demo/src/style/app.scss"
 						],
 						"scripts": [],
-            "aot": true,
+						"aot": true,
 						"vendorChunk": true,
 						"extractLicenses": false,
 						"buildOptimizer": false,
@@ -95,25 +95,25 @@
 									"with": "demo/src/environments/environment.prod.ts"
 								}
 							],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
+							"optimization": true,
+							"outputHashing": "all",
+							"sourceMap": false,
+							"namedChunks": false,
+							"aot": true,
+							"extractLicenses": true,
+							"vendorChunk": false,
+							"buildOptimizer": true,
 							"budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb",
-                  "maximumError": "10kb"
-                }
+								{
+									"type": "initial",
+									"maximumWarning": "2mb",
+									"maximumError": "5mb"
+								},
+								{
+									"type": "anyComponentStyle",
+									"maximumWarning": "6kb",
+									"maximumError": "10kb"
+								}
 							]
 						}
 					},
@@ -128,10 +128,10 @@
 						"production": {
 							"browserTarget": "demo:build:production"
 						},
-            "playwright": {
-              "liveReload": false,
-              "watch": false
-            }
+						"playwright": {
+							"liveReload": false,
+							"watch": false
+						}
 					}
 				},
 				"lint": {
@@ -140,12 +140,12 @@
 						"lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
 					}
 				},
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "demo:build"
-          }
-        }
+				"extract-i18n": {
+					"builder": "@angular-devkit/build-angular:extract-i18n",
+					"options": {
+						"browserTarget": "demo:build"
+					}
+				}
 			}
 		}
 	},

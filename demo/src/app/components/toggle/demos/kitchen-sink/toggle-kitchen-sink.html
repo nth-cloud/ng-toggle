@@ -134,7 +134,7 @@
 		<button
 			*ngFor="let color of colors"
 			class="me-1 mb-1 btn btn-{{color}}"
-      [class.active]="model.offColor === color"
+			[class.active]="model.offColor === color"
 			(click)="setOffColor($event, color)"
 		>
 			{{color | titlecase}}

@@ -6,8 +6,8 @@
 		"paths": {
 			"@nth-cloud/ng-toggle": ["../src/index"]
 		}
-  },
+	},
 	"files": ["src/main.ts"],
 	"include": ["./src/**/*.d.ts"],
-  "exclude": ["src/**/*.po.ts", "src/**/*.e2e-spec.ts"]
+	"exclude": ["src/**/*.po.ts", "src/**/*.e2e-spec.ts"]
 }

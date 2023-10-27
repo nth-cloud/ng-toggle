@@ -1,7 +1,7 @@
-import { Directive } from "@angular/core";
+import { Directive } from '@angular/core';
 
 @Directive({
-  standalone: true,
-  selector: '[nthdOverview]'
+	standalone: true,
+	selector: '[nthdOverview]',
 })
 export class NthdOverviewDirective {}
