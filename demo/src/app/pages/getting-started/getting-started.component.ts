@@ -98,12 +98,12 @@ export class GettingStartedPage {
 	codeStandalone = Snippet({
 		lang: 'typescript',
 		code: `
-      import { NgToggle } from '@nth-cloud/ng-toggle';
+      import { NgToggleComponent } from '@nth-cloud/ng-toggle';
 
       @Component({
         selector: 'app-product',
         standalone: true,
-        imports: [NgToggle],
+        imports: [NgToggleComponent],
         templateUrl: './product.component.html'
       })
       export class ProductComponent {
