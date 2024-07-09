@@ -31,6 +31,6 @@ jobs:
           keep_history: true
           target_branch: gh-pages
           build_dir: demo/dist
-          commit_message: "Update ${BUILD_DATE}"
+          commit_message: Update ${{ BUILD_DATE }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -45,7 +45,7 @@
     "scripts:test": "ts-node --project misc/tsconfig.json node_modules/jasmine/bin/jasmine misc/api-doc.spec.ts",
     "toggle:static": "ts-node --project misc/tsconfig.json misc/copy-static-files.ts",
     "toggle:lint": "ng lint ng-toggle",
-    "toggle:test": "ng test ng-toggle --code-coverage --source-map false --progress false --watch false",
+    "toggle:test": "ng test ng-toggle --code-coverage --progress false --watch false",
     "toggle:build": "ng build ng-toggle --configuration production && npm run schematics:build && npm run toggle:static && npm run toggle:build:lint",
     "toggle:build:lint": "eslint --no-eslintrc --config misc/eslintrc-after-build.js \"dist/**/*.{js,mjs}\"",
     "demo:serve": "ng serve demo --host 0.0.0.0",
