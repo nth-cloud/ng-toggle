@@ -1,0 +1,33 @@
+name: Create Demo and Docs
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+    paths:
+      - 'demo/**'
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    name: Create Demo and Docs
+    steps:
+      - name: Set build timestamp
+        run: echo "BUILD_DATE=$(date -u --iso-8601='seconds')" >> ${GITHUB_ENV}
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+      - run: npm ci --legacy-peer-deps
+      - run: npm run demo:build
+      - uses: crazy-max/ghaction-github-pages@v4.0.0
+        with:
+          target_branch: gh-pages
+          build_dir: demo/dist
+          commit_message: "Update ${BUILD_DATE}"
