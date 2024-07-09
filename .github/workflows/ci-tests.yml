@@ -5,6 +5,11 @@ on:
     branches:
       - master
       - '[0-9]+_[0-9]+_x'
+    paths:
+      - 'src/**'
+      - 'demo/**'
+      - 'misc/**'
+      - 'schematics/**'
   pull_request:
     types: [opened, synchronize, reopened]
 
