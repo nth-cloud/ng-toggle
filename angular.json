@@ -27,11 +27,11 @@
 						"tsConfig": "src/tsconfig.spec.json",
 						"karmaConfig": "src/karma.conf.js",
 						"codeCoverageExclude": ["src/test.ts", "src/test/**"],
-            "sourceMap": {
-              "scripts": true,
-              "styles": true,
-              "vendor": true
-            }
+						"sourceMap": {
+							"scripts": true,
+							"styles": true,
+							"vendor": true
+						}
 					},
 					"configurations": {
 						"saucelabs": {
