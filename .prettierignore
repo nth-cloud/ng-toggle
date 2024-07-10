@@ -13,3 +13,4 @@ misc/api-doc-test-cases
 node_modules
 CHANGELOG.md
 package.json
+package-lock.json
