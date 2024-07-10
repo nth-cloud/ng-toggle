@@ -30,7 +30,7 @@
     "version": "npm run changelog && git add CHANGELOG.md",
     "postversion": "npm run toggle:build && npm run demo:build",
     "preinstall": "node misc/preinstall.js",
-    "prepare": "is-ci || husky install .husky",
+    "commitmsg": "node misc/validate-commit.js",
     "build": "npm run toggle:build && npm run demo:build",
     "test": "npm run toggle:lint && npm run toggle:test && npm run schematics:test",
     "ci:test": "npm run check-format && npm run test && npm run build",
